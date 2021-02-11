@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@200;600;800&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+    <title>SKL Pasapalabra</title>
+</head>
+<body>
+    <div class="container">
+        <section class="player-card">
+            <div id="player-container">
+                <p id="abc1">ABCDEFGHI</p>
+                <p id="abc2">JKLMNÑOPQ</p>
+                <p id="abc3">RSTUVWXYZ</p>
+                <img class="player-icon" src="icono_player_01.svg" alt="player one icon">
+                <p id="player-name">Roberto</p>
+            </div>
+        </section>
+        <div class="timer">42</div>
+        <section class="question-card">
+            <div id="question-container">
+                <p id="letter">H</p>
+                <p id="question">Empieza con la H. Que repite mucho la misma palabra pese a que no sabe hablar.</p>
+                <div id="input-wrapper">
+                    <img id="answer-icon" src="icono_respuesta.svg" alt="answer icon">
+                    <input id="user-answer" type="text" spellcheck="false" autofocus>
+                    <input id="input-button" type="submit" value="RESPONDER">
+                </div>
+            </div>
+        </section>
+        <button type="button" id="pasa-btn">PASAPALABRA</button>
+
+    </div>
+</body>
+</html>

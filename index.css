@@ -1,0 +1,218 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+
+    /* font-family: 'Montserrat', sans-serif; */
+    /* font-weight:500;
+    color: #2D2D2D;
+    background-color: #f0f0f0;*/
+}
+
+body {
+    display: flex;
+    background-color: #fafafa;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    height: auto;
+    min-width: 400px;
+}
+
+/* -------------PLAYER CARD------------- */
+
+.player-card {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    padding: 50px 50px 105px 50px;
+    max-width: 500px;;
+
+}
+.player-card p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: 0.6rem;
+    color: #dadada;
+}
+#abc1 { 
+    position: absolute;
+    transform: rotate(-90deg);
+    top: 70px;
+    left: -100px;
+    letter-spacing: 0.6rem;;
+}
+#abc2 { 
+    position: absolute;
+    top: -22px;
+    left: 12px;
+    letter-spacing: 0.6rem;
+}
+#abc3 { 
+    position: absolute;
+    transform: rotate(90deg);
+    top: 82px;
+    right: -100px;
+    letter-spacing: 0.6rem;
+}
+
+#player-container {
+    position: relative;
+    width: 190px;
+    height: 170px;
+    background-color: #f5f7fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;;
+}
+
+.player-icon { 
+    position: relative; 
+    width: 85%;
+    height: auto;
+    top: -5px;
+    left: 15px;
+}
+
+#player-name {
+    position: absolute;  
+    font-family: 'Nothing you could do', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #272727;
+    top: 190px;
+    right: 55px;
+    letter-spacing: 0;
+    transform: rotate(-1.5deg)
+}
+
+.timer {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size: 2.2rem;
+    color: #00a3ff;
+    padding: 9px;
+    border: 1px solid #e5e5e5;
+    border-radius: 50%;
+    background-color: #ffffff;
+    margin: -35px;
+    z-index: 10;
+}
+
+/* -------------QUESTION CONTAINER------------- */
+
+.question-card {
+    background-color: #f5f7fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 700px;
+    padding: 10px 0 10px 0;
+}
+
+#question-container {
+    display: flex;
+    padding: 0.5rem 1rem;
+    justify-content: space-around;
+    align-items: center;
+}
+#question {
+    font-size: 0.7rem;
+    color: #2D2D2D;
+    margin-right: 15px;
+    width: 40%;
+
+}
+#letter {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 5.5rem;
+    color: rgba(26,59,90,0.9);
+    margin-right: 15px;
+}
+
+#input-wrapper {
+    position: relative;
+}
+#user-answer {
+    padding: 10px 140px 10px 45px;
+    color: rgba(117,117,117,0.7);
+    font-weight: 100;
+    font-size: 0.7rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    width: 100%;
+    min-width: 230px;
+}
+#user-answer:focus {
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid rgba(26,59,90,0.4);
+
+}
+#answer-icon {
+    position: absolute;
+    top: 9px; 
+    left: 15px;
+    width: 1.2rem;
+    height: auto;
+    z-index: 10;
+}
+#input-button {
+    position: absolute;
+    top: 12px; 
+    right: 12px;
+    height: auto;
+    z-index: 10;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.5px;
+    color: #00a3ff;
+}
+#pasa-btn {
+    margin-top: 1.4rem;
+    font-size: 0.8rem;
+    padding: 0.7rem 0.6rem;
+    border: 1px solid rgb(22, 56, 89, 0.05);
+    outline: none;
+    border-radius: 23px;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.5px;;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #00A3FF;
+    transition: 100ms;
+    cursor: pointer;
+
+}
+
+#pasa-btn:hover {
+    background-color: rgba(26,59,90,0.9);
+    padding: 0.8rem 0.8rem;
+
+
+
+}
+
+
+
+
