@@ -22,29 +22,29 @@ body {
     margin-top: 30px;
 }
 
-
-
-
-
 /* -------------SELECT PLAYER-----------*/
 .container-select-players {
     display: grid;
-    width: 70%;
-    height: 100vh;
+    width: 50%;
+    height: 80vh;
     min-width: 600px;
-    grid-template-columns: 20% 20% 20%;
+    grid-template-columns: 20% 60% 20%;
     grid-template-rows: auto;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     grid-template-areas: 
         "player1 . player2"
-        "player3 . player4"
-        "player5 . player6"
-    ;
+        "player3 select player4"
+        "player5 . player6";
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    gap: 0 0;
+    border: 1px solid red;
 }
 
 #select-player {
-    width: 10px;
-    height: 10px;
+    width: 50px;
+    height: 50px;
     background-color: transparent;
     border: 1px solid blue;
     border-radius: 50%;
@@ -54,7 +54,7 @@ body {
 }
 
 .p-icon {
-    width: 40%;
+    width: 73%;
 }
 .player-name-selector {
     font-family: 'Montserrat', sans-serif;
@@ -71,7 +71,7 @@ body {
 #player-three {
     grid-area: player3;
 }
-#player-4 {
+#player-four {
     grid-area: player4;
 }
 #player-five {
