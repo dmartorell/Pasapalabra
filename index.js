@@ -1,5 +1,8 @@
 
 const gameScreen = document.querySelector('.container-game');
-gameScreen.style.display = 'none';
+const selectPlayers = document.querySelector('.container-select-players');
+
+// Arranque en delay: 1 seg
+setTimeout(() => selectPlayers.style.display="grid", 1000);
 
 
