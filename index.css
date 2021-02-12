@@ -23,27 +23,50 @@ body {
     width: 50%;
     height: 80vh;
     min-width: 300px;
-    grid-template-columns: minmax(80px, 18%) 1fr minmax(80px, 18%);
-
+    grid-template-columns: minmax(90px, 19%) 1fr minmax(90px, 19%);
     grid-template-rows: auto;
-    /* border: 1px solid red; */
     grid-template-areas: 
         "player1 . player2"
-        "player3 select player4"
+        "player3 . player4"
         "player5 . player6";
-    justify-content: space-between;
+    justify-content: center;
     justify-items: center;
-    align-items: center;
-    gap: 0 0;
-    border: 1px solid red;
+    align-items:flex-start;
+    gap: 8px 0;
+    /* border: 1px solid red; */
 }
 
+.player-box {
+    position: relative;
+}
 .p-icon {
-    width: 100%;    
-    
+    width: 100%; 
 }
+.box-bkg-left {
+    background-color: #ecf4ff;
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    z-index: -2;
+    border-bottom-left-radius: 65%;
+    border-top-left-radius: 85%;
+    border-bottom-right-radius: 70%;
+    border-top-right-radius: 50%;
 
-
+}
+.box-bkg-right {
+    background-color: #ecf4ff;
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    top: 0;
+    left: -90%;
+    z-index: -2;
+    border-bottom-left-radius: 70%;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 85%;
+    border-top-right-radius: 65%;
+}
 #player-one {
     grid-area: player1;
 }
