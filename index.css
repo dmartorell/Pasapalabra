@@ -20,10 +20,11 @@ body {
 /* -------------SELECT PLAYER-----------*/
 .container-select-players {
     display: none;
-    width: 50%;
+    width: 60%;
     height: 80vh;
-    min-width: 600px;
-    grid-template-columns: 20% 60% 20%;
+    min-width: 400px;
+    grid-template-columns: minmax(80px, 15%) 1fr minmax(80px, 15%);
+
     grid-template-rows: auto;
     /* border: 1px solid red; */
     grid-template-areas: 
@@ -37,25 +38,11 @@ body {
     border: 1px solid red;
 }
 
-#select-player {
-    width: 50px;
-    height: 50px;
-    background-color: transparent;
-    border: 1px solid blue;
-    border-radius: 50%;
-    outline: none;
-    cursor: pointer;
-    grid-area: select;
+.p-icon {
+    width: 100%;    
+    
 }
 
-.p-icon {
-    width: 73%;
-}
-.player-name-selector {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
-    font-weight: 500;
-}
 
 #player-one {
     grid-area: player1;
@@ -268,12 +255,12 @@ body {
 }
 
 .slide-right {
-	-webkit-animation: slide-right 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
-	        animation: slide-right 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
+	-webkit-animation: slide-right 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
+	        animation: slide-right 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
 }
 .slide-left {
-	-webkit-animation: slide-left 0.6s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
-	        animation: slide-left 0.6s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
+	-webkit-animation: slide-left 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
+	        animation: slide-left 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
 }
 
 
