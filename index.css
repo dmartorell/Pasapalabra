@@ -43,20 +43,28 @@ body {
 
 .player-box {
     position: relative;
+    cursor: pointer; 
+
 }
+
 .p-icon {
     width: 100%; 
+    filter: drop-shadow(2px 2px 1px grey);
+
 }
+
 .box-bkg-left {
     background-color: #ecf4ff;
     position: absolute;
     width: 200%;
     height: 100%;
-    z-index: -2;
+    z-index: -1;
     border-bottom-left-radius: 65%;
     border-top-left-radius: 85%;
     border-bottom-right-radius: 70%;
     border-top-right-radius: 50%;
+    cursor: pointer;
+
 
 }
 .box-bkg-right {
@@ -103,6 +111,8 @@ body {
     justify-self:center;
 }
 
+
+
 .slide-right {
 	-webkit-animation: slide-right 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
 	        animation: slide-right 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
@@ -116,6 +126,9 @@ body {
 	        animation: heartbeat 1.5s ease-in-out infinite both;
 }
 
+.selected {
+    background-color: #bed8fc;
+}
 
 
 /* -------------PLAYER CARD------------- */
