@@ -16,8 +16,8 @@ setTimeout(() => {
 }, 1000);
 setTimeout(() => selectPlayerIcon.style.display="block", 1600);
 
-document.addEventListener('mouseover', darkenBackgroundColor);
-document.addEventListener('mouseout', lightenBackgroundColor);
+document.addEventListener('mouseover', addEffectOnBackground);
+document.addEventListener('mouseout', removeEffectOnBackground);
 document.addEventListener('click', (e) => {
     
     const element = e.target;
@@ -25,7 +25,7 @@ document.addEventListener('click', (e) => {
     const backgroundColor = element.previousElementSibling;
 
     if(element.className === 'p-icon'){
-        document.removeEventListener('mouseover', darkenBackgroundColor);
+        document.removeEventListener('mouseover', addEffectOnBackground);
         selectPlayerIcon.style.display = 'none';
         playerSelectorScreen.classList.remove('multi-player-grid');
         playerSelectorScreen.classList.add('invisible');
@@ -51,14 +51,18 @@ document.addEventListener('click', (e) => {
     
 });
 
-
-function darkenBackgroundColor(e){
+function addEffectOnBackground(e){
     const element = e.target;
-    if(element.className === 'p-icon') element.previousElementSibling.style.backgroundColor = '#cbdffc';    
+    if(element.className === 'p-icon'){
+        const element = e.target;
+        element.previousElementSibling.style.backgroundColor = '#cbdffc';
+    }
 }
-function lightenBackgroundColor(e){
+function removeEffectOnBackground(e){
     const element = e.target;
-    if(element.className === 'p-icon') element.previousElementSibling.style.backgroundColor = '#ecf4ff';    
+    if(element.className === 'p-icon'){
+        element.previousElementSibling.style.backgroundColor = '#ecf4ff';  
+    }
 }
 
 

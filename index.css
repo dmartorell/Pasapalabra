@@ -59,7 +59,7 @@ body {
 
 .p-icon {
     width: 100%; 
-    filter: drop-shadow(2px 2px 1px grey);
+    filter: drop-shadow(1.5px 1.5px 1px grey);
     cursor: pointer;
 
 }
