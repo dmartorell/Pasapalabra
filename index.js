@@ -2,6 +2,7 @@
 // const gameScreen = document.querySelector('.game-screen');
 const playerSelectorScreen = document.getElementById('player-selector-screen');
 const selectPlayerIcon = document.getElementById('select-player-icon');
+const inputPlayerNameScreen = document.getElementById('input-player-name-screen');
 
 // players en delay: 1 seg
 setTimeout(() => {
@@ -20,24 +21,32 @@ document.addEventListener('mouseout', lightenBackgroundColor);
 document.addEventListener('click', (e) => {
     
     const element = e.target;
-    const parent = element.parentNode.parentNode;
-    const players = Array.from(parent.children).slice(0,-1);
+    const parent = element.parentNode;
+    const backgroundColor = element.previousElementSibling;
+
     if(element.className === 'p-icon'){
         document.removeEventListener('mouseover', darkenBackgroundColor);
         selectPlayerIcon.style.display = 'none';
-        for(player of players){
-            if(player.id !== element.parentNode.id){
-                player.style.display = "none";
-                playerSelectorScreen.classList.remove('multi-player-grid');
-                playerSelectorScreen.classList.add('one-player-grid');
-            }
-        }
-        element.parentNode.style.gridArea = 'auto';
-        element.previousElementSibling.style.width = '200%';
-        element.previousElementSibling.style.height = '93%';
-        element.previousElementSibling.style.left = '-50%'
+        playerSelectorScreen.classList.remove('multi-player-grid');
+        playerSelectorScreen.classList.add('invisible');
+        console.log(parent);
+        
+        inputPlayerNameScreen.appendChild(parent);
+        
+        inputPlayerNameScreen.classList.remove('invisible');
+        inputPlayerNameScreen.classList.add('one-player-grid');
+
+        parent.style.gridArea = 'auto';
+        backgroundColor.style.width = '200%';
+        backgroundColor.style.height = '93%';
+        backgroundColor.style.left = '-50%'
         element.style.marginTop = '20px';
         element.style.cursor = 'auto';
+
+        parent.classList.add('scale-in-center')
+
+
+
     }
     
 });
