@@ -45,8 +45,16 @@
 <!--------------------------INPUT PLAYER NAME SCREEN -------------------------------->
 
     <div id="input-player-name-screen" class="invisible">
-
+        <div id="selected-player-avatar">
+        <!-- Los elementos que componen al personaje se crean AQUÍ cuando el usuario clica en la pantalla anterior -->
+        </div>
+        
+        
+        <img class="" id="input-name-icon" src="icono_input_name.svg" alt="insert name icon">
+        <input id="user-name" class="text-input-name" type="text" spellcheck="false" autofocus size="15">
+        <input id="user-name-button" class="" type="submit" value="PLAY">
     </div>
+    
 <!---------------------------------------GAME SCREEN -------------------------------->
     <div class="game-screen">
        
@@ -68,7 +76,7 @@
                 <p id="question">Empieza con la H. Que repite mucho la misma palabra pese a que no sabe hablar.</p>
                 <div id="input-wrapper">
                     <img id="answer-icon" src="icono_respuesta.svg" alt="answer icon">
-                    <input id="user-answer" type="text" spellcheck="false" autofocus size="20">
+                    <input class="text-input" type="text" spellcheck="false" autofocus size="20">
                     <input id="input-button" type="submit" value="RESPONDER">
                 </div>
             </div>

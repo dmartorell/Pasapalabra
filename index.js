@@ -29,9 +29,8 @@ document.addEventListener('click', (e) => {
         selectPlayerIcon.style.display = 'none';
         playerSelectorScreen.classList.remove('multi-player-grid');
         playerSelectorScreen.classList.add('invisible');
-        console.log(parent);
         
-        inputPlayerNameScreen.appendChild(parent);
+        inputPlayerNameScreen.firstElementChild.append(parent);
         
         inputPlayerNameScreen.classList.remove('invisible');
         inputPlayerNameScreen.classList.add('one-player-grid');
@@ -43,10 +42,7 @@ document.addEventListener('click', (e) => {
         element.style.marginTop = '20px';
         element.style.cursor = 'auto';
 
-        parent.classList.add('scale-in-center')
-
-
-
+        parent.classList.add('scale-in-center');
     }
     
 });
