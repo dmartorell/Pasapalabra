@@ -10,13 +10,15 @@
     <title>SKL Pasapalabra</title>
 </head>
 <body>
-    <div class="container-select-players">
+
+<!---------------------------PLAYER SELECTOR SCREEN -------------------------------->
+
+    <div id="player-selector-screen" class="invisible">
         
         <div class="player-box slide-right" id="player-one">
             <div class="box-bkg-left"></div>
             <img class="p-icon" src="icono_player_01.svg" alt="player one icon">
         </div>
-
         <div class="player-box slide-left" id="player-two">
             <div class="box-bkg-right"></div>
             <img class="p-icon"  src="icono_player_02.svg" alt="player two icon">
@@ -27,21 +29,27 @@
         </div>
         <div class="player-box slide-left" id="player-four">
             <div class="box-bkg-right"></div>
-            <img class="p-icon" id="player-four" src="icono_player_04.svg" alt="player four icon">
+            <img class="p-icon" src="icono_player_04.svg" alt="player four icon">
         </div>
         <div class="player-box slide-right" id="player-five">
             <div class="box-bkg-left"></div>
-            <img class="p-icon" id="player-five" src="icono_player_05.svg" alt="player five icon">
+            <img class="p-icon" src="icono_player_05.svg" alt="player five icon">
         </div>
         <div class="player-box slide-left" id="player-six">
             <div class="box-bkg-right"></div>
-            <img class="p-icon" id="player-six" src="icono_player_06.svg" alt="player six icon">
+            <img class="p-icon" src="icono_player_06.svg" alt="player six icon">
         </div>
-        <img class="heartbeat" id="select-player-icon" src="icono_select_player.svg" alt="select player icon">
-        
+        <img class="invisible heartbeat" id="select-player-icon" src="icono_select_player.svg" alt="select player icon">
+    </div>
+
+<!--------------------------INPUT PLAYER NAME SCREEN -------------------------------->
+
+    <div id="input-player-name-screen" class="invisible">
 
     </div>
-    <div class="container-game">
+<!---------------------------------------GAME SCREEN -------------------------------->
+    <div class="game-screen">
+       
         <section class="player-card">
             <div id="player-container">
                 <p id="abc1">ABCDEFGHI</p>
@@ -51,7 +59,9 @@
                 <p id="player-name">Roberto</p>
             </div>
         </section>
+
         <div class="timer">42</div>
+        
         <section class="question-card">
             <div id="question-container">
                 <p id="letter">H</p>
@@ -63,8 +73,8 @@
                 </div>
             </div>
         </section>
-        <button type="button" id="pasa-btn">PASAPALABRA</button>
 
+        <button type="button" id="pasa-btn">PASAPALABRA</button>
     </div>
 </body>
 </html>
