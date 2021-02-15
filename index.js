@@ -44,23 +44,27 @@ document.addEventListener('click', (e) => {
 
         parent.classList.add('scale-in-center');
 
-
         const playButton = document.getElementById('play-button');
+        setTimeout(() => playButton.classList.add('heartbeat'), 1500);
+
+        
         playButton.addEventListener('click', (e) => {
-            
+            inputPlayerNameScreen.classList.add('invisible');
+            inputPlayerNameScreen.classList.remove('one-player-grid');
             let playerName = formatName(document.getElementById('user-name').value);
             const playerSrcImage = parent.lastElementChild.src;
         
             startGame(playerName, playerSrcImage);
         });
-
     }
-    
 });
 
 function startGame(playerName, playerSrcImage){
-    console.log({playerName});
-    console.log({playerSrcImage});
+    setTimeout(() => {
+        gameScreen.classList.add('slide-in-top')
+        gameScreen.classList.remove('invisible');
+
+    }, 500);
 }
 
 
