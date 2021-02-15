@@ -1,5 +1,6 @@
 /* TODOS:
             - los botones tienen que tener focus de otro color.
+            - cuando cargan las screens focus en input de texto.  
 */
 
 
@@ -246,8 +247,12 @@ body {
     width: 190px;
     height: 170px;
     background-color: #d8e5f9;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;;
+    /* border: 1px solid #e5e7eb; */
+    /* border-radius: 10px;; */
+    border-bottom-left-radius: 52%;
+    border-top-left-radius: 42%;
+    border-bottom-right-radius: 50%;
+    border-top-right-radius: 59%;
 }
 
 .player-icon { 
@@ -265,8 +270,9 @@ body {
     font-weight: 400;
     color: #272727;
     top: 190px;
-    right: 55px;
     letter-spacing: 0;
+    text-align: center;
+    width: 100%;
     transform: rotate(-1.5deg)
 }
 

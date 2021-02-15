@@ -60,9 +60,16 @@ document.addEventListener('click', (e) => {
 });
 
 function startGame(playerName, playerSrcImage){
+
+    const playerNameField = document.getElementById('player-name');
+    playerNameField.textContent = playerName;
+    const playerIcon = document.querySelector('.player-icon');
+    playerIcon.src = playerSrcImage;
+    
     setTimeout(() => {
         gameScreen.classList.add('slide-in-top')
         gameScreen.classList.remove('invisible');
+
 
     }, 500);
 }
