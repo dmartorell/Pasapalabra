@@ -161,7 +161,7 @@ body {
     border: 1px solid rgba(26,59,90,0.4);
 
 }
-#user-name-button {
+#play-button {
     margin-top: 4rem;
     font-size: 0.8rem;
     padding: 0.7rem 0.6rem;
@@ -180,7 +180,7 @@ body {
 
 }
 
-#user-name-button:hover {
+#play-button:hover {
     background-color: #00A3FF;
     color: #ffffff;
 
@@ -196,8 +196,8 @@ body {
 }
 
 /* -------------------------------------PLAYER CARD------------------------------ */
-.game-screen {
-    display: none;
+.game-wrapper {
+    display: flex;
     flex-direction: column;
     align-items: center;
     width: 70%;

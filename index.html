@@ -52,37 +52,40 @@
         
         <img class="swing-in-top-fwd" id="input-name-icon" src="icono_input_name.svg" alt="insert name icon">
         <input id="user-name" class="text-input-name" type="text" spellcheck="false" autofocus size="15">
-        <input id="user-name-button" class="" type="submit" value="PLAY">
+        <input id="play-button" type="submit" value="JUEGA">
     </div>
+    
 
 <!---------------------------------------GAME SCREEN -------------------------------->
-    <div class="game-screen">
-       
-        <section class="player-card">
-            <div id="player-container">
-                <p id="abc1">ABCDEFGHI</p>
-                <p id="abc2">JKLMNÑOPQ</p>
-                <p id="abc3">RSTUVWXYZ</p>
-                <img class="player-icon" src="icono_player_01.svg" alt="player one icon">
-                <p id="player-name">Roberto</p>
-            </div>
-        </section>
-
-        <div class="timer">42</div>
+    <div class="game-screen invisible">
+        <div class="game-wrapper">
         
-        <section class="question-card">
-            <div id="question-container">
-                <p id="letter">H</p>
-                <p id="question">Empieza con la H. Que repite mucho la misma palabra pese a que no sabe hablar.</p>
-                <div id="input-wrapper">
-                    <img id="answer-icon" src="icono_respuesta.svg" alt="answer icon">
-                    <input class="text-input" type="text" spellcheck="false" autofocus size="20">
-                    <input id="input-button" type="submit" value="RESPONDER">
+            <section class="player-card">
+                <div id="player-container">
+                    <p id="abc1">ABCDEFGHI</p>
+                    <p id="abc2">JKLMNÑOPQ</p>
+                    <p id="abc3">RSTUVWXYZ</p>
+                    <img class="player-icon" src="icono_player_01.svg" alt="player one icon">
+                    <p id="player-name">Roberto</p>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <button type="button" id="pasa-btn">PASAPALABRA</button>
+            <div class="timer">42</div>
+            
+            <section class="question-card">
+                <div id="question-container">
+                    <p id="letter">H</p>
+                    <p id="question">Empieza con la H. Que repite mucho la misma palabra pese a que no sabe hablar.</p>
+                    <div id="input-wrapper">
+                        <img id="answer-icon" src="icono_respuesta.svg" alt="answer icon">
+                        <input class="text-input" type="text" spellcheck="false" autofocus size="20">
+                        <input id="input-button" type="submit" value="RESPONDER">
+                    </div>
+                </div>
+            </section>
+
+            <button type="button" id="pasa-btn">PASAPALABRA</button>
+        </div>
     </div>
 </body>
 </html>

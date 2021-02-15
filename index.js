@@ -1,8 +1,8 @@
 
-// const gameScreen = document.querySelector('.game-screen');
 const playerSelectorScreen = document.getElementById('player-selector-screen');
 const selectPlayerIcon = document.getElementById('select-player-icon');
 const inputPlayerNameScreen = document.getElementById('input-player-name-screen');
+const gameScreen = document.querySelector('.game-screen');
 
 // players en delay: 1 seg
 setTimeout(() => {
@@ -26,7 +26,7 @@ document.addEventListener('click', (e) => {
 
     if(element.className === 'p-icon'){
         document.removeEventListener('mouseover', addEffectOnBackground);
-        selectPlayerIcon.style.display = 'none';
+        selectPlayerIcon.classList.add('invisible');
         playerSelectorScreen.classList.remove('multi-player-grid');
         playerSelectorScreen.classList.add('invisible');
         
@@ -43,9 +43,26 @@ document.addEventListener('click', (e) => {
         element.style.cursor = 'auto';
 
         parent.classList.add('scale-in-center');
+
+
+        const playButton = document.getElementById('play-button');
+        playButton.addEventListener('click', (e) => {
+            
+            let playerName = formatName(document.getElementById('user-name').value);
+            const playerSrcImage = parent.lastElementChild.src;
+        
+            startGame(playerName, playerSrcImage);
+        });
+
     }
     
 });
+
+function startGame(playerName, playerSrcImage){
+    console.log({playerName});
+    console.log({playerSrcImage});
+}
+
 
 function addEffectOnBackground(e){
     const element = e.target;
@@ -59,6 +76,13 @@ function removeEffectOnBackground(e){
     if(element.className === 'p-icon'){
         element.previousElementSibling.style.backgroundColor = '#ecf4ff';  
     }
+}
+
+function formatName(name){
+    return name
+        .trim().split(' ')
+        .map(word => word[0].toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
 }
 
 
