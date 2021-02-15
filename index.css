@@ -316,7 +316,8 @@ body {
 }
 #question {
     font-size: 0.7rem;
-    color: #2D2D2D;
+    /* color: #2D2D2D; */
+    color: transparent;
     margin-right: 15px;
     width: 40%;
 
@@ -325,7 +326,8 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     font-size: 5.5rem;
-    color: rgba(26,59,90,0.9);
+    /* color: rgba(26,59,90,0.9); */
+    color: transparent;
     margin-right: 15px;
 }
 
