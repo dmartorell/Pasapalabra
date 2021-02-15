@@ -53,7 +53,7 @@ body {
 
 .p-icon {
     width: 100%; 
-    filter: drop-shadow(1.5px 1.5px 1px grey);
+    /* filter: drop-shadow(1.5px 1.5px 1px grey); */
     cursor: pointer;
 
 }
@@ -179,7 +179,10 @@ body {
     align-self: flex-end;
 }
 #play-button:hover {
-    background-color: #00A3FF;
+    background-color: #1A3B5A;
+    border: 1px solid #1A3B5A;
+
+
     color: #ffffff;
 
 }

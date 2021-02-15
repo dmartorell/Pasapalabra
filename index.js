@@ -49,12 +49,15 @@ document.addEventListener('click', (e) => {
 
         
         playButton.addEventListener('click', (e) => {
-            inputPlayerNameScreen.classList.add('invisible');
-            inputPlayerNameScreen.classList.remove('one-player-grid');
-            let playerName = formatName(document.getElementById('user-name').value);
-            const playerSrcImage = parent.lastElementChild.src;
-        
-            startGame(playerName, playerSrcImage);
+            let playerName = document.getElementById('user-name').value;
+            if(playerName.match(/\w+/)){   //username validation: evitar 'strings' de solo espacios en blanco
+                inputPlayerNameScreen.classList.add('invisible');
+                inputPlayerNameScreen.classList.remove('one-player-grid');
+                const playerSrcImage = parent.lastElementChild.src;
+                playerName = formatName(playerName);
+    
+                startGame(playerName, playerSrcImage);
+            }
         });
     }
 });
@@ -69,8 +72,6 @@ function startGame(playerName, playerSrcImage){
     setTimeout(() => {
         gameScreen.classList.add('slide-in-top')
         gameScreen.classList.remove('invisible');
-
-
     }, 500);
 }
 
