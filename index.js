@@ -20,6 +20,11 @@ document.addEventListener('mouseover', addEffectOnBackground);
 document.addEventListener('mouseout', removeEffectOnBackground);
 document.addEventListener('click', renderPlayerNameScreen);
 
+function renderResultScreen(score){
+
+
+}
+
 function renderPlayerNameScreen(e){
 
     const element = e.target;
@@ -162,6 +167,7 @@ function startGame(playerName, playerSrcImage){
     const numOfQuestionsPerSet = Object.values(questionsDeck)[0].length;
     let totalScore = 0;
     let cardIndex = 0;
+    let noMoreQuestions = false;
     
     let bestUsers = [
         {name: 'Jack Palance', points: 3},
@@ -204,45 +210,55 @@ function startGame(playerName, playerSrcImage){
 
         renderNextQuestion();
 
-        pasaButton.addEventListener('click', ()=> {
-            
-            cardIndex++;
-            currentCard = newRandomSet[cardIndex];
+        pasaButton.addEventListener('click', pasapalabra)
 
-            inputAnswer.value = '';
-            renderNextQuestion();
-        })
+        inputButton.addEventListener('click', checkAnswer)     
+        
+        
 
-        inputButton.addEventListener('click', ()=> {
-            if(inputAnswer.value.toLowerCase() === currentCard.answer){
-                console.log('right');
-                inputAnswer.value = '';
-                currentCard.status = 1
-                cardIndex++;
-                currentCard = newRandomSet[cardIndex];
-                
-            } else {
-                console.log('wrong');
-                inputAnswer.value = '';
-                currentCard.status = -1;
-                cardIndex++;
-                currentCard = newRandomSet[cardIndex];
-
-            }
-
-            renderNextQuestion();
-        });
-
+        
     }, 1000);
 
 
     //////////////////////  HELPER FUNCIONES DENTRO DE GAME  //////////////////
+    function pasapalabra(){
+        cardIndex++;
+        currentCard = newRandomSet[cardIndex];
+        inputAnswer.value = '';
+        renderNextQuestion();
+        if(noMoreQuestions){
+            pasaButton.removeEventListener('click', pasapalabra)
+        }
+    }
+
+    function checkAnswer(){
+        if(inputAnswer.value.toLowerCase() === currentCard.answer){
+            console.log('right');
+            inputAnswer.value = '';
+            currentCard.status = 1
+            cardIndex++;
+            currentCard = newRandomSet[cardIndex];
+            
+        } else {
+            console.log('wrong');
+            inputAnswer.value = '';
+            currentCard.status = -1;
+            cardIndex++;
+            currentCard = newRandomSet[cardIndex];
+        }
+        renderNextQuestion();
+        if(noMoreQuestions){
+            inputButton.removeEventListener('click', checkAnswer);
+            pasaButton.removeEventListener('click', pasapalabra);
+        }
+    }
 
     function renderNextQuestion(){
 
         if(newRandomSet.every(card => card.status !== 0)){
             //stillQuestions = false;
-            console.log('no more questions');
+            console.log('no more questions dentro de render');
+            noMoreQuestions = true;
             return;
         } 
         
@@ -268,6 +284,7 @@ function startGame(playerName, playerSrcImage){
         setTimeout(()=> {
             letterElement.classList.remove('jello-horizontal');
         }, 200);
+
     }
     
     function createRandomSetFrom(mainDeck){
