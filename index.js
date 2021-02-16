@@ -18,14 +18,22 @@ setTimeout(() => selectPlayerIcon.style.display="block", 1600);
 
 document.addEventListener('mouseover', addEffectOnBackground);
 document.addEventListener('mouseout', removeEffectOnBackground);
-document.addEventListener('click', (e) => {
-    
+document.addEventListener('click', renderPlayerNameScreen);
+
+const playButton = document.getElementById('play-button');
+setTimeout(() => playButton.classList.add('heartbeat'), 1500);
+
+function renderPlayerNameScreen(e){
+
+ 
     const element = e.target;
     const parent = element.parentNode;
     const backgroundColor = element.previousElementSibling;
 
     if(element.className === 'p-icon'){
         document.removeEventListener('mouseover', addEffectOnBackground);
+        document.removeEventListener('click', renderPlayerNameScreen);
+
         selectPlayerIcon.classList.add('invisible');
         playerSelectorScreen.classList.remove('multi-player-grid');
         playerSelectorScreen.classList.add('invisible');
@@ -44,11 +52,7 @@ document.addEventListener('click', (e) => {
         element.classList.remove('swing-in-top-fwd')
 
         parent.classList.add('scale-in-center');
-        
-        const playButton = document.getElementById('play-button');
-        setTimeout(() => playButton.classList.add('heartbeat'), 1500);
 
-        
         playButton.addEventListener('click', () => {
             let playerName = document.getElementById('user-name').value;
             if(playerName.match(/\w+/)){   //username validation: evitar 'strings de solo espacios en blanco
@@ -56,12 +60,12 @@ document.addEventListener('click', (e) => {
                 inputPlayerNameScreen.classList.remove('one-player-grid');
                 const playerSrcImage = parent.lastElementChild.src;
                 playerName = formatName(playerName);
-    
+        
                 startGame(playerName, playerSrcImage);
             }
         });
     }
-});
+}
 
 
 function startGame(playerName, playerSrcImage){
@@ -247,11 +251,7 @@ function startGame(playerName, playerSrcImage){
             cardIndex = 0 // volver a empezar el rosco desde el principio
             currentCard = newRandomSet[cardIndex];
 
-        }
-
-        console.log(currentCard);
-        console.log(currentCard.status);
-    
+        }    
         while(currentCard.status !== 0){
             cardIndex++;
             currentCard = newRandomSet[cardIndex];
@@ -260,7 +260,6 @@ function startGame(playerName, playerSrcImage){
                 currentCard = newRandomSet[cardIndex];
 
             }
-            console.log(currentCard);
         }
 
         letterElement.classList.add('jello-horizontal');
