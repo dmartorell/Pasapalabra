@@ -394,11 +394,11 @@ body {
     background-color: rgba(26,59,90,0.9);
     padding: 0.8rem 0.8rem;
 }
-/* 
-.flip-in-hor-bottom {
-	-webkit-animation: flip-in-hor-bottom 0.1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	        animation: flip-in-hor-bottom 0.1s cubic-bezier(0.550, 0.460, 0.450, 0.940) both;
-} */
+.slide-in-top-reverse {
+	-webkit-animation: slide-in-top 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) reverse both;
+	        animation: slide-in-top 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) reverse both;
+}
+
 .jello-horizontal {
 	-webkit-animation: jello-horizontal 0.4s both;
 	        animation: jello-horizontal 0.4s both;
@@ -732,6 +732,35 @@ body {
     }
 }
 @keyframes slide-in-top {
+    0% {
+      -webkit-transform: translateY(-900px);
+              transform: translateY(-900px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+}
+/**
+ * ----------------------------------------
+ * animation slide-in-top
+ * ----------------------------------------
+ */
+ @-webkit-keyframes slide-in-top-reverse {
+    0% {
+      -webkit-transform: translateY(-1000px);
+              transform: translateY(-1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+}
+@keyframes slide-in-top-reverse {
     0% {
       -webkit-transform: translateY(-900px);
               transform: translateY(-900px);

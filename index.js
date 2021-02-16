@@ -21,7 +21,13 @@ document.addEventListener('mouseout', removeEffectOnBackground);
 document.addEventListener('click', renderPlayerNameScreen);
 
 function renderResultScreen(score){
+    const questionCard = document.querySelector('.question-card');
+    const timer = document.querySelector('.timer');
+    const pasaBtn = document.getElementById('pasa-btn');
 
+    questionCard.classList.add('slide-in-top-reverse');
+    timer.classList.add('slide-in-top-reverse');
+    pasaBtn.classList.add('invisible');
 
 }
 
@@ -167,7 +173,7 @@ function startGame(playerName, playerSrcImage){
     const numOfQuestionsPerSet = Object.values(questionsDeck)[0].length;
     let totalScore = 0;
     let cardIndex = 0;
-    let noMoreQuestions = false;
+    let stillQuestions = true;
     
     let bestUsers = [
         {name: 'Jack Palance', points: 3},
@@ -226,7 +232,7 @@ function startGame(playerName, playerSrcImage){
         currentCard = newRandomSet[cardIndex];
         inputAnswer.value = '';
         renderNextQuestion();
-        if(noMoreQuestions){
+        if(!stillQuestions){
             pasaButton.removeEventListener('click', pasapalabra)
         }
     }
@@ -247,18 +253,17 @@ function startGame(playerName, playerSrcImage){
             currentCard = newRandomSet[cardIndex];
         }
         renderNextQuestion();
-        if(noMoreQuestions){
+        if(!stillQuestions){
             inputButton.removeEventListener('click', checkAnswer);
             pasaButton.removeEventListener('click', pasapalabra);
+            renderResultScreen();
         }
     }
 
     function renderNextQuestion(){
 
         if(newRandomSet.every(card => card.status !== 0)){
-            //stillQuestions = false;
-            console.log('no more questions dentro de render');
-            noMoreQuestions = true;
+            stillQuestions = false;
             return;
         } 
         
