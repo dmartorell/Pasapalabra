@@ -178,14 +178,13 @@ body {
     cursor: pointer;
     align-self: flex-end;
 }
-#play-button:hover {
+
+#play-button:hover, #play-button:focus {
     background-color: #1A3B5A;
     border: 1px solid #1A3B5A;
-
-
     color: #ffffff;
-
 }
+
 .scale-in-center {
 	-webkit-animation: scale-in-center 0.2s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
 	        animation: scale-in-center 0.2s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
@@ -374,6 +373,9 @@ body {
     letter-spacing: 0.5px;
     color: #00a3ff;
 }
+
+#input-button:hover, #input-button:focus { color: rgba(26,59,90,0.9) }
+
 #pasa-btn {
     margin-top: 1.4rem;
     font-size: 0.8rem;
@@ -391,7 +393,7 @@ body {
 
 }
 
-#pasa-btn:hover {
+#pasa-btn:hover, #pasa-btn:focus {
     background-color: rgba(26,59,90,0.9);
     padding: 0.8rem 0.8rem;
 }

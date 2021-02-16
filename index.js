@@ -20,12 +20,8 @@ document.addEventListener('mouseover', addEffectOnBackground);
 document.addEventListener('mouseout', removeEffectOnBackground);
 document.addEventListener('click', renderPlayerNameScreen);
 
-const playButton = document.getElementById('play-button');
-setTimeout(() => playButton.classList.add('heartbeat'), 1500);
-
 function renderPlayerNameScreen(e){
 
- 
     const element = e.target;
     const parent = element.parentNode;
     const backgroundColor = element.previousElementSibling;
@@ -52,6 +48,9 @@ function renderPlayerNameScreen(e){
         element.classList.remove('swing-in-top-fwd')
 
         parent.classList.add('scale-in-center');
+
+        const playButton = document.getElementById('play-button');
+        setTimeout(() => playButton.classList.add('heartbeat'), 1500);
 
         playButton.addEventListener('click', () => {
             let playerName = document.getElementById('user-name').value;
