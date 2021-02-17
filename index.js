@@ -28,7 +28,6 @@ function renderResultScreen(score){
     questionCard.classList.add('slide-in-top-reverse');
     timer.classList.add('slide-in-top-reverse');
     pasaBtn.classList.add('invisible');
-
 }
 
 function renderPlayerNameScreen(e){

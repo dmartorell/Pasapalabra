@@ -201,6 +201,7 @@ body {
     height: auto;
     min-width: 400px;
     /* border: 1px solid red; */
+
 }
 
 .player-card {
@@ -302,6 +303,7 @@ body {
     width: 90%;
     max-width: 700px;
     padding: 10px 0 10px 0;
+
 }
 
 #question-container {
@@ -312,7 +314,6 @@ body {
 }
 #question {
     font-size: 0.7rem;
-    /* color: #2D2D2D; */
     color: transparent;
     margin-right: 15px;
     width: 40%;
@@ -321,8 +322,7 @@ body {
 #letter {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
-    font-size: 5.5rem;
-    /* color: rgba(26,59,90,0.9); */
+    font-size: 4.5rem;
     color: transparent;
     margin-right: 15px;
 }
