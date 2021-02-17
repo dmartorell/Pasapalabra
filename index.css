@@ -142,7 +142,7 @@ body {
 }
 
 .text-input-name {
-    margin-top: 0.2rem;
+    margin-top: 0.7rem;
     padding: 8px 13px 8px 13px;
     color: rgba(117,117,117,0.7);
     font-weight: 100;
@@ -157,7 +157,7 @@ body {
 .text-input-name:focus {
     outline: none;
     border-radius: 10px;
-    border: 1px solid rgba(26,59,90,0.4);
+    border: 1px solid rgba(113, 136, 159, 0.6);
 
 }
 #play-button {

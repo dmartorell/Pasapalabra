@@ -29,7 +29,7 @@ function renderResultScreen(score){
         questionCard.classList.add('slide-in-top-reverse');
         timer.classList.add('slide-in-top-reverse');
         pasaBtn.classList.add('invisible');
-    }, 1000);
+    }, 700);
     
 }
 
@@ -267,6 +267,7 @@ function startGame(playerName, playerSrcImage){
             cardIndex++;
             currentCard = newRandomSet[cardIndex];
             
+            
         } else {
             //WRONG
             changeLetterColor(currentCard.letter.toUpperCase(), 'red');
@@ -275,14 +276,19 @@ function startGame(playerName, playerSrcImage){
             cardIndex++;
             currentCard = newRandomSet[cardIndex];
         }
-        renderNextQuestion();
-        inputAnswer.focus();
+        setTimeout(()=> {
+            renderNextQuestion();
+            inputAnswer.focus();
+            if(!stillQuestions){
+                inputAnswer.blur();
+                inputButton.removeEventListener('click', checkAnswer);
+                pasaButton.removeEventListener('click', pasapalabra);
+                renderResultScreen();
+            }
+        }, 400) // pausa entre encendido de letra y próxima pregunta
+        
 
-        if(!stillQuestions){
-            inputButton.removeEventListener('click', checkAnswer);
-            pasaButton.removeEventListener('click', pasapalabra);
-            renderResultScreen();
-        }
+        
     }
 
     function renderNextQuestion(){
