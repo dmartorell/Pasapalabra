@@ -210,6 +210,7 @@ function startGame(playerName, playerSrcImage){
     setTimeout(() => {
         letterElement.style.color = 'rgba(26,59,90,0.9)';
         questionElement.style.color = '#2D2D2D';
+        inputAnswer.focus();
 
         // Empiezan las preguntas
 
@@ -252,6 +253,8 @@ function startGame(playerName, playerSrcImage){
             currentCard = newRandomSet[cardIndex];
         }
         renderNextQuestion();
+        inputAnswer.focus();
+
         if(!stillQuestions){
             inputButton.removeEventListener('click', checkAnswer);
             pasaButton.removeEventListener('click', pasapalabra);
