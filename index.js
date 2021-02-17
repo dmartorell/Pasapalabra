@@ -59,11 +59,13 @@ function renderPlayerNameScreen(e){
 
         parent.classList.add('scale-in-center');
 
+        const userName = document.getElementById('user-name');
+        userName.focus();
         const playButton = document.getElementById('play-button');
         setTimeout(() => playButton.classList.add('heartbeat'), 1500);
 
         playButton.addEventListener('click', () => {
-            let playerName = document.getElementById('user-name').value;
+            let playerName = userName.value;
             if(playerName.match(/\w+/)){   //username validation: evitar 'strings de solo espacios en blanco
                 inputPlayerNameScreen.classList.add('invisible');
                 inputPlayerNameScreen.classList.remove('one-player-grid');
