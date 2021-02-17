@@ -185,7 +185,7 @@ function startGame(playerName, playerSrcImage){
     ];
 
     let newRandomSet = createRandomSetFrom(questionsDeck);
-    newRandomSet.length = 4;
+    newRandomSet.length = 14;
     let currentCard = newRandomSet[cardIndex];
 
     ////////////////
@@ -198,7 +198,8 @@ function startGame(playerName, playerSrcImage){
     setTimeout(() => {
 
         // TODO: aprovechar para dar instrucciones de teclado en este espacio en blanco
-        document.body.style.alignItems = 'unset'; // Para evitar deformación de tarjeta de preguntas.
+        
+        document.body.style.alignItems = 'unset'; // Para evitar deformación de tarjeta de preguntas. Tiene que haber otra solución en flex.
         gameScreen.classList.add('slide-in-top')
         gameScreen.classList.remove('invisible');
     }, 500);
@@ -219,11 +220,7 @@ function startGame(playerName, playerSrcImage){
         renderNextQuestion();
 
         pasaButton.addEventListener('click', pasapalabra)
-
         inputButton.addEventListener('click', checkAnswer)     
-        
-        
-
         
     }, 1000);
 
@@ -239,16 +236,37 @@ function startGame(playerName, playerSrcImage){
         }
     }
 
+    function changeLetterColor(letter, color){
+        let abc1 = document.getElementById('abc1');
+        let abc2 = document.getElementById('abc2');
+        let abc3 = document.getElementById('abc3');
+
+        const targetElement = abc1.textContent.includes(letter) ? abc1 : abc2.textContent.includes(letter) ? abc2 : abc3;
+
+        const letterIndex = targetElement.innerHTML.indexOf(letter);
+        console.log({letterIndex});
+
+        const newSpan = `<span class='hightlited-${color}'>${letter}</span>`;
+        console.log({newSpan});
+
+        const newInnerHtml = targetElement.innerHTML.slice(0,letterIndex) + newSpan + targetElement.innerHTML.slice(letterIndex + 1);
+        console.log({newInnerHtml});
+        
+        return targetElement.innerHTML = newInnerHtml;
+    }
+
     function checkAnswer(){
         if(inputAnswer.value.toLowerCase() === currentCard.answer){
-            console.log('right');
+            //RIGHT
+            changeLetterColor(currentCard.letter.toUpperCase(), 'green');
             inputAnswer.value = '';
             currentCard.status = 1
             cardIndex++;
             currentCard = newRandomSet[cardIndex];
             
         } else {
-            console.log('wrong');
+            //WRONG
+            changeLetterColor(currentCard.letter.toUpperCase(), 'red');
             inputAnswer.value = '';
             currentCard.status = -1;
             cardIndex++;
