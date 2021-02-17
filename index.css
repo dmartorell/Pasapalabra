@@ -251,7 +251,7 @@ body {
 .hightlited-green {
     color: #1e8804;
     font-weight: 800;
-    text-shadow: 0px 0px 2.5px #92de1c
+    text-shadow: 0px 0px 2px #87d60c;
 }
 
 #player-container {

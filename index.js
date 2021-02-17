@@ -25,9 +25,12 @@ function renderResultScreen(score){
     const timer = document.querySelector('.timer');
     const pasaBtn = document.getElementById('pasa-btn');
 
-    questionCard.classList.add('slide-in-top-reverse');
-    timer.classList.add('slide-in-top-reverse');
-    pasaBtn.classList.add('invisible');
+    setTimeout(()=> {
+        questionCard.classList.add('slide-in-top-reverse');
+        timer.classList.add('slide-in-top-reverse');
+        pasaBtn.classList.add('invisible');
+    }, 1000);
+    
 }
 
 function renderPlayerNameScreen(e){
@@ -116,7 +119,7 @@ function startGame(playerName, playerSrcImage){
             { letter: "b", answer: "babero", status: 0, question: "CON LA B. Tela que se pone a los bebés en el pecho para que no se manchen al comer"},
             { letter: "c", answer: "cabeza", status: 0, question: "CON LA C. Parte superior del cuerpo que está sobre el cuello"},
             { letter: "d", answer: "dormir", status: 0, question: "CON LA D. Forma de descanso que hacemos por las noches o en la siesta, con los ojos cerrados, sin darnos cuenta de nada"},
-            { letter: "e", answer: "elefante", status: 0, question: "CON LA E. Mamífero qeu vive en África y Asia, y que tiene trompa y grandes orejas."},
+            { letter: "e", answer: "elefante", status: 0, question: "CON LA E. Mamífero que vive en África y Asia, y que tiene trompa y grandes orejas."},
             { letter: "f", answer: "fiebre", status: 0, question: "CON LA F. Aumento de la temperatura del cuerpo que tenemos cuando estamos enfermos"},
             { letter: "g", answer: "globo", status: 0, question: "CON LA G. Especie de pelota de goma, que se hincha con aire, y que a veces los niños llevan flotando atado con una cuerda"},
             { letter: "h", answer: "humo", status: 0, question: "CON LA H. Materia liviana resultante de hacer un fuego"},
