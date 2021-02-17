@@ -196,7 +196,7 @@ function startGame(playerName, playerSrcImage){
     setTimeout(() => {
 
         // TODO: aprovechar para dar instrucciones de teclado en este espacio en blanco
-
+        document.body.style.alignItems = 'unset'; // Para evitar deformación de tarjeta de preguntas.
         gameScreen.classList.add('slide-in-top')
         gameScreen.classList.remove('invisible');
     }, 500);
