@@ -20,19 +20,15 @@ document.addEventListener('mouseover', addEffectOnBackground);
 document.addEventListener('mouseout', removeEffectOnBackground);
 document.addEventListener('click', renderPlayerNameScreen);
 
-function renderResultScreen(score){
-    const questionCard = document.querySelector('.question-card');
-    const timer = document.querySelector('.timer');
-    const pasaBtn = document.getElementById('pasa-btn');
-
+function clearScreen(score){
     setTimeout(()=> {
-        questionCard.classList.add('slide-in-top-reverse');
-        timer.classList.add('slide-in-top-reverse');
-        pasaBtn.classList.add('invisible');
-        document.getElementById('clear').classList.remove('invisible');
-    }, 700);
-
-    
+        // questionCard.classList.add('slide-in-top-reverse');
+        // timer.classList.add('slide-in-top-reverse');
+        // pasaBtn.classList.add('invisible');
+        // document.getElementById('clear').classList.remove('invisible');
+        document.body.style.alignItems = 'center'; 
+        document.querySelector('.game-wrapper').classList.add('slide-in-top-reverse');
+    }, 400);    
 }
 
 function renderPlayerNameScreen(e){
@@ -285,7 +281,8 @@ function startGame(playerName, playerSrcImage){
                 inputAnswer.blur();
                 inputButton.removeEventListener('click', checkAnswer);
                 pasaButton.removeEventListener('click', pasapalabra);
-                renderResultScreen();
+                clearScreen();
+                clearScreen();
             }
         }, 400) // pausa entre encendido de letra y próxima pregunta
         

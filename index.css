@@ -369,7 +369,7 @@ body {
 }
 #input-button {
     position: absolute;
-    top: 12px; 
+    top: 5px; 
     right: 12px;
     height: auto;
     z-index: 10;
@@ -382,6 +382,7 @@ body {
     font-size: 0.65rem;
     letter-spacing: 0.5px;
     color: #00a3ff;
+    padding: 8px 2px 8px 2px;
 }
 
 #input-button:hover, #input-button:focus { color: rgba(26,59,90,0.9) }
