@@ -20,16 +20,17 @@ document.addEventListener('mouseover', addEffectOnBackground);
 document.addEventListener('mouseout', removeEffectOnBackground);
 document.addEventListener('click', renderPlayerNameScreen);
 
-function clearScreen(score){
+function clearScreen(){
     setTimeout(()=> {
-        // questionCard.classList.add('slide-in-top-reverse');
-        // timer.classList.add('slide-in-top-reverse');
-        // pasaBtn.classList.add('invisible');
-        // document.getElementById('clear').classList.remove('invisible');
         document.body.style.alignItems = 'center'; 
         document.querySelector('.game-wrapper').classList.add('slide-in-top-reverse');
+        // gameScreen.classList.add('invisible')
+
     }, 400);    
 }
+
+// function renderResultsScreen(score);
+
 
 function renderPlayerNameScreen(e){
 
@@ -245,13 +246,8 @@ function startGame(playerName, playerSrcImage){
         const targetElement = abc1.textContent.includes(letter) ? abc1 : abc2.textContent.includes(letter) ? abc2 : abc3;
 
         const letterIndex = targetElement.innerHTML.indexOf(letter);
-        console.log({letterIndex});
-
         const newSpan = `<span class='hightlited-${color}'>${letter}</span>`;
-        console.log({newSpan});
-
         const newInnerHtml = targetElement.innerHTML.slice(0,letterIndex) + newSpan + targetElement.innerHTML.slice(letterIndex + 1);
-        console.log({newInnerHtml});
         
         return targetElement.innerHTML = newInnerHtml;
     }
@@ -282,12 +278,10 @@ function startGame(playerName, playerSrcImage){
                 inputButton.removeEventListener('click', checkAnswer);
                 pasaButton.removeEventListener('click', pasapalabra);
                 clearScreen();
-                clearScreen();
+                renderResultsScreen(score);
             }
         }, 400) // pausa entre encendido de letra y próxima pregunta
-        
 
-        
     }
 
     function renderNextQuestion(){
