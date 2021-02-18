@@ -3,6 +3,7 @@ const playerSelectorScreen = document.getElementById('player-selector-screen');
 const selectPlayerIcon = document.getElementById('select-player-icon');
 const inputPlayerNameScreen = document.getElementById('input-player-name-screen');
 const gameScreen = document.querySelector('.game-screen');
+const resultsScreen = document.getElementById('results-screen');
 
 // players en delay: 1 seg
 setTimeout(() => {
@@ -21,15 +22,16 @@ document.addEventListener('mouseout', removeEffectOnBackground);
 document.addEventListener('click', renderPlayerNameScreen);
 
 function clearScreen(){
-    setTimeout(()=> {
-        document.body.style.alignItems = 'center'; 
-        document.querySelector('.game-wrapper').classList.add('slide-in-top-reverse');
-        // gameScreen.classList.add('invisible')
-
-    }, 400);    
+    document.body.style.alignItems = 'center'; 
+    document.querySelector('.game-wrapper').classList.add('slide-in-top-reverse');        
 }
 
-// function renderResultsScreen(score);
+function renderResultsScreen(score){
+    playerSelectorScreen.classList.add('invisible');
+    inputPlayerNameScreen.classList.add('invisible');
+    gameScreen.classList.add('invisible');
+    resultsScreen.classList.remove('invisible');
+}
 
 
 function renderPlayerNameScreen(e){
@@ -278,7 +280,9 @@ function startGame(playerName, playerSrcImage){
                 inputButton.removeEventListener('click', checkAnswer);
                 pasaButton.removeEventListener('click', pasapalabra);
                 clearScreen();
-                renderResultsScreen(score);
+                setTimeout(()=> {
+                    renderResultsScreen();
+                }, 1200);
             }
         }, 400) // pausa entre encendido de letra y próxima pregunta
 
