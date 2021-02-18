@@ -211,12 +211,15 @@ function startGame(playerName, playerSrcImage){
     const letterElement = document.getElementById('letter');
     const questionElement = document.getElementById('question');
     const inputButton = document.getElementById('input-button');
+    const inputWrapper = document.getElementById('input-wrapper');
     const pasaButton = document.getElementById('pasa-btn');
     const inputAnswer = document.querySelector('.text-input');
 
     setTimeout(() => {
         letterElement.style.color = 'rgba(26,59,90,0.9)';
         questionElement.style.color = '#2D2D2D';
+        inputWrapper.style.zIndex = 0;
+
         inputAnswer.focus();
 
         // Empiezan las preguntas

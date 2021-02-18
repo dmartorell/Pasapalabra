@@ -342,6 +342,7 @@ body {
 
 #input-wrapper {
     position: relative;
+    z-index: -1;
 }
 .text-input {
     padding: 10px 140px 10px 45px;
@@ -356,7 +357,7 @@ body {
 .text-input:focus {
     outline: none;
     border-radius: 10px;
-    border: 1px solid rgba(26,59,90,0.4);
+    border: 1px solid rgba(113, 136, 159, 0.6);
 
 }
 #answer-icon {
