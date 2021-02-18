@@ -129,7 +129,7 @@ body {
 .one-player-grid {
     display: grid;
     height: 70vh;
-    grid-template-columns: minmax(100px, 40%);
+    grid-template-columns: minmax(120px, 40%);
     grid-template-rows: 1fr minmax(1px, 3rem) 1fr 1fr;
     justify-content: center;
     width: 30%;
@@ -345,7 +345,7 @@ body {
     z-index: -1;
 }
 .text-input {
-    padding: 10px 140px 10px 45px;
+    padding: 10px 40% 10px 45px;
     color: rgba(117,117,117,0.7);
     font-weight: 100;
     font-size: 0.7rem;
