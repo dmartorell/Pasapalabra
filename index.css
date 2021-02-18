@@ -307,7 +307,7 @@ body {
 
 /* -----------------------------QUESTION CONTAINER---------------------------- */
 
-.question-card {
+.question-card, .ranking-card {
     background-color: #f5f7fa;
     border: 1px solid #e5e7eb;
     border-radius: 10px;
@@ -386,7 +386,7 @@ body {
     padding: 8px 2px 8px 2px;
 }
 
-#input-button:hover, #input-button:focus { color: rgba(26,59,90,0.9) }
+#input-button:hover, #input-button:focus { text-decoration: underline; }
 
 #pasa-btn {
     margin-top: 2.0rem;

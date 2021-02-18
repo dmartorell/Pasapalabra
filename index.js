@@ -26,11 +26,15 @@ function clearScreen(){
     document.querySelector('.game-wrapper').classList.add('slide-in-top-reverse');        
 }
 
-function renderResultsScreen(score){
+function renderResultsScreen(score, playerName, playerSrcImage){
+// pasar ranking...){///// 1 OBJ COMO PARAM
     playerSelectorScreen.classList.add('invisible');
     inputPlayerNameScreen.classList.add('invisible');
     gameScreen.classList.add('invisible');
     resultsScreen.classList.remove('invisible');
+    console.log({score});
+    console.log({playerName});
+    console.log({playerSrcImage});
 }
 
 
@@ -176,7 +180,7 @@ function startGame(playerName, playerSrcImage){
     }
     const numOfSets = Object.keys(questionsDeck).length;
     const numOfQuestionsPerSet = Object.values(questionsDeck)[0].length;
-    let totalScore = 0;
+    let totalScore = { right: 0, wrong: 0 };
     let cardIndex = 0;
     let stillQuestions = true;
     
@@ -265,6 +269,7 @@ function startGame(playerName, playerSrcImage){
             currentCard.status = 1
             cardIndex++;
             currentCard = newRandomSet[cardIndex];
+            totalScore.right++;
             
             
         } else {
@@ -274,6 +279,8 @@ function startGame(playerName, playerSrcImage){
             currentCard.status = -1;
             cardIndex++;
             currentCard = newRandomSet[cardIndex];
+            totalScore.wrong++;
+
         }
         setTimeout(()=> {
             renderNextQuestion();
@@ -284,7 +291,7 @@ function startGame(playerName, playerSrcImage){
                 pasaButton.removeEventListener('click', pasapalabra);
                 clearScreen();
                 setTimeout(()=> {
-                    renderResultsScreen();
+                    renderResultsScreen(totalScore,playerName, playerSrcImage);
                 }, 1200);
             }
         }, 400) // pausa entre encendido de letra y próxima pregunta
