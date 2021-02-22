@@ -492,6 +492,11 @@ body {
 }
 #exit-btn, #replay-btn {
         margin: 5rem 2rem;
+        padding-left: 1.1rem;
+}
+
+#exit-icon, #replay-icon {
+        width: 25%;
 }
 
 
