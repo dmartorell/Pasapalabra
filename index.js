@@ -3,11 +3,11 @@ const playerSelectorScreen = document.getElementById('player-selector-screen');
 const selectPlayerIcon = document.getElementById('select-player-icon');
 const inputPlayerNameScreen = document.getElementById('input-player-name-screen');
 const gameScreen = document.querySelector('.game-screen');
-const resultsScreen = document.getElementById('results-screen');
+const resultsScreen = document.querySelector('.results-screen');
 
 // players en delay: 1 seg
 setTimeout(() => {
-    // playerSelectorScreen.classList.remove('invisible');
+    playerSelectorScreen.classList.remove('invisible');
     playerSelectorScreen.classList.add('multi-player-grid');
 }, 1000);
 // select icon en delay 1.2 seg
@@ -26,15 +26,29 @@ function clearScreen(){
     document.querySelector('.game-wrapper').classList.add('slide-in-top-reverse');        
 }
 
-function renderResultsScreen(score, playerName, playerSrcImage){
-// pasar ranking...){///// 1 OBJ COMO PARAM
+function renderResultsScreen(resultObject, ranking){
+
     playerSelectorScreen.classList.add('invisible');
     inputPlayerNameScreen.classList.add('invisible');
     gameScreen.classList.add('invisible');
     resultsScreen.classList.remove('invisible');
-    console.log({score});
-    console.log({playerName});
-    console.log({playerSrcImage});
+    const { totalScore, playerName, playerSrcImage } = resultObject;
+    const updatedRanking = updateRanking(totalScore, playerName);
+
+    for(let user of updatedRanking){
+        add cada elemento despues del last child de section id ranking
+    }
+
+
+
+
+
+    <div class="list">
+                    <p class="user">Jack Palance</p>
+                    <p class="user-points">5</p>
+                    <img id="ok-icono" src="icono_ok.svg" alt="right answers icon">
+                </div>
+    
 }
 
 
@@ -291,7 +305,7 @@ function startGame(playerName, playerSrcImage){
                 pasaButton.removeEventListener('click', pasapalabra);
                 clearScreen();
                 setTimeout(()=> {
-                    renderResultsScreen(totalScore,playerName, playerSrcImage);
+                    renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
                 }, 1200);
             }
         }, 400) // pausa entre encendido de letra y próxima pregunta
@@ -343,8 +357,6 @@ function startGame(playerName, playerSrcImage){
     }
 }
 
-
-
 function addEffectOnBackground(e){
     const element = e.target;
     if(element.className === 'p-icon'){
@@ -364,6 +376,16 @@ function formatName(name){
         .trim().split(' ')
         .map(word => word[0].toUpperCase() + word.slice(1).toLowerCase())
         .join(' ');
+}
+
+function updateRanking (score, playerName){
+    let lastRankingUser = bestUsers[4] //Usuario con la puntuación más baja en el ranking.
+    let currentUserPoints = score;  
+    if(currentUserPoints > lastRankingUser.points){
+        bestUsers.splice(-1, 1, {name: playerName, points: currentUserPoints});
+        bestUsers.sort((a,b) => b.points - a.points);
+    }
+    return bestUsers;
 }
 
 
