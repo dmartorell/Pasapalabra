@@ -7,7 +7,7 @@ const resultsScreen = document.getElementById('results-screen');
 
 // players en delay: 1 seg
 setTimeout(() => {
-    playerSelectorScreen.classList.remove('invisible');
+    // playerSelectorScreen.classList.remove('invisible');
     playerSelectorScreen.classList.add('multi-player-grid');
 }, 1000);
 // select icon en delay 1.2 seg
