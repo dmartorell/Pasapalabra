@@ -5,21 +5,26 @@ const inputPlayerNameScreen = document.getElementById('input-player-name-screen'
 const gameScreen = document.querySelector('.game-screen');
 const resultsScreen = document.querySelector('.results-screen');
 
-// players en delay: 1 seg
-setTimeout(() => {
-    playerSelectorScreen.classList.remove('invisible');
-    playerSelectorScreen.classList.add('multi-player-grid');
-}, 1000);
-// select icon en delay 1.2 seg
-setTimeout(() => {
-    selectPlayerIcon.classList.remove('invisible');
-    selectPlayerIcon.classList.add('heartbeat');
-}, 1000);
-setTimeout(() => selectPlayerIcon.style.display="block", 1600);
+window.onload = init;
 
-document.addEventListener('mouseover', addEffectOnBackground);
-document.addEventListener('mouseout', removeEffectOnBackground);
-document.addEventListener('click', renderPlayerNameScreen);
+function init(){
+    // players en delay: 1 seg
+    setTimeout(() => {
+        playerSelectorScreen.classList.remove('invisible');
+        playerSelectorScreen.classList.add('multi-player-grid');
+    }, 1000);
+    // select icon en delay 1.2 seg
+    setTimeout(() => {
+        selectPlayerIcon.classList.remove('invisible');
+        selectPlayerIcon.classList.add('heartbeat');
+    }, 1000);
+    setTimeout(() => selectPlayerIcon.style.display="block", 1600);
+
+    document.addEventListener('mouseover', addEffectOnBackground);
+    document.addEventListener('mouseout', removeEffectOnBackground);
+    document.addEventListener('click', renderPlayerNameScreen);
+}
+
 
 function clearScreen(){
     document.querySelector('.game-wrapper').classList.add('slide-in-top-reverse');  
@@ -48,6 +53,8 @@ function renderResultsScreen(resultObject, bestUsers){
     rightAnswersElement.textContent = String(totalScore.right).padStart(2,'0');
     const wrongAnswersElement = document.getElementById('wrong-icono').nextElementSibling;
     wrongAnswersElement.textContent = String(totalScore.wrong).padStart(2,'0');
+
+    console.log(bestUsers);
 
 }
 
@@ -101,7 +108,7 @@ function renderPlayerNameScreen(e){
 }
 
 
-function startGame(playerName, playerSrcImage){
+function startGame(playerName, playerSrcImage, ranking = null){
     const questionsDeck = {
         set1 : [
             { letter: "a", answer: "abducir", status: 0, question: "CON LA A. Dicho de una supuesta criatura extraterrestre: Apoderarse de alguien."},
@@ -198,7 +205,7 @@ function startGame(playerName, playerSrcImage){
     let cardIndex = 0;
     let stillQuestions = true;
     
-    let bestUsers = [
+    let bestUsers = ranking || [
         {name: 'Jack Palance', points: 3},
         {name: 'Mike Tyson', points: 2},
         {name: 'Joe Biden', points: 2},
@@ -340,6 +347,26 @@ function startGame(playerName, playerSrcImage){
                 setTimeout(()=> {
                     document.body.style.alignItems = 'center'; 
                     renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
+
+                    const replayButton = document.getElementById('replay-btn');
+                    const exitButton = document.getElementById('exit-btn');
+
+                    exitButton.addEventListener('click', ()=> location.reload())  //reload document.
+                    replayButton.addEventListener('click', ()=> {
+                        resultsScreen.classList.add('invisible');
+                        document.querySelector('.game-wrapper').classList.remove('slide-in-top-reverse');
+                        document.getElementById('player-container').innerHTML = `
+                            <p id="abc1">ABCDEFGHI</p>
+                            <p id="abc2">JKLMNÑOPQ</p>
+                            <p id="abc3">RSTUVWXYZ</p>
+                            <img class="player-icon" src="icono_player_01.svg" alt="player one icon">
+                            <p id="player-name"></p>`;
+                              
+                // PONER A CERO VARIAS COSAS: ojo con index, el ranking previo en html se suma... 
+                        startGame(playerName, playerSrcImage, bestUsers);
+                    })
+
+
                 }, 1200);
             }
         }, 400) // pausa entre encendido de letra y próxima pregunta

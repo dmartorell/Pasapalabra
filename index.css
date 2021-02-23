@@ -506,7 +506,7 @@ div.results p {
         font-weight: 600;
         font-style: italic;
         padding: 1.3rem;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         color: #00a3ff;
         align-self: center;
 
@@ -559,7 +559,7 @@ p.user-points {
 }
 
 #wrong-icono {
-        width: 66%;
+        width: 62%;
 }
 
 #exit-icon {
