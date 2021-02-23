@@ -232,7 +232,7 @@ body {
 #abc2 { 
     position: absolute;
     top: -22px;
-    left: 27px;
+    left: 35px;
     letter-spacing: 0.6rem;
 }
 #abc3 { 
@@ -407,6 +407,11 @@ body {
 
 #pasa-btn:hover, #pasa-btn:focus, #exit-btn:hover, #exit-btn:focus, #replay-btn:focus, #replay-btn:hover {
     background-color: rgba(26,59,90,0.9);
+}
+#pasa-btn.paused {
+        background-color: #ed0404;
+        -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
+	        animation: heartbeat 1.5s ease-in-out infinite both;
 }
 
 .slide-in-top-reverse {

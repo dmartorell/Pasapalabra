@@ -208,6 +208,7 @@ function startGame(playerName, playerSrcImage){
 
     let newRandomSet = createRandomSetFrom(questionsDeck);
     newRandomSet.length = 14;
+    let remainingQuestions = newRandomSet.length;
     let currentCard = newRandomSet[cardIndex];
 
     ////////////////
@@ -252,13 +253,38 @@ function startGame(playerName, playerSrcImage){
 
     //////////////////////  HELPER FUNCIONES DENTRO DE GAME  //////////////////
     function pasapalabra(){
-        cardIndex++;
-        currentCard = newRandomSet[cardIndex];
-        inputAnswer.value = '';
-        renderNextQuestion();
-        if(!stillQuestions){
-            pasaButton.removeEventListener('click', pasapalabra)
+        if(remainingQuestions !== 1){
+            pasaButton.classList.toggle('paused');
+            // PARA CRONO o ARRANCA CRONO
+
+            if(pasaButton.classList.contains('paused')){
+                letterElement.style.color = 'transparent';
+                questionElement.style.color = 'transparent';
+                inputButton.style.display = 'none';
+                inputAnswer.value = '';
+                inputAnswer.disabled = true;
+
+            }
+            else {
+                letterElement.style.color = 'rgba(26,59,90,0.9)';
+                questionElement.style.color = '#2D2D2D';
+                inputButton.style.display = 'inline';
+                inputAnswer.disabled = false;
+
+                inputAnswer.focus();
+
+                cardIndex++;
+                currentCard = newRandomSet[cardIndex];
+                inputAnswer.value = '';
+                renderNextQuestion();
+                
+                if(!stillQuestions){
+                    pasaButton.removeEventListener('click', pasapalabra)
+                }
+            }
         }
+        return;
+        
     }
 
     function changeLetterColor(letter, color){
@@ -281,6 +307,7 @@ function startGame(playerName, playerSrcImage){
             changeLetterColor(currentCard.letter.toUpperCase(), 'green');
             inputAnswer.value = '';
             currentCard.status = 1
+            remainingQuestions--;
             cardIndex++;
             currentCard = newRandomSet[cardIndex];
             totalScore.right++;
@@ -291,6 +318,7 @@ function startGame(playerName, playerSrcImage){
             changeLetterColor(currentCard.letter.toUpperCase(), 'red');
             inputAnswer.value = '';
             currentCard.status = -1;
+            remainingQuestions--;
             cardIndex++;
             currentCard = newRandomSet[cardIndex];
             totalScore.wrong++;
@@ -331,7 +359,6 @@ function startGame(playerName, playerSrcImage){
             if(!currentCard){
                 cardIndex = 0;
                 currentCard = newRandomSet[cardIndex];
-
             }
         }
 
