@@ -260,12 +260,12 @@ function startGame(playerName, playerSrcImage){
             // PARA CRONO o ARRANCA CRONO
 
             if(pasaButton.classList.contains('paused')){
-                pauseIconElement.id = 'pause-icon';
-                pauseIconElement.src = 'icono_pause.svg';
-                pauseIconElement.alt = 'pause mode icon'
+                // pauseIconElement.id = 'pause-icon';
+                // pauseIconElement.src = 'icono_pause.svg';
+                // pauseIconElement.alt = 'pause mode icon'
                 pasaButton.textContent = '';
-                pasaButton.append(pauseIconElement);
-                // pasaButton.innerHTML = '&#10074 &#10074';
+                // pasaButton.append(pauseIconElement);
+                pasaButton.innerHTML = '&#10074 &#10074';
 
                 letterElement.style.color = 'transparent';
                 questionElement.style.color = 'transparent';

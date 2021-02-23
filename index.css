@@ -179,7 +179,7 @@ body {
     align-self: flex-start;
 }
 
-#play-button:hover, #play-button:focus {
+#play-button:hover {
     background-color: #1A3B5A;
     border: 1px solid #1A3B5A;
     color: #ffffff;
@@ -410,16 +410,25 @@ body {
         margin-bottom: -3px;
 }
 
-#pasa-btn:hover, #pasa-btn:focus, #exit-btn:hover, #exit-btn:focus, #replay-btn:focus, #replay-btn:hover {
+#pasa-btn:hover, #exit-btn:hover, #replay-btn:hover {
     background-color: rgba(26,59,90,0.9);
 }
+
+#pasa-btn:focus, #exit-btn:focus, #replay-btn:focus, #play-button:focus {
+        border: 1px solid rgba(26,59,90,0.9);
+}
+
 #pasa-btn.paused {
-        padding: 0.2rem 1.7rem;
+        padding: 0.7rem 4.6rem;
         background-color: #ed0404;
         -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
-                animation: heartbeat 1.5s ease-in-out infinite both;
-                animation-delay: 400ms;
+        animation: heartbeat 1.5s ease-in-out infinite both;
+        animation-delay: 400ms;
 }
+#pasa-btn.paused:focus {
+        border: 1px solid #a72a0b;
+}
+
 
 .slide-in-top-reverse {
 	-webkit-animation: slide-in-top 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) reverse both;
