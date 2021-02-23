@@ -1,5 +1,5 @@
 /* TODOS:
-            - cuando cargan las screens focus en input de texto.  
+            on focus en botones ha de ser diferente a on hover. Focus, quizás solo bordear.
 */
 
 *, *::before, *::after {
@@ -497,7 +497,7 @@ body {
         font-weight: 800;
         font-style: italic;
         padding: 1.3rem;
-        font-size: 0.9rem;
+        font-size: 1.3rem;
         color: #00a3ff;
         align-self: center; 
 
@@ -508,7 +508,7 @@ body {
 }
 #ranking p {
         font-family:'Inter', sans-serif;
-        font-size: 0.8rem;
+        font-size: 1rem;
         padding: 0.5rem;
         font-weight: 800;
         
@@ -531,7 +531,6 @@ p.user-points {
 }
 #exit-btn, #replay-btn {
         margin: 10rem 2rem;
-        /* padding-left: 1.1rem; */
         flex-shrink: 0;
 }
 
@@ -543,15 +542,21 @@ p.user-points {
 
 #results-player-name {
         font-family: 'Nothing you could do', sans-serif;
-        font-size: 1.2rem;
+        font-size: 1.7rem;
         font-weight: 400;
         text-align: center;
         width: 100%;
         transform: rotate(-1.6deg);
 }
 
-#exit-icon, #replay-icon {
+#exit-icon {
         width: 22%;
+        margin-right: -13px; 
+}
+#replay-icon {
+        width: 22%;
+
+
 }
 div.results {
         display: flex;
