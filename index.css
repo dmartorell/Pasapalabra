@@ -392,7 +392,7 @@ body {
 #pasa-btn, #exit-btn, #replay-btn {
     margin-top: 2.0rem;
     font-size: 0.8rem;
-    padding: 0.7rem 0.6rem;
+    padding: 0.7rem 1.5rem;
     border: 1px solid rgb(22, 56, 89, 0.05);
     outline: none;
     border-radius: 23px;
@@ -405,13 +405,20 @@ body {
     cursor: pointer;
 }
 
+#pause-icon {
+        width: 30%;
+        margin-bottom: -3px;
+}
+
 #pasa-btn:hover, #pasa-btn:focus, #exit-btn:hover, #exit-btn:focus, #replay-btn:focus, #replay-btn:hover {
     background-color: rgba(26,59,90,0.9);
 }
 #pasa-btn.paused {
+        padding: 0.2rem 1.7rem;
         background-color: #ed0404;
         -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
-	        animation: heartbeat 1.5s ease-in-out infinite both;
+                animation: heartbeat 1.5s ease-in-out infinite both;
+                animation-delay: 400ms;
 }
 
 .slide-in-top-reverse {
@@ -524,7 +531,7 @@ p.user-points {
 }
 #exit-btn, #replay-btn {
         margin: 10rem 2rem;
-        padding-left: 1.1rem;
+        /* padding-left: 1.1rem; */
         flex-shrink: 0;
 }
 

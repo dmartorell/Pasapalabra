@@ -255,9 +255,18 @@ function startGame(playerName, playerSrcImage){
     function pasapalabra(){
         if(remainingQuestions !== 1){
             pasaButton.classList.toggle('paused');
+            const pauseIconElement = document.createElement('img');
+
             // PARA CRONO o ARRANCA CRONO
 
             if(pasaButton.classList.contains('paused')){
+                pauseIconElement.id = 'pause-icon';
+                pauseIconElement.src = 'icono_pause.svg';
+                pauseIconElement.alt = 'pause mode icon'
+                pasaButton.textContent = '';
+                pasaButton.append(pauseIconElement);
+                // pasaButton.innerHTML = '&#10074 &#10074';
+
                 letterElement.style.color = 'transparent';
                 questionElement.style.color = 'transparent';
                 inputButton.style.display = 'none';
@@ -266,6 +275,10 @@ function startGame(playerName, playerSrcImage){
 
             }
             else {
+                // pauseIconElement.parentNode.removeChild(pauseIconElement);
+                pauseIconElement.remove();
+                pasaButton.textContent = 'PASAPALABRA';
+
                 letterElement.style.color = 'rgba(26,59,90,0.9)';
                 questionElement.style.color = '#2D2D2D';
                 inputButton.style.display = 'inline';
