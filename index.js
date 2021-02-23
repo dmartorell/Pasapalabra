@@ -26,29 +26,15 @@ function clearScreen(){
     document.querySelector('.game-wrapper').classList.add('slide-in-top-reverse');        
 }
 
-function renderResultsScreen(resultObject, ranking){
+function renderResultsScreen(resultObject, bestUsers){
 
     playerSelectorScreen.classList.add('invisible');
     inputPlayerNameScreen.classList.add('invisible');
     gameScreen.classList.add('invisible');
     resultsScreen.classList.remove('invisible');
     const { totalScore, playerName, playerSrcImage } = resultObject;
-    const updatedRanking = updateRanking(totalScore, playerName);
-
-    for(let user of updatedRanking){
-        add cada elemento despues del last child de section id ranking
-    }
-
-
-
-
-
-    <div class="list">
-                    <p class="user">Jack Palance</p>
-                    <p class="user-points">5</p>
-                    <img id="ok-icono" src="icono_ok.svg" alt="right answers icon">
-                </div>
-    
+    updateRanking(totalScore.right, playerName, bestUsers);
+    appendRankingSection(bestUsers); 
 }
 
 
@@ -378,14 +364,42 @@ function formatName(name){
         .join(' ');
 }
 
-function updateRanking (score, playerName){
+function updateRanking (score, playerName, bestUsers){
     let lastRankingUser = bestUsers[4] //Usuario con la puntuación más baja en el ranking.
     let currentUserPoints = score;  
     if(currentUserPoints > lastRankingUser.points){
         bestUsers.splice(-1, 1, {name: playerName, points: currentUserPoints});
         bestUsers.sort((a,b) => b.points - a.points);
     }
-    return bestUsers;
+}
+
+function appendRankingSection(ranking){
+    const rankingSection = document.getElementById('ranking');
+    // const h1Element = document.getElementsByTagName('h1');
+        
+    for(let player of ranking){
+        const listElement = document.createElement('div');
+        listElement.classList.add('list');
+
+        const userName = document.createElement('p');
+        userName.classList.add('user');
+        userName.textContent = player.name;
+
+        const userPoints = document.createElement('p');
+        userPoints.classList.add('user-points');
+        userPoints.textContent = player.points;
+
+        const icono = document.createElement('img');
+        icono.id = 'ok-icono';
+        icono.src = 'icono_ok.svg';
+        icono.alt = 'right answer icon';
+
+        listElement.append(userName);
+        listElement.append(userPoints);
+        listElement.append(icono);
+
+        rankingSection.append(listElement);
+    }
 }
 
 
