@@ -22,8 +22,8 @@ document.addEventListener('mouseout', removeEffectOnBackground);
 document.addEventListener('click', renderPlayerNameScreen);
 
 function clearScreen(){
-    document.body.style.alignItems = 'center'; 
-    document.querySelector('.game-wrapper').classList.add('slide-in-top-reverse');        
+    document.querySelector('.game-wrapper').classList.add('slide-in-top-reverse');  
+      
 }
 
 function renderResultsScreen(resultObject, bestUsers){
@@ -305,6 +305,7 @@ function startGame(playerName, playerSrcImage){
                 pasaButton.removeEventListener('click', pasapalabra);
                 clearScreen();
                 setTimeout(()=> {
+                    document.body.style.alignItems = 'center'; 
                     renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
                 }, 1200);
             }

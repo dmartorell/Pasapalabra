@@ -18,7 +18,7 @@ body {
     align-items: center;
     height: 100vh;
     width: 100%;
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 
 
@@ -26,8 +26,8 @@ body {
 
 .multi-player-grid {
     display: grid;
-    width: 50%;
-    height: 80vh;
+    width: 65%;
+    max-width: 800px;;
     min-width: 300px;
     grid-template-columns: minmax(90px, 19%) minmax(250px, 1fr) minmax(90px, 19%);
     grid-template-rows: auto;
@@ -37,8 +37,9 @@ body {
         "player5 . player6";
     justify-content: center;
     justify-items: center;
-    align-items:flex-start;
+    align-content: center;
     gap: 8px 0;
+    margin: 8% auto;
 }
 .invisible {
     display: none;
@@ -50,7 +51,6 @@ body {
 
 .p-icon {
     width: 100%; 
-    /* filter: drop-shadow(1.5px 1.5px 1px grey); */
     cursor: pointer;
 
 }
@@ -127,15 +127,18 @@ body {
 
 .one-player-grid {
     display: grid;
-    height: 70vh;
-    grid-template-columns: minmax(120px, 40%);
+    align-content: center;
+    align-items: flex-end;
+    max-width: 800px;;
+    grid-template-columns: minmax(140px, 50%);
     grid-template-rows: 1fr minmax(1px, 3rem) 1fr 1fr;
     justify-content: center;
-    width: 30%;
+    width: 15%;
+    margin: 10% auto;
 }
 
 #input-name-icon {
-    max-width: 30%;
+    max-width: 22%;
     place-self: center; 
     align-self: flex-start;
 }
@@ -148,7 +151,7 @@ body {
     font-size: 0.7rem;
     border: 1px solid #e5e7eb;
     border-radius: 10px;
-    width: 135%;
+    width: 80%;
     place-self: center;
     text-align: center;
     align-self: flex-start;
@@ -160,7 +163,7 @@ body {
 
 }
 #play-button {
-    margin-top: 4rem;
+    /* margin-top: 4rem; */
     font-size: 0.8rem;
     padding: 0.7rem 0.6rem;
     border: 1px solid #00A3FF;
@@ -173,7 +176,7 @@ body {
     background-color: #00A3FF;
     transition: 100ms;
     cursor: pointer;
-    align-self: flex-end;
+    align-self: flex-start;
 }
 
 #play-button:hover, #play-button:focus {
@@ -197,11 +200,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* width: 70%; */
-    height: auto;
+    width: 70%;
     min-width: 400px;
     /* border: 1px solid red; */
-
+    margin: 10% auto;
 }
 
 .player-card {
@@ -878,8 +880,8 @@ div.results {
  */
 @-webkit-keyframes slide-in-top {
     0% {
-      -webkit-transform: translateY(-1000px);
-              transform: translateY(-1000px);
+      -webkit-transform: translateY(-900px);
+              transform: translateY(-900px);
       opacity: 0;
     }
     100% {
@@ -919,8 +921,8 @@ div.results {
 }
 @keyframes slide-in-top-reverse {
     0% {
-      -webkit-transform: translateY(-900px);
-              transform: translateY(-900px);
+      -webkit-transform: translateY(-1000px);
+              transform: translateY(-1000px);
       opacity: 0;
     }
     100% {
