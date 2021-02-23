@@ -32,9 +32,23 @@ function renderResultsScreen(resultObject, bestUsers){
     inputPlayerNameScreen.classList.add('invisible');
     gameScreen.classList.add('invisible');
     resultsScreen.classList.remove('invisible');
+
     const { totalScore, playerName, playerSrcImage } = resultObject;
     updateRanking(totalScore.right, playerName, bestUsers);
     appendRankingSection(bestUsers); 
+
+    const playerNameElement = document.getElementById('results-player-name');
+    playerNameElement.textContent = playerName;
+
+    const playerImage = document.querySelector('.result-screen-icon');
+    playerImage.src = playerSrcImage;
+
+
+    const rightAnswersElement = document.getElementById('ok-icono').nextSibling;
+    rightAnswersElement.textContent = String(totalScore.right).padStart(2,'0');
+    const wrongAnswersElement = document.getElementById('wrong-icono').nextSibling;
+    wrongAnswersElement.textContent = String(totalScore.wrong).padStart(2,'0');
+
 }
 
 

@@ -418,8 +418,9 @@ body {
 }
 
 /* -----------------------------RANKING SCREEN---------------------------- */
-.result-screen {
+.results-screen {
         width: 65%;
+        max-width: 1000px;;
         margin-top: 2rem;
 }
 
@@ -428,7 +429,7 @@ body {
         justify-content: center;
         
 }
-#result-player-box {
+#results-player-box {
         position: relative;
         align-self: flex-start;        
 
@@ -456,8 +457,8 @@ body {
 
 }
 .results img {
-        width: 40%;
-        margin-bottom:  2.5rem;
+        width: 85%;
+        padding: 0.4rem;
 }
 .results p {
         font-size:  1.5rem;
@@ -519,11 +520,21 @@ p.user-points {
         padding-left: 1.1rem;
 }
 
-#result-player-box #player-name {
+#results-player-box #results-player-name {
         position: absolute;
-        top: 95%;
-        left: -12%;
+        top: 98%;
+        left: -15%;
 }
+
+#results-player-name {
+        font-family: 'Nothing you could do', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 400;
+        text-align: center;
+        width: 100%;
+        transform: rotate(-1.6deg);
+}
+
 #exit-icon, #replay-icon {
         width: 22%;
 }
@@ -538,14 +549,7 @@ div.results {
 .results .flex-container{
         align-items: center;
 }
-.results #ok-icono {
-        margin-right: 1rem;
-        margin-bottom: 0.5rem;
-}
-.results #wrong-icono {
-        margin-right: 1.3rem;
-        margin-bottom: 0.2rem;
-}
+
 .list img{
         width: 1.2rem;
         margin-top: 0.5rem 0 0 0;
