@@ -219,29 +219,28 @@ body {
 .player-card p, span {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: 0.8rem;
-    letter-spacing: 0.6rem;
+    font-size: 0.9rem;
     color: #dadada;
 }
 #abc1 { 
     position: absolute;
     transform: rotate(-90deg);
-    top: 70px;
-    left: -100px;
+    top: 90px;
+    left: -105px;
     letter-spacing: 0.6rem;;
 }
 #abc2 { 
     position: absolute;
     top: -22px;
-    left: 12px;
+    left: 27px;
     letter-spacing: 0.6rem;
 }
 #abc3 { 
     position: absolute;
     transform: rotate(90deg);
-    top: 82px;
-    right: -100px;
-    letter-spacing: 0.6rem;
+    top: 100px;
+    right: -104px;
+    letter-spacing: 0.55rem;
 }
 
 .hightlited-red {
@@ -257,8 +256,8 @@ body {
 
 #player-container {
     position: relative;
-    width: 200px;
-    height: 188px;;
+    width: 230px;
+    height: 220px;;
     background-color: #d8e5f9;
     border-bottom-left-radius: 52%;
     border-top-left-radius: 42%;
@@ -269,6 +268,7 @@ body {
 .player-icon { 
     position: relative; 
     width: 75%;
+    min-width: 150px;
     height: auto;
     top: 10px;
     left: 23px;
@@ -423,7 +423,7 @@ body {
 .results-screen {
         width: 65%;
         max-width: 1000px;;
-        margin-top: 2rem;
+        margin: 10% auto;
 }
 
 .flex-container {
@@ -520,6 +520,7 @@ p.user-points {
 #exit-btn, #replay-btn {
         margin: 10rem 2rem;
         padding-left: 1.1rem;
+        flex-shrink: 0;
 }
 
 #results-player-box #results-player-name {
