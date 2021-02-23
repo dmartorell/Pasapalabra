@@ -44,9 +44,9 @@ function renderResultsScreen(resultObject, bestUsers){
     playerImage.src = playerSrcImage;
 
 
-    const rightAnswersElement = document.getElementById('ok-icono').nextSibling;
+    const rightAnswersElement = document.getElementById('ok-icono').nextElementSibling;
     rightAnswersElement.textContent = String(totalScore.right).padStart(2,'0');
-    const wrongAnswersElement = document.getElementById('wrong-icono').nextSibling;
+    const wrongAnswersElement = document.getElementById('wrong-icono').nextElementSibling;
     wrongAnswersElement.textContent = String(totalScore.wrong).padStart(2,'0');
 
 }
@@ -255,18 +255,12 @@ function startGame(playerName, playerSrcImage){
     function pasapalabra(){
         if(remainingQuestions !== 1){
             pasaButton.classList.toggle('paused');
-            const pauseIconElement = document.createElement('img');
 
             // PARA CRONO o ARRANCA CRONO
 
             if(pasaButton.classList.contains('paused')){
-                // pauseIconElement.id = 'pause-icon';
-                // pauseIconElement.src = 'icono_pause.svg';
-                // pauseIconElement.alt = 'pause mode icon'
                 pasaButton.textContent = '';
-                // pasaButton.append(pauseIconElement);
-                pasaButton.innerHTML = '&#10074 &#10074';
-
+                pasaButton.innerHTML = '&#10074&#10074';
                 letterElement.style.color = 'transparent';
                 questionElement.style.color = 'transparent';
                 inputButton.style.display = 'none';
@@ -275,8 +269,6 @@ function startGame(playerName, playerSrcImage){
 
             }
             else {
-                // pauseIconElement.parentNode.removeChild(pauseIconElement);
-                pauseIconElement.remove();
                 pasaButton.textContent = 'PASAPALABRA';
 
                 letterElement.style.color = 'rgba(26,59,90,0.9)';
@@ -430,7 +422,6 @@ function updateRanking (score, playerName, bestUsers){
 
 function appendRankingSection(ranking){
     const rankingSection = document.getElementById('ranking');
-    // const h1Element = document.getElementsByTagName('h1');
         
     for(let player of ranking){
         const listElement = document.createElement('div');

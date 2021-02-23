@@ -483,8 +483,8 @@ body {
         width: 85%;
         padding: 0.4rem;
 }
-.results p {
-        font-size:  1.5rem;
+div.results p {
+        font-size:  1.3rem;
 }
 .result-screen-icon {
         width: 70%;
@@ -517,7 +517,7 @@ body {
 }
 #ranking p {
         font-family:'Inter', sans-serif;
-        font-size: 1rem;
+        font-size: 0.9rem;
         padding: 0.5rem;
         font-weight: 600;
         
@@ -556,6 +556,10 @@ p.user-points {
         text-align: center;
         width: 100%;
         transform: rotate(-1.6deg);
+}
+
+#wrong-icono {
+        width: 66%;
 }
 
 #exit-icon {
