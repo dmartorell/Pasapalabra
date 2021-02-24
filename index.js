@@ -54,8 +54,6 @@ function renderResultsScreen(resultObject, bestUsers){
     const wrongAnswersElement = document.getElementById('wrong-icono').nextElementSibling;
     wrongAnswersElement.textContent = String(totalScore.wrong).padStart(2,'0');
 
-    console.log(bestUsers);
-
 }
 
 
@@ -314,6 +312,8 @@ function startGame(playerName, playerSrcImage, ranking = null){
     }
 
     function checkAnswer(){
+        inputButton.removeEventListener('click', checkAnswer)     
+
         if(inputAnswer.value.toLowerCase() === currentCard.answer){
             //RIGHT
             changeLetterColor(currentCard.letter.toUpperCase(), 'green');
@@ -369,6 +369,7 @@ function startGame(playerName, playerSrcImage, ranking = null){
 
                 }, 1200);
             }
+            inputButton.addEventListener('click', checkAnswer);  
         }, 400) // pausa entre encendido de letra y próxima pregunta
 
     }
