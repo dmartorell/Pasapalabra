@@ -163,25 +163,9 @@ playButton.addEventListener('click', () => {
 });
 
 
-pasaButton.addEventListener('click', pasapalabra);
+pasaButton.addEventListener('click', managePasapalabra);
 
-inputButton.addEventListener('click', ()=> {
-    manageAnswer();
-    setTimeout(()=> {
-        showNextQuestion();
-        inputAnswer.focus();
-        if(!stillQuestions){
-            inputAnswer.blur();
-            // inputButton.removeEventListener('click', manageAnswer);
-            pasaButton.removeEventListener('click', pasapalabra);
-            slideOutGameElements();
-            setTimeout(()=> {
-                document.body.style.alignItems = 'center'; 
-                renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
-            }, 1200);
-        }
-    }, 400);
-});
+inputButton.addEventListener('click', manageAnswer);
 
 const replayButton = document.getElementById('replay-btn');
 const exitButton = document.getElementById('exit-btn');
@@ -199,11 +183,29 @@ document.getElementById('player-container').innerHTML = `
     <p id="player-name"></p>`;
                           
 resetGameVariables();
-pasaButton.addEventListener('click', pasapalabra);
+pasaButton.addEventListener('click', managePasapalabra);
 renderGameScreen(playerName, playerSrcImage);
 
 });
+function manageAnswer(){
+    inputButton.removeEventListener('click', manageAnswer);
+    checkAnswer();
+    setTimeout(()=> {
+        showNextQuestion();
+        inputAnswer.focus();
+        if(!stillQuestions){
+            inputAnswer.blur();
+            pasaButton.removeEventListener('click', managePasapalabra);
+            slideOutGameElements();
+            setTimeout(()=> {
+                document.body.style.alignItems = 'center'; 
+                renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
+            }, 1200);
+        }
+        inputButton.addEventListener('click', manageAnswer);
 
+    }, 400);
+}
 function init(){
     // Entrada iconos players en delay
     setTimeout(() => {
@@ -223,7 +225,6 @@ function renderPlayerNameScreen(element, parent, backgroundColor){
     document.removeEventListener('mouseover', addEffectOnBackground);
     document.removeEventListener('click', renderPlayerNameScreen);
     selectPlayerIcon.classList.add('invisible');
-    // playerSelectorScreen.classList.remove('multi-player-grid');
     playerSelectorScreen.classList.add('invisible');
     inputPlayerNameScreen.classList.remove('invisible');
     inputPlayerNameScreen.classList.add('one-player-grid');
@@ -297,7 +298,7 @@ function renderGameScreen(playerName, playerSrcImage){
     showNextQuestion();
 }
 
-function pasapalabra(){
+function managePasapalabra(){
     if(remainingQuestions !== 1){
         pasaButton.classList.toggle('paused');
 
@@ -329,7 +330,7 @@ function pasapalabra(){
             showNextQuestion();
             
             if(!stillQuestions){
-                pasaButton.removeEventListener('click', pasapalabra)
+                pasaButton.removeEventListener('click', managePasapalabra)
             }
         }
     }
@@ -441,8 +442,7 @@ function changeLetterColor(letter, color){
     return targetElement.innerHTML = newInnerHtml;
 }
 
-function manageAnswer(){
-    // inputButton.removeEventListener('click', manageAnswer)     
+function checkAnswer(){
 
     if(inputAnswer.value.toLowerCase() === currentCard.answer){
         //RIGHT
@@ -501,7 +501,7 @@ function showNextQuestion(){
 }
 
 function reloadGame(){
-    location.reload()  //reloads current document.
+    location.reload()  //reloads current document
 }
 
 function resetGameVariables(){
