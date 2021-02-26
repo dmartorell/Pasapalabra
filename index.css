@@ -41,6 +41,7 @@ body {
     gap: 8px 0;
     margin: 8% auto;
 }
+
 .invisible {
     display: none;
 }
@@ -126,15 +127,15 @@ body {
 /* ------------------------------------INPUT PLAYER NAME-------------------------*/
 
 .one-player-grid {
-    display: grid;
-    align-content: center;
-    align-items: flex-end;
-    max-width: 800px;;
-    grid-template-columns: minmax(140px, 50%);
-    grid-template-rows: 1fr minmax(1px, 3rem) 1fr 1fr;
-    justify-content: center;
-    width: 15%;
-    margin: 10% auto;
+        display: grid;
+        align-content: center;
+        align-items: flex-end;
+        max-width: 800px;
+        grid-template-columns: minmax(140px, 50%);
+        grid-template-rows: 1fr minmax(55px, 3rem) 35% 1fr;
+        justify-content: center;
+        width: 15%;
+        margin: 10% auto;
 }
 
 #input-name-icon {
@@ -183,6 +184,27 @@ body {
     background-color: #1A3B5A;
     border: 1px solid #1A3B5A;
     color: #ffffff;
+}
+.group {
+        align-self: flex-end;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2rem;
+}
+
+p.info {
+        color: #8b8a8a;
+        font-size: 0.75rem;
+        text-align: center;
+        font-family: 'Montserrat';
+        line-height: 1.1rem;
+}
+
+.icono-keyboard {
+        width: 25%;
+        align-self: center;
+        margin-bottom: 0.5rem;
+        
 }
 
 .scale-in-center {
