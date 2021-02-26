@@ -1,7 +1,5 @@
 
-
-//// VARIABLES DEL JUEGO ///////
-
+// * VARIABLES GLOBALES * //
 let questionsDeck = {
     set1 : [
         { letter: "a", answer: "abducir", status: 0, question: "CON LA A. Dicho de una supuesta criatura extraterrestre: Apoderarse de alguien."},
@@ -98,14 +96,6 @@ let totalScore = { right: 0, wrong: 0 };
 let cardIndex = 0;
 let stillQuestions = true;
 
-// let bestUsers = ranking || [
-//     {name: 'Jack Palance', points: 3},
-//     {name: 'Mike Tyson', points: 2},
-//     {name: 'Joe Biden', points: 2},
-//     {name: 'Nansi Pelosi', points: 1},
-//     {name: 'Melania Trump', points: 1},
-// ];
-
 let bestUsers = [
     {name: 'Jack Palance', points: 3},
     {name: 'Mike Tyson', points: 2},
@@ -118,8 +108,6 @@ let newRandomSet = createRandomSetFrom(questionsDeck);
 newRandomSet.length = 14;
 let remainingQuestions = newRandomSet.length;
 let currentCard = newRandomSet[cardIndex];
-
-////////////////////////////////
 
 const playerSelectorScreen = document.getElementById('player-selector-screen');
 const selectPlayerIcon = document.getElementById('select-player-icon');
@@ -138,6 +126,9 @@ const pasaButton = document.getElementById('pasa-btn');
 const inputAnswer = document.querySelector('.text-input');
 let playerName = null;
 
+// * ************* * //
+
+
 window.onload = init;
 
 document.addEventListener('mouseover', addEffectOnBackground);
@@ -148,7 +139,6 @@ document.addEventListener('click', (e)=> {
         const parent = element.parentNode;
         const backgroundColor = element.previousElementSibling;
         renderPlayerNameScreen(element, parent, backgroundColor);
-    
     }
 });
 
@@ -161,9 +151,6 @@ playButton.addEventListener('click', () => {
     }
     userName.focus();
 });
-
-
-
 
 pasaButton.addEventListener('click', managePasapalabra);
 inputButton.addEventListener('click', manageAnswer);
@@ -188,23 +175,9 @@ pasaButton.addEventListener('click', managePasapalabra);
 renderGameScreen(playerName, playerSrcImage);
 
 });
-function manageAnswer(){
-    inputButton.removeEventListener('click', manageAnswer);
-    checkAnswer();
-    setTimeout(()=> {
-        showNextQuestion();
-        inputAnswer.focus();
-        if(!stillQuestions){
-            inputAnswer.blur();
-            pasaButton.removeEventListener('click', managePasapalabra);
-            slideOutGameElements();
-            setTimeout(()=> {
-                document.body.style.alignItems = 'center'; 
-                renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
-            }, 1200);
-        }
-    }, 400);
-}
+
+// *** FUNCIONES *** //
+
 function init(){
     // Entrada iconos players en delay
     setTimeout(() => {
@@ -247,8 +220,89 @@ function createPlayerIconHtmlElements(parent, element, backgroundColor){
     parent.classList.add('scale-in-center');
 }
 
+function checkAnswer(){
+
+    if(inputAnswer.value.toLowerCase() === currentCard.answer){
+        //RIGHT
+        changeLetterColor(currentCard.letter.toUpperCase(), 'green');
+        inputAnswer.value = '';
+        currentCard.status = 1
+        remainingQuestions--;
+        cardIndex++;
+        currentCard = newRandomSet[cardIndex];
+        totalScore.right++;
+        
+        
+    } else {
+        //WRONG
+        changeLetterColor(currentCard.letter.toUpperCase(), 'red');
+        inputAnswer.value = '';
+        currentCard.status = -1;
+        remainingQuestions--;
+        cardIndex++;
+        currentCard = newRandomSet[cardIndex];
+        totalScore.wrong++;
+
+    }
+
+}
+
+function showNextQuestion(){
+
+    if(newRandomSet.every(card => card.status !== 0)){
+        stillQuestions = false;
+        return;
+    } 
+    
+    if(cardIndex >= newRandomSet.length){
+        cardIndex = 0 // volver a empezar el rosco desde el principio
+        currentCard = newRandomSet[cardIndex];
+
+    }    
+    while(currentCard.status !== 0){
+        cardIndex++;
+        currentCard = newRandomSet[cardIndex];
+        if(!currentCard){
+            cardIndex = 0;
+            currentCard = newRandomSet[cardIndex];
+        }
+    }
+    
+    // removeEventListener para bloquear botón mientras la próxima pregunta aún no ha aparecido //
+    inputButton.removeEventListener('click', manageAnswer);
+
+    letterElement.classList.add('jello-horizontal');
+    letterElement.textContent = currentCard.letter.toUpperCase();
+    questionElement.textContent = currentCard.question;
+    
+    setTimeout(()=> {
+        letterElement.classList.remove('jello-horizontal');
+        inputButton.addEventListener('click', manageAnswer);
+
+    }, 200);
+
+}
+
 function isValidPlayerName(value){
     return value.match(/\w+/);   //username validation: evitar 'strings de solo espacios en blanco
+}
+
+function manageAnswer(){
+    inputButton.removeEventListener('click', manageAnswer);
+    checkAnswer();
+    setTimeout(()=> {
+        showNextQuestion();
+        inputAnswer.focus();
+        if(!stillQuestions){
+            inputAnswer.blur();
+            pasaButton.removeEventListener('click', managePasapalabra);
+            slideOutGameElements();
+            setTimeout(()=> {
+                document.body.style.alignItems = 'center'; 
+                renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
+            }, 1200);
+        }
+    }, 400);
 }
 
 function renderResultsScreen(resultObject, bestUsers){
@@ -380,6 +434,7 @@ function addEffectOnBackground(e){
         element.previousElementSibling.style.backgroundColor = '#cbdffc';
     }
 }
+
 function removeEffectOnBackground(e){
     const element = e.target;
     if(element.className === 'p-icon'){
@@ -457,69 +512,6 @@ function changeLetterColor(letter, color){
     const newInnerHtml = targetElement.innerHTML.slice(0,letterIndex) + newSpan + targetElement.innerHTML.slice(letterIndex + 1);
     
     return targetElement.innerHTML = newInnerHtml;
-}
-
-function checkAnswer(){
-
-    if(inputAnswer.value.toLowerCase() === currentCard.answer){
-        //RIGHT
-        changeLetterColor(currentCard.letter.toUpperCase(), 'green');
-        inputAnswer.value = '';
-        currentCard.status = 1
-        remainingQuestions--;
-        cardIndex++;
-        currentCard = newRandomSet[cardIndex];
-        totalScore.right++;
-        
-        
-    } else {
-        //WRONG
-        changeLetterColor(currentCard.letter.toUpperCase(), 'red');
-        inputAnswer.value = '';
-        currentCard.status = -1;
-        remainingQuestions--;
-        cardIndex++;
-        currentCard = newRandomSet[cardIndex];
-        totalScore.wrong++;
-
-    }
-
-}
-
-function showNextQuestion(){
-
-    if(newRandomSet.every(card => card.status !== 0)){
-        stillQuestions = false;
-        return;
-    } 
-    
-    if(cardIndex >= newRandomSet.length){
-        cardIndex = 0 // volver a empezar el rosco desde el principio
-        currentCard = newRandomSet[cardIndex];
-
-    }    
-    while(currentCard.status !== 0){
-        cardIndex++;
-        currentCard = newRandomSet[cardIndex];
-        if(!currentCard){
-            cardIndex = 0;
-            currentCard = newRandomSet[cardIndex];
-        }
-    }
-    
-    // removeEventListener para bloquear botón mientras la próxima pregunta aún no ha aparecido //
-    inputButton.removeEventListener('click', manageAnswer);
-
-    letterElement.classList.add('jello-horizontal');
-    letterElement.textContent = currentCard.letter.toUpperCase();
-    questionElement.textContent = currentCard.question;
-    
-    setTimeout(()=> {
-        letterElement.classList.remove('jello-horizontal');
-        inputButton.addEventListener('click', manageAnswer);
-
-    }, 200);
-
 }
 
 function reloadGame(){
