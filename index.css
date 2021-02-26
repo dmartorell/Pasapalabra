@@ -230,6 +230,7 @@ p.info {
 
 .player-card {
     display: flex;
+    position: relative;
     justify-content: center;
     width: 70%;
     background-color: #ffffff;
@@ -244,6 +245,13 @@ p.info {
     font-size: 0.9rem;
     color: #dadada;
 }
+#abort-icono {
+        position: absolute;
+        width: 30px;
+        top: -15px;
+        right: -15px;
+}
+
 #abc1 { 
     position: absolute;
     transform: rotate(-90deg);
