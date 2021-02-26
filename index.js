@@ -165,18 +165,32 @@ const exitButton = document.getElementById('exit-btn');
 exitButton.addEventListener('click', reloadGame);
 
 replayButton.addEventListener('click', ()=> {
-resultsScreen.classList.add('invisible');
-document.querySelector('.game-wrapper').classList.remove('slide-in-top-reverse');
-document.getElementById('player-container').innerHTML = `
-    <p id="abc1">ABCDEFGHI</p>
-    <p id="abc2">JKLMNÑOPQ</p>
-    <p id="abc3">RSTUVWXYZ</p>
-    <img class="player-icon" src="icono_player_01.svg" alt="player one icon">
-    <p id="player-name"></p>`;
-                          
-resetGameVariables();
-pasaButton.addEventListener('click', managePasapalabra);
-renderGameScreen(playerName, playerSrcImage);
+
+
+    document.addEventListener('keydown', managePressedKey);
+    cronoElement.textContent = '120';
+    pasaButton.style.display = 'block';
+    inputWrapper.style.display = 'block';   
+    letterElement.style.color = 'rgba(26,59,90,0.9)';
+    questionElement.style.color = '#2D2D2D';
+    inputButton.style.display = 'inline';
+    inputAnswer.textContent = '';
+    inputAnswer.disabled = false;     
+
+    
+    /////////
+    resultsScreen.classList.add('invisible');
+    document.querySelector('.game-wrapper').classList.remove('slide-in-top-reverse');
+    document.getElementById('player-container').innerHTML = `
+        <p id="abc1">ABCDEFGHI</p>
+        <p id="abc2">JKLMNÑOPQ</p>
+        <p id="abc3">RSTUVWXYZ</p>
+        <img class="player-icon" src="icono_player_01.svg" alt="player one icon">
+        <p id="player-name"></p>`;
+                            
+    resetGameVariables();
+    pasaButton.addEventListener('click', managePasapalabra);
+    renderGameScreen(playerName, playerSrcImage);
 
 });
 
@@ -299,6 +313,7 @@ function manageAnswer(){
         inputAnswer.focus();
         if(!stillQuestions){
             inputAnswer.blur();
+            stopCountdown();
             pasaButton.removeEventListener('click', managePasapalabra);
             slideOutGameElements();
             setTimeout(()=> {
@@ -380,7 +395,7 @@ function managePressedKey(e){
 function startCountDown(){
     if(cronoElement.textContent === '1'){
         cronoElement.textContent = '0'
-        pauseCountDown();
+        stopCountdown();
 
         document.removeEventListener('keydown', managePressedKey);
 
@@ -401,7 +416,7 @@ function startCountDown(){
     }
 }
 
-function pauseCountDown(){
+function stopCountdown(){
     clearInterval(timer);
 }
 
@@ -411,7 +426,7 @@ function managePasapalabra(){
 
 
         if(pasaButton.classList.contains('paused')){
-            pauseCountDown();
+            stopCountdown();
             pasaButton.textContent = '';
             pasaButton.innerHTML = '&#10074&#10074';
             letterElement.style.color = 'transparent';
@@ -436,7 +451,7 @@ function managePasapalabra(){
             showNextQuestion();
             
             if(!stillQuestions){
-                pasaButton.removeEventListener('click', managePasapalabra)
+                pasaButton.removeEventListener('click', managePasapalabra);
             }
         }
     }
