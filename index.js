@@ -124,9 +124,13 @@ const inputButton = document.getElementById('input-button');
 const inputWrapper = document.getElementById('input-wrapper');
 const pasaButton = document.getElementById('pasa-btn');
 const inputAnswer = document.querySelector('.text-input');
-let playerName = null;
+const cronoElement = document.querySelector('.timer');
 
-// * ************* * //
+
+let playerName = null;
+let timer = null;
+
+// * fin VARIABLES GLOBALES * //
 
 
 window.onload = init;
@@ -351,7 +355,15 @@ function renderGameScreen(playerName, playerSrcImage){
 
     animateElements();
     showNextQuestion();
+    
+    setTimeout(()=> timer = setInterval(()=> startCountDown(), 1000), 1000);
+    
+
+    
+
+
 }
+
 
 function managePressedKey(e){
     
@@ -369,13 +381,22 @@ function managePressedKey(e){
     }, 300)
 }
 
+function startCountDown(){
+    setTimeout(()=> {
+        cronoElement.textContent = (Number(cronoElement.textContent) - 1);
+    },300) 
+}
+function pauseCountDown(){
+    clearInterval(timer);
+}
+
 function managePasapalabra(){
     if(remainingQuestions !== 1){
         pasaButton.classList.toggle('paused');
 
-        // PARA CRONO o ARRANCA CRONO
 
         if(pasaButton.classList.contains('paused')){
+            pauseCountDown();
             pasaButton.textContent = '';
             pasaButton.innerHTML = '&#10074&#10074';
             letterElement.style.color = 'transparent';
@@ -387,7 +408,7 @@ function managePasapalabra(){
         }
         else {
             pasaButton.textContent = 'PASAPALABRA';
-
+            timer = setInterval(()=> startCountDown(), 1000);
             letterElement.style.color = 'rgba(26,59,90,0.9)';
             questionElement.style.color = '#2D2D2D';
             inputButton.style.display = 'inline';
