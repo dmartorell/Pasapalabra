@@ -163,8 +163,9 @@ playButton.addEventListener('click', () => {
 });
 
 
-pasaButton.addEventListener('click', managePasapalabra);
 
+
+pasaButton.addEventListener('click', managePasapalabra);
 inputButton.addEventListener('click', manageAnswer);
 
 const replayButton = document.getElementById('replay-btn');
@@ -202,8 +203,6 @@ function manageAnswer(){
                 renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
             }, 1200);
         }
-        inputButton.addEventListener('click', manageAnswer);
-
     }, 400);
 }
 function init(){
@@ -294,8 +293,26 @@ function renderGameScreen(playerName, playerSrcImage){
     const playerNameField = document.getElementById('player-name');
     playerNameField.textContent = playerName;
 
+    document.addEventListener('keydown', managePressedKey);
+
     animateElements();
     showNextQuestion();
+}
+
+function managePressedKey(e){
+    
+    if(e.code === 'Space'){
+        document.removeEventListener('keydown', managePressedKey);
+        managePasapalabra();
+    }
+    if(e.code === 'Enter'){
+        document.removeEventListener('keydown', managePressedKey);
+        manageAnswer();
+    } 
+    // setTimeout para bloquear teclado mientras la próxima pregunta aún no ha aparecido //
+    setTimeout(()=> {
+        document.addEventListener('keydown', managePressedKey);
+    }, 300)
 }
 
 function managePasapalabra(){
@@ -489,6 +506,9 @@ function showNextQuestion(){
             currentCard = newRandomSet[cardIndex];
         }
     }
+    
+    // removeEventListener para bloquear botón mientras la próxima pregunta aún no ha aparecido //
+    inputButton.removeEventListener('click', manageAnswer);
 
     letterElement.classList.add('jello-horizontal');
     letterElement.textContent = currentCard.letter.toUpperCase();
@@ -496,6 +516,8 @@ function showNextQuestion(){
     
     setTimeout(()=> {
         letterElement.classList.remove('jello-horizontal');
+        inputButton.addEventListener('click', manageAnswer);
+
     }, 200);
 
 }
