@@ -321,6 +321,7 @@ p.info {
     background-color: #ffffff;
     margin: -35px;
     z-index: 10;
+    min-width: 30px;
 }
 
 .slide-in-top {

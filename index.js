@@ -356,14 +356,10 @@ function renderGameScreen(playerName, playerSrcImage){
     animateElements();
     showNextQuestion();
     
-    setTimeout(()=> timer = setInterval(()=> startCountDown(), 1000), 1000);
-    
-
-    
-
-
+    setTimeout(()=> {
+        timer = setInterval(()=> startCountDown(), 1000)
+    }, 800);
 }
-
 
 function managePressedKey(e){
     
@@ -382,10 +378,29 @@ function managePressedKey(e){
 }
 
 function startCountDown(){
-    setTimeout(()=> {
-        cronoElement.textContent = (Number(cronoElement.textContent) - 1);
-    },300) 
+    if(cronoElement.textContent === '1'){
+        cronoElement.textContent = '0'
+        pauseCountDown();
+
+        document.removeEventListener('keydown', managePressedKey);
+
+        pasaButton.style.display = 'none';
+        inputWrapper.style.display = 'none';        
+        letterElement.style.color = 'transparent';
+        questionElement.style.color = 'transparent';
+
+        setTimeout(()=> slideOutGameElements(), 1200);
+        setTimeout(()=> {
+            document.body.style.alignItems = 'center'; 
+            renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
+        }, 2000);
+        
+
+    } else {
+    cronoElement.textContent = (Number(cronoElement.textContent) - 1);
+    }
 }
+
 function pauseCountDown(){
     clearInterval(timer);
 }
@@ -404,7 +419,6 @@ function managePasapalabra(){
             inputButton.style.display = 'none';
             inputAnswer.value = '';
             inputAnswer.disabled = true;
-
         }
         else {
             pasaButton.textContent = 'PASAPALABRA';
