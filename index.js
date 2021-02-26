@@ -125,6 +125,7 @@ const inputWrapper = document.getElementById('input-wrapper');
 const pasaButton = document.getElementById('pasa-btn');
 const inputAnswer = document.querySelector('.text-input');
 const cronoElement = document.querySelector('.timer');
+const abortButton = document.getElementById('abort-icono')
 
 
 let playerName = null;
@@ -158,6 +159,33 @@ playButton.addEventListener('click', () => {
 
 pasaButton.addEventListener('click', managePasapalabra);
 inputButton.addEventListener('click', manageAnswer);
+abortButton.addEventListener('click', ()=>{
+
+    if(!pasaButton.classList.contains('paused')){
+
+        letterElement.style.color = 'transparent';
+        questionElement.style.color = 'transparent';
+        inputButton.style.display = 'none';
+        inputAnswer.value = '';
+        inputAnswer.disabled = true;
+        
+        setTimeout(()=> {
+            let abortGame = confirm('¿Seguro que quieres abandonar la partida?');
+            if(abortGame){
+            slideOutGameElements();
+            reloadGame();
+            } else{
+            letterElement.style.color = 'rgba(26,59,90,0.9)';
+            questionElement.style.color = '#2D2D2D';
+            inputButton.style.display = 'inline';
+            inputAnswer.disabled = false;
+            inputAnswer.focus();
+            inputAnswer.value = '';
+            userName.focus();
+            }
+        }, 100);
+    }
+});
 
 const replayButton = document.getElementById('replay-btn');
 const exitButton = document.getElementById('exit-btn');
@@ -178,7 +206,6 @@ replayButton.addEventListener('click', ()=> {
     inputAnswer.disabled = false;     
 
     
-    /////////
     resultsScreen.classList.add('invisible');
     document.querySelector('.game-wrapper').classList.remove('slide-in-top-reverse');
     document.getElementById('player-container').innerHTML = `
