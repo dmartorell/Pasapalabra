@@ -200,7 +200,6 @@ replayButton.addEventListener('click', ()=> {
     inputButton.style.display = 'inline';
     inputAnswer.textContent = '';
     inputAnswer.disabled = false;     
-
     
     resultsScreen.classList.add('invisible');
     document.querySelector('.game-wrapper').classList.remove('slide-in-top-reverse');
@@ -210,7 +209,7 @@ replayButton.addEventListener('click', ()=> {
         <p id="abc3">RSTUVWXYZ</p>
         <img class="player-icon" src="icono_player_01.svg" alt="player one icon">
         <p id="player-name"></p>`;
-                            
+    
     resetGameVariables();
     pasaButton.addEventListener('click', managePasapalabra);
     renderGameScreen(playerName, playerSrcImage);
@@ -344,23 +343,21 @@ function manageAnswer(){
         letterElement.style.color = 'transparent';
         questionElement.style.color = 'transparent';
         stopCountdown();
+        const congratsMessage = document.createElement('h1');
 
         setTimeout(()=> {
-            confetti.speed = 3;
+            confetti.speed = 2;
             confetti.frameInterval = 10;
             confetti.start(7000,500);
 
-            const congratsMessage = document.createElement('h1');
             congratsMessage.textContent = '¡ ROSCO COMPLETADO !';
             questionContainer.append(congratsMessage);
         }, 400)
-
-
-        
         setTimeout(()=> {
             slideOutGameElements();
             setTimeout(()=> {
                 document.body.style.alignItems = 'center'; 
+                congratsMessage.remove();
                 renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
             }, 1200);
         },8000);
