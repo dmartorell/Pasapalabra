@@ -105,7 +105,7 @@ let bestUsers = [
 ];
 
 let newRandomSet = createRandomSetFrom(questionsDeck);
-newRandomSet.length = 1;
+newRandomSet.length = 2;
 let remainingQuestions = newRandomSet.length;
 let currentCard = newRandomSet[cardIndex];
 
@@ -228,7 +228,7 @@ function init(){
     setTimeout(() => {
         selectPlayerIcon.classList.remove('invisible');
         selectPlayerIcon.style.display="block";
-        selectPlayerIcon.classList.add('heartbeat');
+        selectPlayerIcon.classList.add('pulsate-bck');
     }, 1300);
 }
 
@@ -250,8 +250,6 @@ function renderPlayerNameScreen(e){
     playerSrcImage = parent.lastElementChild.src;
     parent.className = 'player-box';
     parent.classList.add('scale-in-center');
-
-    setTimeout(() => playButton.classList.add('heartbeat'), 1500);
 }
 
 function createPlayerIconHtmlElements(parent, element, backgroundColor){
@@ -337,11 +335,13 @@ function manageAnswer(){
     checkAnswer();
 
     //ROSCO COMPLETADO : TODAS LAS RESPUESTAS SON CORRECTAS
+
     if(totalScore.right === newRandomSet.length){
         pasaButton.style.display = 'none';
         inputWrapper.style.display = 'none';        
         letterElement.style.color = 'transparent';
         questionElement.style.color = 'transparent';
+        abortButton.style.display = 'none';
         stopCountdown();
         const congratsMessage = document.createElement('h1');
 
@@ -358,6 +358,7 @@ function manageAnswer(){
             setTimeout(()=> {
                 document.body.style.alignItems = 'center'; 
                 congratsMessage.remove();
+                abortButton.style.display = 'block';
                 renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
             }, 1200);
         },8000);
@@ -635,7 +636,7 @@ function resetGameVariables(){
     cardIndex = 0;
     stillQuestions = true;
     newRandomSet = createRandomSetFrom(questionsDeck);
-    newRandomSet.length = 1;
+    newRandomSet.length = 2;
     remainingQuestions = newRandomSet.length;
     currentCard = newRandomSet[cardIndex];
 }
