@@ -119,6 +119,7 @@ const userName = document.getElementById('user-name');
 const playButton = document.getElementById('play-button');
 let playerSrcImage = null;
 
+const questionContainer = document.getElementById('question-container');
 const letterElement = document.getElementById('letter');
 const questionElement = document.getElementById('question');
 const inputButton = document.getElementById('input-button');
@@ -348,9 +349,16 @@ function manageAnswer(){
             confetti.speed = 3;
             confetti.frameInterval = 10;
             confetti.start(7000,500);
+
+            const congratsMessage = document.createElement('h1');
+            congratsMessage.textContent = '¡ ROSCO COMPLETADO !';
+            questionContainer.append(congratsMessage);
         }, 400)
+
+
         
         setTimeout(()=> {
+            slideOutGameElements();
             setTimeout(()=> {
                 document.body.style.alignItems = 'center'; 
                 renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
