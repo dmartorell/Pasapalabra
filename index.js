@@ -112,6 +112,7 @@ let currentCard = newRandomSet[cardIndex];
 const playerSelectorScreen = document.getElementById('player-selector-screen');
 const selectPlayerIcon = document.getElementById('select-player-icon');
 const inputPlayerNameScreen = document.getElementById('input-player-name-screen');
+const playerIcons = document.querySelectorAll('.p-icon');
 const gameScreen = document.querySelector('.game-screen');
 const resultsScreen = document.querySelector('.results-screen');
 const userName = document.getElementById('user-name');
@@ -138,14 +139,8 @@ window.onload = init;
 
 document.addEventListener('mouseover', addEffectOnBackground);
 document.addEventListener('mouseout', removeEffectOnBackground);
-document.addEventListener('click', (e)=> {
-    if(e.target.className === 'p-icon'){
-        const element = e.target;
-        const parent = element.parentNode;
-        const backgroundColor = element.previousElementSibling;
-        renderPlayerNameScreen(element, parent, backgroundColor);
-    }
-});
+playerIcons.forEach(icon => icon.addEventListener('click', renderPlayerNameScreen));
+
 
 playButton.addEventListener('click', () => {
     if(isValidPlayerName(userName.value)){
@@ -237,10 +232,14 @@ function init(){
     }, 1300);
 }
 
-function renderPlayerNameScreen(element, parent, backgroundColor){
+function renderPlayerNameScreen(e){
+    
+    const element = e.target;
+    const parent = element.parentNode;
+    const backgroundColor = element.previousElementSibling;
 
     document.removeEventListener('mouseover', addEffectOnBackground);
-    document.removeEventListener('click', renderPlayerNameScreen);
+    playerIcons.forEach(icon => icon.removeEventListener('click', renderPlayerNameScreen));
     selectPlayerIcon.classList.add('invisible');
     playerSelectorScreen.classList.add('invisible');
     inputPlayerNameScreen.classList.remove('invisible');
@@ -250,6 +249,8 @@ function renderPlayerNameScreen(element, parent, backgroundColor){
     userName.focus();
     playerSrcImage = parent.lastElementChild.src;
     parent.className = 'player-box';
+    parent.classList.add('scale-in-center');
+
     setTimeout(() => playButton.classList.add('heartbeat'), 1500);
 }
 
@@ -262,7 +263,8 @@ function createPlayerIconHtmlElements(parent, element, backgroundColor){
     element.style.marginTop = '20px';
     element.style.cursor = 'auto';
     element.classList.remove('swing-in-top-fwd')
-    parent.classList.add('scale-in-center');
+    parent.classList.remove('slide-left');
+
 }
 
 function checkAnswer(){
