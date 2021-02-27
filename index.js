@@ -105,7 +105,7 @@ let bestUsers = [
 ];
 
 let newRandomSet = createRandomSetFrom(questionsDeck);
-newRandomSet.length = 14;
+newRandomSet.length = 1;
 let remainingQuestions = newRandomSet.length;
 let currentCard = newRandomSet[cardIndex];
 
@@ -289,7 +289,6 @@ function checkAnswer(){
         cardIndex++;
         currentCard = newRandomSet[cardIndex];
         totalScore.wrong++;
-
     }
 
 }
@@ -299,7 +298,7 @@ function showNextQuestion(){
     if(newRandomSet.every(card => card.status !== 0)){
         stillQuestions = false;
         return;
-    } 
+    }
     
     if(cardIndex >= newRandomSet.length){
         cardIndex = 0 // volver a empezar el rosco desde el principio
@@ -315,7 +314,6 @@ function showNextQuestion(){
         }
     }
     
-    // removeEventListener para bloquear botón mientras la próxima pregunta aún no ha aparecido //
     inputButton.removeEventListener('click', manageAnswer);
 
     letterElement.classList.add('jello-horizontal');
@@ -337,20 +335,45 @@ function isValidPlayerName(value){
 function manageAnswer(){
     inputButton.removeEventListener('click', manageAnswer);
     checkAnswer();
-    setTimeout(()=> {
-        showNextQuestion();
-        inputAnswer.focus();
-        if(!stillQuestions){
-            inputAnswer.blur();
-            stopCountdown();
-            pasaButton.removeEventListener('click', managePasapalabra);
-            slideOutGameElements();
+
+    //ROSCO COMPLETADO : TODAS LAS RESPUESTAS SON CORRECTAS
+    if(totalScore.right === newRandomSet.length){
+        pasaButton.style.display = 'none';
+        inputWrapper.style.display = 'none';        
+        letterElement.style.color = 'transparent';
+        questionElement.style.color = 'transparent';
+        stopCountdown();
+
+        setTimeout(()=> {
+            confetti.speed = 3;
+            confetti.frameInterval = 10;
+            confetti.start(7000,500);
+        }, 400)
+        
+        setTimeout(()=> {
             setTimeout(()=> {
                 document.body.style.alignItems = 'center'; 
                 renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
             }, 1200);
-        }
-    }, 400);
+        },8000);
+    
+    } else{ 
+    
+        setTimeout(()=> {
+            showNextQuestion();
+            inputAnswer.focus();
+            if(!stillQuestions){
+                inputAnswer.blur();
+                stopCountdown();
+                pasaButton.removeEventListener('click', managePasapalabra);
+                slideOutGameElements();
+                setTimeout(()=> {
+                    document.body.style.alignItems = 'center'; 
+                    renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
+                }, 1200);
+            }
+        }, 400);
+    }
 }
 
 function renderResultsScreen(resultObject, bestUsers){
@@ -602,12 +625,12 @@ function resetGameVariables(){
     for(let set in questionsDeck){
         questionsDeck[set].forEach(card => card.status = 0);
     }
-    
+
     totalScore = { right: 0, wrong: 0 };
     cardIndex = 0;
     stillQuestions = true;
     newRandomSet = createRandomSetFrom(questionsDeck);
-    newRandomSet.length = 14;
+    newRandomSet.length = 1;
     remainingQuestions = newRandomSet.length;
     currentCard = newRandomSet[cardIndex];
 }
