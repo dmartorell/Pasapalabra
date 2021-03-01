@@ -609,7 +609,7 @@
             margin-left:auto;
     }
     #exit-btn, #replay-btn {
-            margin: 10rem 2rem;
+            margin: 12rem 2rem;
             flex-shrink: 0;
     }
     
@@ -1132,6 +1132,9 @@
                 height: 75%;
                 gap: 8px;
                 margin: 2rem auto;
+        }
+        #exit-btn, #replay-btn {
+                margin: 6rem 2rem;
         }
     }
   

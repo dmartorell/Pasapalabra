@@ -223,13 +223,13 @@ function init(){
     setTimeout(() => {
         playerSelectorScreen.classList.remove('invisible');
         playerSelectorScreen.classList.add('multi-player-grid');
-    }, 1000);
+    }, 200);
     // Entrada icono interrogación en delay
     setTimeout(() => {
         selectPlayerIcon.classList.remove('invisible');
         selectPlayerIcon.style.display="block";
         selectPlayerIcon.classList.add('pulsate-bck');
-    }, 1300);
+    }, 500);
 }
 
 function renderPlayerNameScreen(e){
