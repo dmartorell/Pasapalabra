@@ -1128,9 +1128,7 @@
                 left: 10px;
                 letter-spacing: 0.6rem;
         }
-        .multi-player-grid {
-        
-        
+                
         #abort-icono {
                 width: 20px;
                 top: -10px;
@@ -1153,10 +1151,10 @@
         }
         .multi-player-grid {
         
-        max-width: 620px;;
-        height: 75%;
-        gap: 8px;
-        margin: 2rem auto;
+                max-width: 620px;;
+                height: 75%;
+                gap: 8px;
+                margin: 2rem auto;
         }
         #exit-btn, #replay-btn {
                 margin: 6rem 2rem;
