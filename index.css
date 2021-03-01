@@ -1130,6 +1130,29 @@
         }
         .multi-player-grid {
         
+        
+        #abort-icono {
+                width: 20px;
+                top: -10px;
+                right: -10px;
+        }
+        #abort-icono:hover {
+                width: 25px;
+                top: -12px;
+                right: -12px;
+        }
+
+        .player-card {
+                width: 65%;
+        }
+
+        #abc2 { 
+                top: -22px;
+                left: 10px;
+                letter-spacing: 0.6rem;
+        }
+        .multi-player-grid {
+        
         max-width: 620px;;
         height: 75%;
         gap: 8px;
