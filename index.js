@@ -352,6 +352,7 @@ function manageAnswer(){
 
             congratsMessage.textContent = '¡ ROSCO COMPLETADO !';
             questionContainer.append(congratsMessage);
+            gameScreen.querySelector('#player-container').style.backgroundColor = '#87d60c';
         }, 400)
         setTimeout(()=> {
             slideOutGameElements();
@@ -468,6 +469,11 @@ function startCountDown(){
             renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
         }, 2000);
         
+    } else if(cronoElement.textContent < 7){
+        cronoElement.textContent = (Number(cronoElement.textContent) - 1);
+        cronoElement.style.borderColor = 'transparent';
+        cronoElement.style.color = 'white';
+        cronoElement.style.backgroundColor = '#ed0404';
 
     } else {
     cronoElement.textContent = (Number(cronoElement.textContent) - 1);
@@ -631,7 +637,12 @@ function resetGameVariables(){
     for(let set in questionsDeck){
         questionsDeck[set].forEach(card => card.status = 0);
     }
-
+    gameScreen.querySelector('#player-container').style.backgroundColor = '#d8e5f9';
+    
+    cronoElement.style.borderColor = '#e5e5e5';
+    cronoElement.style.color = '#00a3ff';
+    cronoElement.style.backgroundColor = 'white';
+    
     totalScore = { right: 0, wrong: 0 };
     cardIndex = 0;
     stillQuestions = true;
