@@ -10,6 +10,7 @@
     }
     
     body {
+        position: relative;
         display: flex;
         background-color: #fafafa;
         flex-direction: column;
@@ -18,7 +19,31 @@
         width: 100%;
     }
     
-    
+    .footer {
+        position: absolute;  
+        display: flex; 
+        justify-content: center;
+        align-items: center; 
+        height: 60px;
+        width: 100%;
+        background-color: #132435;
+        bottom: 0px;
+    }
+    .footer p, a {
+        font-family: 'Inter';    
+        color: rgb(158, 158, 158);
+        font-size: 0.8rem;
+    }
+
+    .footer #github-logo {
+        width: 50px;
+        margin-left: 1rem;
+    }
+    .footer #sky-logo {
+        width: 130px;
+        margin-left: 1.5rem;
+
+    }
     /* ---------------------------------SELECT PLAYER---------------------------------*/
     
     .multi-player-grid {
@@ -99,7 +124,7 @@
     
     #select-player-icon{
         display: none;
-        width: 16%;
+        width: 12%;
         background-color: transparent;
         border: none;
         outline: none;
@@ -153,7 +178,7 @@
         font-size: 0.7rem;
         border: 1px solid #e5e7eb;
         border-radius: 10px;
-        width: 80%;
+        width: 90%;
         place-self: center;
         text-align: center;
         align-self: flex-start;
@@ -248,15 +273,15 @@
     }
     #abort-icono {
             position: absolute;
-            width: 30px;
-            top: -15px;
-            right: -15px;
+            width: 25px;
+            top: -12px;
+            right: -12px;
     }
     #abort-icono:hover {
             cursor: pointer;
-            width: 40px;
-            top: -20px;
-            right: -20px;
+            width: 30px;
+            top: -15px;
+            right: -15px;
     }
     
     #abc1 { 
@@ -1039,16 +1064,39 @@
         }
     }
     
-    @media screen and (min-width: 1300px) {
-            .game-wrapper {
-                    margin: 8% auto;
-            }
-    
-            .results-screen {
-                    width: 65%;
-                    max-width: 1000px;;
-                    margin: 8% auto;
-            }
+    @media screen and (min-width: 1300px) {     
+        .game-wrapper {
+                margin: 8% auto;
+        }
+
+        .results-screen {
+                width: 65%;
+                max-width: 1000px;;
+                margin: 8% auto;
+        }
+        
+        .text-input-name {
+        
+                font-size: 0.8rem;
+                width: 100%;
+        }
+
+        #question {
+                font-size: 0.8rem;
+        }
+        .text-input {
+                font-size: 0.8rem;
+        }
+
+        .question-card {
+                max-width: 800px;
+        }
+        
+        #input-button {
+                font-size: 0.72rem;
+        } 
+
+        
     
             
     }
