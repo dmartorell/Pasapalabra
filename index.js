@@ -169,7 +169,7 @@ abortButton.addEventListener('click', ()=>{
             let abortGame = confirm('¿Seguro que quieres abandonar la partida?');
             if(abortGame){
             slideOutGameElements();
-            reloadGame();
+            setTimeout(()=> reloadGame(), 500);
             } else{
             letterElement.style.color = 'rgba(26,59,90,0.9)';
             questionElement.style.color = '#2D2D2D';

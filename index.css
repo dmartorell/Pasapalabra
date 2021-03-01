@@ -467,7 +467,9 @@
         transition: 100ms;
         cursor: pointer;
     }
-    
+    #pasa-btn {
+            margin-top: 2.6rem;
+    }
     #pause-icon {
             width: 30%;
             margin-bottom: -3px;
@@ -1101,40 +1103,43 @@
             
     }
     @media screen and (max-width: 1300px) {
-            #player-container {
-                    width: 190px;
-                    height: 180px;
-            }
-            
-            #abort-icono {
-                    width: 20px;
-                    top: -10px;
-                    right: -10px;
-            }
-            #abort-icono:hover {
-                    width: 25px;
-                    top: -12px;
-                    right: -12px;
-            }
-    
-            .player-card {
-                    width: 65%;
-            }
-    
-            #abc2 { 
-                    top: -22px;
-                    left: 10px;
-                    letter-spacing: 0.6rem;
-            }
-            .multi-player-grid {
+        #player-container {
+                width: 190px;
+                height: 180px;
+        }
         
-                max-width: 620px;;
-                height: 75%;
-                gap: 8px;
-                margin: 2rem auto;
+        #abort-icono {
+                width: 20px;
+                top: -10px;
+                right: -10px;
+        }
+        #abort-icono:hover {
+                width: 25px;
+                top: -12px;
+                right: -12px;
+        }
+
+        .player-card {
+                width: 65%;
+        }
+
+        #abc2 { 
+                top: -22px;
+                left: 10px;
+                letter-spacing: 0.6rem;
+        }
+        .multi-player-grid {
+        
+        max-width: 620px;;
+        height: 75%;
+        gap: 8px;
+        margin: 2rem auto;
         }
         #exit-btn, #replay-btn {
                 margin: 6rem 2rem;
+        }
+        #pasa-btn {
+                margin-top: 1.2rem;
         }
     }
   
