@@ -37,7 +37,10 @@
 
     .footer #github-logo {
         width: 50px;
-        margin-left: 1rem;
+    }
+    
+    div.footer > a {
+            margin-left: 1rem;
     }
     .footer #sky-logo {
         width: 130px;
