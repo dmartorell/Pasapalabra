@@ -591,8 +591,8 @@ function appendRankingSection(ranking){
 
         const icono = document.createElement('img');
         icono.id = 'ok-icono';
-        icono.src = 'icono_ok.svg';
-        icono.alt = 'right answer icon';
+        icono.src = 'imagenes/icono_ok.svg';
+        icono.alt = 'imagenes/right answer icon';
 
         listElement.append(userName);
         listElement.append(userPoints);
