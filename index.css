@@ -1139,5 +1139,26 @@
         #pasa-btn {
                 margin-top: 1.2rem;
         }
+
+        .footer {
+                height: 50px;
+        }
+        .footer p, a {
+                font-size: 0.7rem;
+            }
+        
+            .footer #github-logo {
+                width: 40px;
+            }
+            
+            div.footer > a {
+                    margin-left: 0.6rem;
+            }
+            .footer #sky-logo {
+                width: 110px;
+                margin-left: 1.5rem;
+        
+            }
+
     }
   
