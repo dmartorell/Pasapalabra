@@ -105,7 +105,7 @@ let bestUsers = [
 ];
 
 let newRandomSet = createRandomSetFrom(questionsDeck);
-// newRandomSet.length = 2;  LINEA DE PRUEBA CON DOS PREGUNTAS
+// newRandomSet.length = 2;
 let remainingQuestions = newRandomSet.length;
 let currentCard = newRandomSet[cardIndex];
 
@@ -441,7 +441,7 @@ function managePressedKey(e){
         document.removeEventListener('keydown', managePressedKey);
         managePasapalabra();
     }
-    if(e.code === 'Enter'){
+    if(e.code === 'Enter' && !pasaButton.classList.contains('paused')){
         document.removeEventListener('keydown', managePressedKey);
         manageAnswer();
     } 
@@ -529,8 +529,6 @@ function slideOutGameElements(){
 
 function animateElements(){
     setTimeout(() => slideInGameElements(), 500);
-
-        // TODO: aprovechar para dar instrucciones de teclado en este espacio en blanco
     
     setTimeout(() => {
         letterElement.style.color = 'rgba(26,59,90,0.9)';
@@ -629,7 +627,7 @@ function changeLetterColor(letter, color){
 }
 
 function reloadGame(){
-    location.reload()  //reloads current document
+    location.reload();
 }
 
 function resetGameVariables(){
@@ -647,9 +645,12 @@ function resetGameVariables(){
     cardIndex = 0;
     stillQuestions = true;
     newRandomSet = createRandomSetFrom(questionsDeck);
-    // newRandomSet.length = 2;  LINEA DE PRUEBA CON DOS PREGUNTAS
+    // newRandomSet.length = 2;  
     remainingQuestions = newRandomSet.length;
     currentCard = newRandomSet[cardIndex];
+    inputAnswer.value = '';
+
+
 }
 
 
