@@ -1097,9 +1097,6 @@
         #input-button {
                 font-size: 0.72rem;
         } 
-
-        
-    
             
     }
     @media screen and (max-width: 1300px) {
@@ -1128,8 +1125,6 @@
                 left: 10px;
                 letter-spacing: 0.6rem;
         }
-        .multi-player-grid {
-        
         
         #abort-icono {
                 width: 20px;

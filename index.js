@@ -105,7 +105,7 @@ let bestUsers = [
 ];
 
 let newRandomSet = createRandomSetFrom(questionsDeck);
-// newRandomSet.length = 2;  LINEA DE PRUEBA CON DOS PREGUNTAS
+// newRandomSet.length = 2;
 let remainingQuestions = newRandomSet.length;
 let currentCard = newRandomSet[cardIndex];
 
@@ -647,9 +647,12 @@ function resetGameVariables(){
     cardIndex = 0;
     stillQuestions = true;
     newRandomSet = createRandomSetFrom(questionsDeck);
-    // newRandomSet.length = 2;  LINEA DE PRUEBA CON DOS PREGUNTAS
+    // newRandomSet.length = 2;  
     remainingQuestions = newRandomSet.length;
     currentCard = newRandomSet[cardIndex];
+    inputAnswer.value = '';
+
+
 }
 
 
