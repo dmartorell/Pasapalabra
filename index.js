@@ -529,8 +529,6 @@ function slideOutGameElements(){
 
 function animateElements(){
     setTimeout(() => slideInGameElements(), 500);
-
-        // TODO: aprovechar para dar instrucciones de teclado en este espacio en blanco
     
     setTimeout(() => {
         letterElement.style.color = 'rgba(26,59,90,0.9)';
@@ -629,7 +627,7 @@ function changeLetterColor(letter, color){
 }
 
 function reloadGame(){
-    location.reload()  //reloads current document
+    location.reload();
 }
 
 function resetGameVariables(){
