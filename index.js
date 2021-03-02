@@ -441,7 +441,7 @@ function managePressedKey(e){
         document.removeEventListener('keydown', managePressedKey);
         managePasapalabra();
     }
-    if(e.code === 'Enter'){
+    if(e.code === 'Enter' && !pasaButton.classList.contains('paused')){
         document.removeEventListener('keydown', managePressedKey);
         manageAnswer();
     } 
