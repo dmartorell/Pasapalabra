@@ -164,14 +164,15 @@ abortButton.addEventListener('click', ()=>{
         setTimeout(()=> {
             let abortGame = confirm('¿Seguro que quieres abandonar la partida?');
             if(abortGame){
+
             slideOutGameElements();
             setTimeout(()=> reloadGame(), 500);
+            
             } else{
             showQuestionCardElements();
             inputAnswer.disabled = false;
             inputAnswer.focus();
             inputAnswer.value = '';
-            userName.focus();
             }
         }, 100);
     }
@@ -204,7 +205,7 @@ replayButton.addEventListener('click', ()=> {
 // *** FUNCIONES *** //
 
 function init(){
-    setTimeout(showPlayerSelectorScreen, 200);
+    showPlayerSelectorScreen();
     setTimeout(showSelectPlayerIcon, 500);    
 }
 function showPlayerSelectorScreen(){
@@ -538,7 +539,7 @@ function hideQuestionCardElements(){
 function showQuestionCardElements(){
     letterElement.style.color = 'rgba(26,59,90,0.9)';
     questionElement.style.color = '#2D2D2D';
-    inputButton.style.display = 'inline';
+    inputButton.style.display = 'block';
 
 }
 
@@ -641,7 +642,7 @@ function resetGameVariables(){
     cronoElement.style.backgroundColor = 'white';
 
     pasaButton.style.display = 'block';
-    inputWrapper.style.display = 'inline';        
+    inputWrapper.style.display = 'block';        
 
     inputAnswer.textContent = '';
     inputAnswer.disabled = false; 
