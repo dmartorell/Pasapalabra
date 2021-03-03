@@ -90,8 +90,7 @@ let questionsDeck = {
         { letter: "z", answer: "zanahoria", status: 0, question: "CON LA Z. Planta que tiene una raíz comestible alargada de color anaranjado."}
     ],
 }
-const numOfSets = Object.keys(questionsDeck).length;
-const numOfQuestionsPerSet = Object.values(questionsDeck)[0].length;
+
 let totalScore = { right: 0, wrong: 0 };
 let cardIndex = 0;
 let stillQuestions = true;
@@ -105,9 +104,11 @@ let bestUsers = [
 ];
 
 let newRandomSet = createRandomSetFrom(questionsDeck);
-newRandomSet.length = 2;
+newRandomSet.length = 6;
 let remainingQuestions = newRandomSet.length;
 let currentCard = newRandomSet[cardIndex];
+let playerName = null;
+let timer = null;
 
 const playerSelectorScreen = document.getElementById('player-selector-screen');
 const selectPlayerIcon = document.getElementById('select-player-icon');
@@ -128,11 +129,6 @@ const pasaButton = document.getElementById('pasa-btn');
 const inputAnswer = document.querySelector('.text-input');
 const cronoElement = document.querySelector('.timer');
 const abortButton = document.getElementById('abort-icono')
-
-
-let playerName = null;
-let timer = null;
-
 // * fin VARIABLES GLOBALES * //
 
 
@@ -140,7 +136,7 @@ window.onload = init;
 
 document.addEventListener('mouseover', addEffectOnBackground);
 document.addEventListener('mouseout', removeEffectOnBackground);
-playerIcons.forEach(icon => icon.addEventListener('click', renderPlayerNameScreen));
+playerIcons.forEach(icon => icon.addEventListener('click', showPlayerNameScreen));
 
 
 playButton.addEventListener('click', () => {
@@ -148,22 +144,22 @@ playButton.addEventListener('click', () => {
         playerName = formatName(userName.value);
         inputPlayerNameScreen.classList.add('invisible');
         inputPlayerNameScreen.classList.remove('one-player-grid');
-        renderGameScreen(playerName, playerSrcImage);
+        showGameScreen(playerName, playerSrcImage);
     }
-    userName.focus();
+    else {
+        userName.focus();
+    }
 });
 
-pasaButton.addEventListener('click', managePasapalabra);
-inputButton.addEventListener('click', manageAnswer);
+pasaButton.addEventListener('click', handlePasapalabra);
+inputButton.addEventListener('click', handleAnswer);
 abortButton.addEventListener('click', ()=>{
 
     if(!pasaButton.classList.contains('paused')){
 
-        letterElement.style.color = 'transparent';
-        questionElement.style.color = 'transparent';
-        inputButton.style.display = 'none';
-        inputAnswer.value = '';
+        hideQuestionCardElements();
         inputAnswer.disabled = true;
+        inputAnswer.value = '';
         
         setTimeout(()=> {
             let abortGame = confirm('¿Seguro que quieres abandonar la partida?');
@@ -171,9 +167,7 @@ abortButton.addEventListener('click', ()=>{
             slideOutGameElements();
             setTimeout(()=> reloadGame(), 500);
             } else{
-            letterElement.style.color = 'rgba(26,59,90,0.9)';
-            questionElement.style.color = '#2D2D2D';
-            inputButton.style.display = 'inline';
+            showQuestionCardElements();
             inputAnswer.disabled = false;
             inputAnswer.focus();
             inputAnswer.value = '';
@@ -190,79 +184,75 @@ exitButton.addEventListener('click', reloadGame);
 
 replayButton.addEventListener('click', ()=> {
 
-
-    document.addEventListener('keydown', managePressedKey);
-    cronoElement.textContent = '120';
-    pasaButton.style.display = 'block';
-    inputWrapper.style.display = 'block';   
-    letterElement.style.color = 'rgba(26,59,90,0.9)';
-    questionElement.style.color = '#2D2D2D';
-    inputButton.style.display = 'inline';
-    inputAnswer.textContent = '';
-    inputAnswer.disabled = false;     
-    
     resultsScreen.classList.add('invisible');
-    document.querySelector('.game-wrapper').classList.remove('slide-in-top-reverse');
+    
     document.getElementById('player-container').innerHTML = `
         <p id="abc1">ABCDEFGHI</p>
         <p id="abc2">JKLMNÑOPQ</p>
         <p id="abc3">RSTUVWXYZ</p>
-        <img class="player-icon" src="icono_player_01.svg" alt="player one icon">
+        <img class="player-icon" src="" alt="player icon">
         <p id="player-name"></p>`;
     
     resetGameVariables();
-    pasaButton.addEventListener('click', managePasapalabra);
-    renderGameScreen(playerName, playerSrcImage);
+
+    pasaButton.addEventListener('click', handlePasapalabra);
+    
+    showGameScreen(playerName, playerSrcImage);
 
 });
 
 // *** FUNCIONES *** //
 
 function init(){
-    // Entrada iconos players en delay
-    setTimeout(() => {
-        playerSelectorScreen.classList.remove('invisible');
-        playerSelectorScreen.classList.add('multi-player-grid');
-    }, 200);
-    // Entrada icono interrogación en delay
-    setTimeout(() => {
-        selectPlayerIcon.classList.remove('invisible');
-        selectPlayerIcon.style.display="block";
-        selectPlayerIcon.classList.add('pulsate-bck');
-    }, 500);
+    setTimeout(showPlayerSelectorScreen, 200);
+    setTimeout(showSelectPlayerIcon, 500);    
+}
+function showPlayerSelectorScreen(){
+    playerSelectorScreen.classList.remove('invisible');
 }
 
-function renderPlayerNameScreen(e){
+function hidePlayerSelectorScreen(){
+    document.removeEventListener('mouseover', addEffectOnBackground);
+    playerIcons.forEach(icon => icon.removeEventListener('click', showPlayerNameScreen));
+    selectPlayerIcon.classList.add('invisible');
+    playerSelectorScreen.classList.add('invisible');
+}
+
+function showSelectPlayerIcon(){
+    selectPlayerIcon.style.display = 'block';
+}
+
+function showPlayerNameScreen(e){
     
     const element = e.target;
     const parent = element.parentNode;
     const backgroundColor = element.previousElementSibling;
 
-    document.removeEventListener('mouseover', addEffectOnBackground);
-    playerIcons.forEach(icon => icon.removeEventListener('click', renderPlayerNameScreen));
-    selectPlayerIcon.classList.add('invisible');
-    playerSelectorScreen.classList.add('invisible');
+    hidePlayerSelectorScreen();
+    
     inputPlayerNameScreen.classList.remove('invisible');
     inputPlayerNameScreen.classList.add('one-player-grid');
     
-    createPlayerIconHtmlElements(parent, element, backgroundColor);
+    const playerAvatar = createPlayerAvatar(parent, element, backgroundColor);
+    playerSrcImage = playerAvatar.querySelector('img').src;
+    inputPlayerNameScreen.insertBefore(playerAvatar, userName);
     userName.focus();
-    playerSrcImage = parent.lastElementChild.src;
-    parent.className = 'player-box';
-    parent.classList.add('scale-in-center');
 }
 
-function createPlayerIconHtmlElements(parent, element, backgroundColor){
-    inputPlayerNameScreen.firstElementChild.append(parent);
-    parent.style.gridArea = 'auto';
+function createPlayerAvatar(parent, imgElement, backgroundColor){
+    const playerIcon = document.createElement('div');
+    playerIcon.classList = 'player-box scale-in-center';
+    playerIcon.id = parent.id;
+    playerIcon.style.gridArea = 'auto';
     backgroundColor.style.width = '200%';
     backgroundColor.style.height = '93%';
     backgroundColor.style.left = '-50%'
-    element.style.marginTop = '20px';
-    element.style.cursor = 'auto';
-    element.classList.remove('swing-in-top-fwd')
-    parent.classList.remove('slide-left');
-
+    imgElement.style.marginTop = '20px';
+    imgElement.style.cursor = 'auto';
+    imgElement.classList.remove('swing-in-top-fwd')
+    playerIcon.append(backgroundColor);
+    playerIcon.append(imgElement);
+    return playerIcon;
 }
 
 function checkAnswer(){
@@ -288,7 +278,6 @@ function checkAnswer(){
         currentCard = newRandomSet[cardIndex];
         totalScore.wrong++;
     }
-
 }
 
 function showNextQuestion(){
@@ -312,7 +301,7 @@ function showNextQuestion(){
         }
     }
     
-    inputButton.removeEventListener('click', manageAnswer);
+    inputButton.removeEventListener('click', handleAnswer);
 
     letterElement.classList.add('jello-horizontal');
     letterElement.textContent = currentCard.letter.toUpperCase();
@@ -320,18 +309,28 @@ function showNextQuestion(){
     
     setTimeout(()=> {
         letterElement.classList.remove('jello-horizontal');
-        inputButton.addEventListener('click', manageAnswer);
+        inputButton.addEventListener('click', handleAnswer);
 
     }, 200);
 
 }
 
 function isValidPlayerName(value){
-    return value.match(/\w+/);   //username validation: evitar 'strings de solo espacios en blanco
+    return value.match(/\w+/);   //username validation: chequea que al menos haya un caracter.
 }
 
-function manageAnswer(){
-    inputButton.removeEventListener('click', manageAnswer);
+function throwParty(){
+    confetti.speed = 2;
+    confetti.frameInterval = 10;
+    confetti.start(7000,500);
+    const congratsMessage = document.createElement('h1');
+    congratsMessage.textContent = '¡ ROSCO COMPLETADO !';
+    questionContainer.append(congratsMessage);
+    gameScreen.querySelector('#player-container').style.backgroundColor = '#87d60c';
+}
+
+function handleAnswer(){
+    inputButton.removeEventListener('click', handleAnswer);
     checkAnswer();
 
     //ROSCO COMPLETADO : TODAS LAS RESPUESTAS SON CORRECTAS
@@ -339,28 +338,17 @@ function manageAnswer(){
     if(totalScore.right === newRandomSet.length){
         pasaButton.style.display = 'none';
         inputWrapper.style.display = 'none';        
-        letterElement.style.color = 'transparent';
-        questionElement.style.color = 'transparent';
         abortButton.style.display = 'none';
+
+        hideQuestionCardElements();
         stopCountdown();
-        const congratsMessage = document.createElement('h1');
-
-        setTimeout(()=> {
-            confetti.speed = 2;
-            confetti.frameInterval = 10;
-            confetti.start(7000,500);
-
-            congratsMessage.textContent = '¡ ROSCO COMPLETADO !';
-            questionContainer.append(congratsMessage);
-            gameScreen.querySelector('#player-container').style.backgroundColor = '#87d60c';
-        }, 400)
+        setTimeout(throwParty, 400);
         setTimeout(()=> {
             slideOutGameElements();
             setTimeout(()=> {
-                document.body.style.alignItems = 'center'; 
+                const congratsMessage = questionContainer.querySelector('h1');
                 congratsMessage.remove();
-                abortButton.style.display = 'block';
-                renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
+                showResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
             }, 1200);
         },8000);
     
@@ -369,26 +357,26 @@ function manageAnswer(){
         setTimeout(()=> {
             showNextQuestion();
             inputAnswer.focus();
+
             if(!stillQuestions){
                 inputAnswer.blur();
                 stopCountdown();
-                pasaButton.removeEventListener('click', managePasapalabra);
+                pasaButton.removeEventListener('click', handlePasapalabra);
                 slideOutGameElements();
                 setTimeout(()=> {
-                    document.body.style.alignItems = 'center'; 
-                    renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
+                    showResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
                 }, 1200);
             }
         }, 400);
     }
 }
 
-function renderResultsScreen(resultObject, bestUsers){
+function showResultsScreen(resultObject, bestUsers){
 
-    playerSelectorScreen.classList.add('invisible');
-    inputPlayerNameScreen.classList.add('invisible');
-    gameScreen.classList.add('invisible');
+    hideGameScreen();
     resultsScreen.classList.remove('invisible');
+
+    document.body.style.alignItems = 'center'; 
 
     let { totalScore, playerName, playerSrcImage } = resultObject;
     updateRanking(totalScore.right, playerName, bestUsers);
@@ -400,7 +388,6 @@ function renderResultsScreen(resultObject, bestUsers){
     const playerImage = document.querySelector('.result-screen-icon');
     playerImage.src = playerSrcImage;
 
-
     const rightAnswersElement = document.getElementById('ok-icono').nextElementSibling;
     rightAnswersElement.textContent = String(totalScore.right).padStart(2,'0');
     const wrongAnswersElement = document.getElementById('wrong-icono').nextElementSibling;
@@ -408,6 +395,10 @@ function renderResultsScreen(resultObject, bestUsers){
 }
 
 function createRandomSetFrom(mainDeck){
+
+    const numOfSets = Object.keys(mainDeck).length;
+    const numOfQuestionsPerSet = Object.values(mainDeck)[0].length;
+
     let mainDeckCopy = JSON.parse(JSON.stringify(mainDeck));
     let newRandomSet = [];
 
@@ -419,13 +410,13 @@ function createRandomSetFrom(mainDeck){
     return newRandomSet;
 }
 
-function renderGameScreen(playerName, playerSrcImage){
+function showGameScreen(playerName, playerSrcImage){
     const playerIcon = document.querySelector('.player-icon');
     playerIcon.src = playerSrcImage;
     const playerNameField = document.getElementById('player-name');
     playerNameField.textContent = playerName;
 
-    document.addEventListener('keydown', managePressedKey);
+    document.addEventListener('keydown', handlePressedKey);
 
     animateElements();
     showNextQuestion();
@@ -435,19 +426,23 @@ function renderGameScreen(playerName, playerSrcImage){
     }, 800);
 }
 
-function managePressedKey(e){
+function hideGameScreen(){
+    gameScreen.classList.add('invisible');
+}
+
+function handlePressedKey(e){
     
     if(e.code === 'Space'){
-        document.removeEventListener('keydown', managePressedKey);
-        managePasapalabra();
+        document.removeEventListener('keydown', handlePressedKey);
+        handlePasapalabra();
     }
     if(e.code === 'Enter' && !pasaButton.classList.contains('paused')){
-        document.removeEventListener('keydown', managePressedKey);
-        manageAnswer();
+        document.removeEventListener('keydown', handlePressedKey);
+        handleAnswer();
     } 
     // setTimeout para bloquear teclado mientras la próxima pregunta aún no ha aparecido //
     setTimeout(()=> {
-        document.addEventListener('keydown', managePressedKey);
+        document.addEventListener('keydown', handlePressedKey);
     }, 300)
 }
 
@@ -456,17 +451,16 @@ function startCountDown(){
         cronoElement.textContent = '0'
         stopCountdown();
 
-        document.removeEventListener('keydown', managePressedKey);
+        document.removeEventListener('keydown', handlePressedKey);
 
         pasaButton.style.display = 'none';
         inputWrapper.style.display = 'none';        
-        letterElement.style.color = 'transparent';
-        questionElement.style.color = 'transparent';
+        hideQuestionCardElements();
 
         setTimeout(()=> slideOutGameElements(), 1200);
         setTimeout(()=> {
             document.body.style.alignItems = 'center'; 
-            renderResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
+            showResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
         }, 2000);
         
     } else if(cronoElement.textContent < 7){
@@ -484,27 +478,22 @@ function stopCountdown(){
     clearInterval(timer);
 }
 
-function managePasapalabra(){
+function handlePasapalabra(){
     if(remainingQuestions !== 1){
         pasaButton.classList.toggle('paused');
 
 
         if(pasaButton.classList.contains('paused')){
             stopCountdown();
-            pasaButton.textContent = '';
             pasaButton.innerHTML = '&#10074&#10074';
-            letterElement.style.color = 'transparent';
-            questionElement.style.color = 'transparent';
-            inputButton.style.display = 'none';
+            hideQuestionCardElements();
             inputAnswer.value = '';
             inputAnswer.disabled = true;
         }
         else {
             pasaButton.textContent = 'PASAPALABRA';
             timer = setInterval(()=> startCountDown(), 1000);
-            letterElement.style.color = 'rgba(26,59,90,0.9)';
-            questionElement.style.color = '#2D2D2D';
-            inputButton.style.display = 'inline';
+            showQuestionCardElements();
             inputAnswer.disabled = false;
 
             inputAnswer.focus();
@@ -515,7 +504,7 @@ function managePasapalabra(){
             showNextQuestion();
             
             if(!stillQuestions){
-                pasaButton.removeEventListener('click', managePasapalabra);
+                pasaButton.removeEventListener('click', handlePasapalabra);
             }
         }
     }
@@ -528,21 +517,34 @@ function slideOutGameElements(){
 }
 
 function animateElements(){
+    hideQuestionCardElements();
+    inputWrapper.style.zIndex = -1;
+
     setTimeout(() => slideInGameElements(), 500);
     
     setTimeout(() => {
-        letterElement.style.color = 'rgba(26,59,90,0.9)';
-        questionElement.style.color = '#2D2D2D';
+        showQuestionCardElements();
         inputWrapper.style.zIndex = 0;
-
         inputAnswer.focus();
     }, 1000);
+}
+
+function hideQuestionCardElements(){
+    letterElement.style.color = 'transparent';
+    questionElement.style.color = 'transparent';
+    inputButton.style.display = 'none';
+};
+
+function showQuestionCardElements(){
+    letterElement.style.color = 'rgba(26,59,90,0.9)';
+    questionElement.style.color = '#2D2D2D';
+    inputButton.style.display = 'inline';
+
 }
 
 function addEffectOnBackground(e){
     const element = e.target;
     if(element.className === 'p-icon'){
-        const element = e.target;
         element.previousElementSibling.style.backgroundColor = '#cbdffc';
     }
 }
@@ -572,10 +574,7 @@ function updateRanking (score, playerName, bestUsers){
 
 function appendRankingSection(ranking){
     const rankingSection = document.getElementById('ranking');
-
-    if(isAlreadyPreviousRanking){
-        rankingSection.innerHTML = `<h1>RANKING DE PUNTUACIÓN</h1>`;
-    }
+    rankingSection.innerHTML = `<h1>RANKING DE PUNTUACIÓN</h1>`;
         
     for(let player of ranking){
         const listElement = document.createElement('div');
@@ -600,10 +599,6 @@ function appendRankingSection(ranking){
 
         rankingSection.append(listElement);
     }
-}
-
-function isAlreadyPreviousRanking(){
-    return document.querySelector('.list');
 }
 
 function slideInGameElements(){
@@ -636,21 +631,29 @@ function resetGameVariables(){
         questionsDeck[set].forEach(card => card.status = 0);
     }
     gameScreen.querySelector('#player-container').style.backgroundColor = '#d8e5f9';
-    
+    document.addEventListener('keydown', handlePressedKey);    
+    document.querySelector('.game-wrapper').classList.remove('slide-in-top-reverse');
+    abortButton.style.display = 'block';
+
+    cronoElement.textContent = '120';
     cronoElement.style.borderColor = '#e5e5e5';
     cronoElement.style.color = '#00a3ff';
     cronoElement.style.backgroundColor = 'white';
-    
+
+    pasaButton.style.display = 'block';
+    inputWrapper.style.display = 'inline';        
+
+    inputAnswer.textContent = '';
+    inputAnswer.disabled = false; 
+
     totalScore = { right: 0, wrong: 0 };
     cardIndex = 0;
     stillQuestions = true;
     newRandomSet = createRandomSetFrom(questionsDeck);
-    newRandomSet.length = 2;  
+    newRandomSet.length = 6;  
     remainingQuestions = newRandomSet.length;
     currentCard = newRandomSet[cardIndex];
     inputAnswer.value = '';
-
-
 }
 
 

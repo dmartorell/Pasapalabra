@@ -154,7 +154,7 @@
     /* ------------------------------------INPUT PLAYER NAME-------------------------*/
     
     .one-player-grid {
-            display: grid;
+        display: grid;
         align-content: center;
         align-items: flex-end;
         width: 65%;
