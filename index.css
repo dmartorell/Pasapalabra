@@ -51,6 +51,7 @@
     
     .multi-player-grid {
         display: grid;
+        position: relative;
         width: 65%;
         max-width: 800px;;
         min-width: 300px;
@@ -76,6 +77,19 @@
         position: relative;
     }
     
+    .title {
+        position: absolute;
+        font-family: 'Montserrat';
+        font-weight: 800;
+        font-size: 5rem;
+        color: #fafafa;
+        transform: rotate(-90deg);
+        top: 55px;
+        letter-spacing: 0.6rem;
+        grid-area: select;
+        -webkit-text-stroke: 1px #00A3FF; /* width and color */
+
+    }
     .p-icon {
         width: 100%; 
         cursor: pointer;
@@ -290,7 +304,7 @@
         transform: rotate(-90deg);
         top: 90px;
         left: -105px;
-        letter-spacing: 0.6rem;;
+        letter-spacing: 0.6rem;
     }
     #abc2 { 
         position: absolute;

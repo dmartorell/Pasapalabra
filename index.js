@@ -166,7 +166,7 @@ abortButton.addEventListener('click', ()=>{
             if(abortGame){
 
             slideOutGameElements();
-            setTimeout(()=> reloadGame(), 500);
+            reloadGame();
             
             } else{
             showQuestionCardElements();
@@ -181,7 +181,10 @@ abortButton.addEventListener('click', ()=>{
 const replayButton = document.getElementById('replay-btn');
 const exitButton = document.getElementById('exit-btn');
 
-exitButton.addEventListener('click', reloadGame);
+exitButton.addEventListener('click', ()=> {
+    resultsScreen.classList.add('invisible');
+    reloadGame();
+});
 
 replayButton.addEventListener('click', ()=> {
 
@@ -623,7 +626,7 @@ function changeLetterColor(letter, color){
 }
 
 function reloadGame(){
-    location.reload();
+    setTimeout(()=> location.reload(), 1000);
 }
 
 function resetGameVariables(){
