@@ -112,7 +112,7 @@ let timer = null;
 
 const playerSelectorScreen = document.getElementById('player-selector-screen');
 const selectPlayerIcon = document.getElementById('select-player-icon');
-const title = document.querySelector('.title');
+const title = document.querySelector('#logo-pasapalabra');
 const inputPlayerNameScreen = document.getElementById('input-player-name-screen');
 const playerIcons = document.querySelectorAll('.p-icon');
 const gameScreen = document.querySelector('.game-screen');
@@ -444,7 +444,7 @@ function hideGameScreen(){
 function handlePressedKey(e){
     
     if(e.code === 'Space'){
-        document.removeEventListener('keydown', handlePressedKey);
+        // document.removeEventListener('keydown', handlePressedKey);
         handlePasapalabra();
     }
     if(e.code === 'Enter' && !pasaButton.classList.contains('paused')){
@@ -492,6 +492,7 @@ function stopCountdown(){
 function handlePasapalabra(){
     if(remainingQuestions !== 1){
         pasaButton.classList.toggle('paused');
+        console.log('clicked');
 
 
         if(pasaButton.classList.contains('paused')){

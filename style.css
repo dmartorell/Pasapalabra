@@ -77,24 +77,13 @@
         position: relative;
     }
     
-    .title {
-        font-family: 'Montserrat';
-        font-weight: 800;
-        font-size: 5.5rem;
-        color: #fafafa;
-        letter-spacing: 0.1rem;
-        grid-area: select;
-        letter-spacing: 0.2rem;
-        -webkit-text-stroke: 1px rgba(0, 163, 255, 0.5); /* width and color */
-    }
-
-    .title1 {
+    #logo-pasapalabra {
         display: none;
-        position: absolute;
-        transform: rotate(-90deg);
-        top: 50px;
-        left: -660px;
-    } 
+        grid-area: select;
+        align-self: center;
+        width: 25%;
+        min-width: 90px;
+    }
 
     .p-icon {
         width: 100%; 
@@ -148,6 +137,7 @@
     #select-player-icon{
         display: none;
         width: 12%;
+        min-width: 40px;
         background-color: transparent;
         border: none;
         outline: none;
