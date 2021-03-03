@@ -112,6 +112,7 @@ let timer = null;
 
 const playerSelectorScreen = document.getElementById('player-selector-screen');
 const selectPlayerIcon = document.getElementById('select-player-icon');
+const title = document.querySelector('.title');
 const inputPlayerNameScreen = document.getElementById('input-player-name-screen');
 const playerIcons = document.querySelectorAll('.p-icon');
 const gameScreen = document.querySelector('.game-screen');
@@ -210,6 +211,7 @@ replayButton.addEventListener('click', ()=> {
 function init(){
     showPlayerSelectorScreen();
     setTimeout(showSelectPlayerIcon, 500);    
+    setTimeout(showTitle, 500);    
 }
 function showPlayerSelectorScreen(){
     playerSelectorScreen.classList.remove('invisible');
@@ -224,6 +226,11 @@ function hidePlayerSelectorScreen(){
 
 function showSelectPlayerIcon(){
     selectPlayerIcon.style.display = 'block';
+}
+function showTitle(){
+    title.style.display = 'block';
+
+
 }
 
 function showPlayerNameScreen(e){
