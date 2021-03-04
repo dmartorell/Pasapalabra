@@ -176,7 +176,19 @@
         height: 100vh;
         margin-top: 2rem;
     }
-    
+
+    .bkg-avatar {
+        width: 200%;
+        height: 93%;
+        left: -50%;
+    }
+
+    .img-avatar {
+        margin-top: 20px;
+        cursor: auto;
+        width: 105%;
+    }
+
     #input-name-icon {
         max-width: 22%;
         place-self: center; 

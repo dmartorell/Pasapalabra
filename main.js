@@ -236,7 +236,6 @@ function showTitle(){
 function showPlayerNameScreen(e){
     
     const element = e.target;
-    const parent = element.parentNode;
     const backgroundColor = element.previousElementSibling;
 
     hidePlayerSelectorScreen();
@@ -244,31 +243,35 @@ function showPlayerNameScreen(e){
     inputPlayerNameScreen.classList.remove('invisible');
     inputPlayerNameScreen.classList.add('one-player-grid');
     
-    const playerAvatar = createPlayerAvatar(parent, element, backgroundColor);
+    const playerAvatar = createPlayerAvatar(element, backgroundColor);
     playerSrcImage = playerAvatar.querySelector('img').src;
     inputPlayerNameScreen.insertBefore(playerAvatar, userName);
     userName.focus();
 }
 
-function createPlayerAvatar(parent, imgElement, backgroundColor){
-    const playerIcon = document.createElement('div');
-    playerIcon.classList = 'player-box scale-in-center';
-    playerIcon.id = parent.id;
-    playerIcon.style.gridArea = 'auto';
-    backgroundColor.style.width = '200%';
-    backgroundColor.style.height = '93%';
-    backgroundColor.style.left = '-50%'
-    imgElement.style.marginTop = '20px';
-    imgElement.style.cursor = 'auto';
-    imgElement.classList.remove('swing-in-top-fwd')
-    playerIcon.append(backgroundColor);
-    playerIcon.append(imgElement);
-    return playerIcon;
+function createPlayerAvatar(imgElement, backgroundColor){
+    
+    const playerAvatar = document.createElement('div');
+    playerAvatar.classList = 'player-box scale-in-center';
+    playerAvatar.style.gridArea = 'auto';
+    
+    const avatarImg = document.createElement('img');
+    avatarImg.classList = 'img-avatar';
+    avatarImg.src = imgElement.src;
+    
+    const avatarBackground = document.createElement('div');
+    avatarBackground.classList.add('bkg-avatar');
+    avatarBackground.classList.add(`${backgroundColor.className}`);
+
+    playerAvatar.append(avatarBackground);
+    playerAvatar.append(avatarImg);
+
+    return playerAvatar;
 }
 
 function checkAnswer(){
 
-    if(inputAnswer.value.toLowerCase() === currentCard.answer){
+    if(inputAnswer.value.toLowerCase().trim() === currentCard.answer){
         //RIGHT
         changeLetterColor(currentCard.letter.toUpperCase(), 'green');
         inputAnswer.value = '';
@@ -492,14 +495,13 @@ function stopCountdown(){
 function handlePasapalabra(){
     if(remainingQuestions !== 1){
         pasaButton.classList.toggle('paused');
-        console.log('clicked');
-
 
         if(pasaButton.classList.contains('paused')){
+            inputAnswer.blur();
+
             stopCountdown();
             pasaButton.innerHTML = '&#10074&#10074';
             hideQuestionCardElements();
-            inputAnswer.value = '';
             inputAnswer.disabled = true;
         }
         else {
@@ -507,12 +509,11 @@ function handlePasapalabra(){
             timer = setInterval(()=> startCountDown(), 1000);
             showQuestionCardElements();
             inputAnswer.disabled = false;
-
+            inputAnswer.value = '';
             inputAnswer.focus();
 
             cardIndex++;
             currentCard = newRandomSet[cardIndex];
-            inputAnswer.value = '';
             showNextQuestion();
             
             if(!stillQuestions){
@@ -520,6 +521,10 @@ function handlePasapalabra(){
             }
         }
     }
+    inputAnswer.value = '';
+    inputAnswer.focus();
+
+
     return;
     
 }
