@@ -656,7 +656,7 @@
     
     #results-player-name {
             font-family: 'Nothing you could do', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 400;
             text-align: center;
             color: rgb(45,45,45);
@@ -1196,14 +1196,26 @@
                 font-size: 2rem;
                 color: #00a3ff;
                 z-index: 10;
-            }
+        }
+
+        .timer-border {
+        width: 75px;
+        height: 65px;
+        background-color: white;
+
+        }
         
-            .timer-border {
-                width: 75px;
-                height: 65px;
-                background-color: white;
+        #results-player-name {
+                font-size: 1.2rem;
+                
+        }
+        div.results p {
+                font-size: 1rem;
+        }
+        .results #ok-icono, .results #wrong-icono {
+                width: 60%;
+        }
         
-            } 
 
     }
   
