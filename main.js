@@ -233,7 +233,6 @@ function showSelectPlayerIcon(){
 function showTitle(){
     title.style.display = 'block';
 
-
 }
 
 function showPlayerNameScreen(e){
@@ -450,7 +449,6 @@ function hideGameScreen(){
 function handlePressedKey(e){
     
     if(e.code === 'Space'){
-        // document.removeEventListener('keydown', handlePressedKey);
         handlePasapalabra();
     }
     if(e.code === 'Enter' && !pasaButton.classList.contains('paused')){
@@ -526,8 +524,6 @@ function handlePasapalabra(){
     }
     inputAnswer.value = '';
     inputAnswer.focus();
-
-
     return;
     
 }
