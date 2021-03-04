@@ -151,7 +151,7 @@ playButton.addEventListener('click', () => {
         userName.focus();
         let usernameIcon = document.querySelector('#input-name-icon');
         usernameIcon.className = '';
-        setTimeout(()=> usernameIcon.className = 'swing-in-top-fwd', 0);
+        setTimeout(()=> usernameIcon.className = 'swing-in-top-fwd', 30);
     }
 });
 
