@@ -1184,6 +1184,12 @@ p.info {
                 gap: 8px;
                 margin: 2rem auto;
         }
+        /* .img-avatar {
+                width: 90%;
+        } */
+        .player-box {
+                width: 90%;
+        }
         #exit-btn, #replay-btn {
                 margin: 6rem 2rem;
         }
