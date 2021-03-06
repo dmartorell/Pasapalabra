@@ -9,7 +9,7 @@
         padding: 0;
     }
     
-    body {
+body {
         position: relative;
         display: flex;
         background-color: #fafafa;
@@ -17,9 +17,9 @@
         align-items: center;
         height: 100vh;
         width: 100%;
-    }
-    
-    .footer {
+}
+
+.footer {
         position: absolute;  
         display: flex; 
         justify-content: center;
@@ -28,28 +28,28 @@
         width: 100%;
         background-color: #132435;
         bottom: 0px;
-    }
-    .footer p, a {
+}
+.footer p, a {
         font-family: 'Inter', sans-serif;    
         color: rgb(158, 158, 158);
         font-size: 0.8rem;
-    }
+}
 
-    .footer #github-logo {
+.footer #github-logo {
         width: 50px;
-    }
-    
-    div.footer > a {
-            margin-left: 1rem;
-    }
-    .footer #sky-logo {
+}
+
+div.footer > a {
+        margin-left: 1rem;
+}
+.footer #sky-logo {
         width: 130px;
         margin-left: 1.5rem;
 
-    }
-    /* ---------------------------------SELECT PLAYER---------------------------------*/
-    
-    .multi-player-grid {
+}
+/* ---------------------------------SELECT PLAYER---------------------------------*/
+
+.multi-player-grid {
         display: grid;
         position: relative;
         width: 65%;
@@ -58,39 +58,39 @@
         grid-template-columns: minmax(90px, 19%) minmax(200px, 1fr) minmax(90px, 19%);
         grid-template-rows: auto;
         grid-template-areas: 
-            "player1 . player2"
-            "player3 select player4"
-            "player5 . player6";
+                "player1 . player2"
+                "player3 select player4"
+                "player5 . player6";
         justify-content: center;
         justify-items: center;
         align-content: center;
         gap: 15px 0;
         margin: 5em auto;
         height: 70%;
-    }
-    
-    .invisible {
+}
+
+.invisible {
         display: none;
-    }
-    
-    .player-box {
+}
+
+.player-box {
         position: relative;
-    }
-    
-    #logo-pasapalabra {
+}
+
+#logo-pasapalabra {
         display: none;
         grid-area: select;
         align-self: center;
         width: 25%;
         min-width: 90px;
-    }
+}
 
-    .p-icon {
+.p-icon {
         width: 100%; 
         cursor: pointer;
-    
-    }
-    .box-bkg-left {
+
+}
+.box-bkg-left {
         background-color: #ecf4ff;
         position: absolute;
         width: 200%;
@@ -100,9 +100,9 @@
         border-top-left-radius: 85%;
         border-bottom-right-radius: 70%;
         border-top-right-radius: 50%;
-    
-    }
-    .box-bkg-right {
+
+}
+.box-bkg-right {
         background-color: #ecf4ff;
         position: absolute;
         width: 200%;
@@ -114,27 +114,27 @@
         border-top-left-radius: 50%;
         border-bottom-right-radius: 85%;
         border-top-right-radius: 65%;
-    }
-    #player-one {
+}
+#player-one {
         grid-area: player1;
-    }
-    #player-two {
+}
+#player-two {
         grid-area: player2;
-    }
-    #player-three {
+}
+#player-three {
         grid-area: player3;
-    }
-    #player-four {
+}
+#player-four {
         grid-area: player4;
-    }
-    #player-five {
+}
+#player-five {
         grid-area: player5;
-    }
-    #player-six {
+}
+#player-six {
         grid-area: player6;
-    }
-    
-    #select-player-icon{
+}
+
+#select-player-icon{
         display: none;
         width: 12%;
         min-width: 40px;
@@ -145,25 +145,25 @@
         grid-area: select;
         align-self: center;
         justify-self:center;
-    }
-    
-    .slide-right {
-            -webkit-animation: slide-right 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
-                    animation: slide-right 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
-    }
-    .slide-left {
-            -webkit-animation: slide-left 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
-                    animation: slide-left 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
-    }
-    
-    .pulsate-bck {
-            -webkit-animation: pulsate-bck 0.8s ease-in-out infinite both;
-                    animation: pulsate-bck 0.8s ease-in-out infinite both;
-    }
-    
-    /* ------------------------------------INPUT PLAYER NAME-------------------------*/
-    
-    .one-player-grid {
+}
+
+.slide-right {
+        -webkit-animation: slide-right 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
+                animation: slide-right 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
+}
+.slide-left {
+        -webkit-animation: slide-left 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
+                animation: slide-left 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) 0ms;
+}
+
+.pulsate-bck {
+        -webkit-animation: pulsate-bck 0.8s ease-in-out infinite both;
+                animation: pulsate-bck 0.8s ease-in-out infinite both;
+}
+
+/* ------------------------------------INPUT PLAYER NAME-------------------------*/
+
+.one-player-grid {
         display: grid;
         align-content: center;
         align-items: flex-end;
@@ -175,27 +175,27 @@
         padding-bottom: 10%;
         height: 100vh;
         margin-top: 2rem;
-    }
+}
 
-    .bkg-avatar {
+.bkg-avatar {
         width: 200%;
         height: 93%;
         left: -50%;
-    }
+}
 
-    .img-avatar {
+.img-avatar {
         margin-top: 20px;
         cursor: auto;
         width: 105%;
-    }
+}
 
-    #input-name-icon {
+#input-name-icon {
         max-width: 22%;
         place-self: center; 
         align-self: flex-start;
-    }
-    
-    .text-input-name {
+}
+
+.text-input-name {
         margin-top: 0.7rem;
         padding: 8px 13px 8px 13px;
         color: rgba(117,117,117,0.7);
@@ -207,14 +207,14 @@
         place-self: center;
         text-align: center;
         align-self: flex-start;
-    }
-    .text-input-name:focus {
+}
+.text-input-name:focus {
         outline: none;
         border-radius: 10px;
         border: 1px solid rgba(113, 136, 159, 0.6);
-    
-    }
-    #play-button {
+
+}
+#play-button {
         margin-top: 2.5rem;
         font-size: 0.8rem;
         padding: 0.7rem 0.6rem;
@@ -229,55 +229,55 @@
         transition: 100ms;
         cursor: pointer;
         align-self: flex-start;
-    }
-    
-    #play-button:hover {
+}
+
+#play-button:hover {
         background-color: #1A3B5A;
         border: 1px solid #1A3B5A;
         color: #ffffff;
-    }
-    .group {
-            align-self: flex-end;
-            display: flex;
-            flex-direction: column;
-    }
-    
-    p.info {
-            color: #8b8a8a;
-            font-size: 0.75rem;
-            text-align: center;
-            font-family: 'Montserrat';
-            line-height: 1.1rem;
-    }
-    
-    .icono-keyboard {
-            width: 25%;
-            align-self: center;
-            margin-bottom: 0.5rem;
-            
-    }
-    
-    .scale-in-center {
-            -webkit-animation: scale-in-center 0.2s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
-                    animation: scale-in-center 0.2s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
-    }
-    
-    .swing-in-top-fwd {
-            -webkit-animation: swing-in-top-fwd 0.5s cubic-bezier(0.18, 0.89, 0.38, 2.3) 0.1s both;
-                    animation: swing-in-top-fwd 0.4s cubic-bezier(0.18, 0.89, 0.38, 2.3) 0.2s both;
-    }
-    
-    /* -------------------------------------PLAYER CARD------------------------------ */
-    .game-wrapper {
-            display: flex;
+}
+.group {
+        align-self: flex-end;
+        display: flex;
+        flex-direction: column;
+}
+
+p.info {
+        color: #8b8a8a;
+        font-size: 0.75rem;
+        text-align: center;
+        font-family: 'Montserrat';
+        line-height: 1.1rem;
+}
+
+.icono-keyboard {
+        width: 25%;
+        align-self: center;
+        margin-bottom: 0.5rem;
+        
+}
+
+.scale-in-center {
+        -webkit-animation: scale-in-center 0.2s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+                animation: scale-in-center 0.2s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+.swing-in-top-fwd {
+        -webkit-animation: swing-in-top-fwd 0.5s cubic-bezier(0.18, 0.89, 0.38, 2.3) 0.1s both;
+                animation: swing-in-top-fwd 0.4s cubic-bezier(0.18, 0.89, 0.38, 2.3) 0.2s both;
+}
+
+/* -------------------------------------PLAYER CARD------------------------------ */
+.game-wrapper {
+        display: flex;
         flex-direction: column;
         align-items: center;
         width: 70%;
         min-width: 450px;
         margin: 2% auto;
-    }
-    
-    .player-card {
+}
+
+.player-card {
         display: flex;
         position: relative;
         justify-content: center;
@@ -286,61 +286,61 @@
         border: 1px solid #e5e5e5;
         padding: 50px 50px 105px 50px;
         max-width: 500px;
-        margin-bottom: -0.6px;
-    
-    }
-    .player-card p, span {
+        margin-bottom: -0.8px;
+
+}
+.player-card p, span {
         font-family: 'Montserrat', sans-serif;
         font-weight: 500;
         font-size: 0.9rem;
         color: #dadada;
-    }
-    #abort-icono {
-            position: absolute;
-            width: 25px;
-            top: -12px;
-            right: -12px;
-    }
-    #abort-icono:hover {
-            cursor: pointer;
-            width: 30px;
-            top: -15px;
-            right: -15px;
-    }
-    
-    #abc1 { 
+}
+#abort-icono {
+        position: absolute;
+        width: 25px;
+        top: -12px;
+        right: -12px;
+}
+#abort-icono:hover {
+        cursor: pointer;
+        width: 30px;
+        top: -15px;
+        right: -15px;
+}
+
+#abc1 { 
         position: absolute;
         transform: rotate(-90deg);
         top: 90px;
         left: -105px;
         letter-spacing: 0.6rem;
-    }
-    #abc2 { 
+}
+#abc2 { 
         position: absolute;
         top: -22px;
         left: 35px;
         letter-spacing: 0.6rem;
-    }
-    #abc3 { 
+}
+#abc3 { 
         position: absolute;
         transform: rotate(90deg);
         top: 100px;
         right: -104px;
         letter-spacing: 0.55rem;
-    }
-    
-    .hightlited-red {
+}
+
+.hightlited-red {
         color: #ed0404;
         font-weight: 800;
         text-shadow: 0px 0px 2.0px #fe6868;
-    }
-    .hightlited-green {
+}
+.hightlited-green {
         color: #1e8804;
         font-weight: 800;
         text-shadow: 0px 0px 2px #87d60c;
-    }
-    
-    #player-container {
+}
+
+#player-container {
         position: relative;
         width: 230px;
         height: 220px;;
@@ -349,18 +349,18 @@
         border-top-left-radius: 42%;
         border-bottom-right-radius: 50%;
         border-top-right-radius: 59%;
-    }
-    
-    .player-icon { 
+}
+
+.player-icon { 
         position: relative; 
         width: 75%;
         min-width: 150px;
         height: auto;
         top: 10px;
         left: 23px;
-    }
-    
-    #player-name {
+}
+
+#player-name {
         font-family: 'Nothing you could do', sans-serif;
         font-size: 1.2rem;
         font-weight: 400;
@@ -371,12 +371,12 @@
         width: 100%;
         transform: rotate(-1.6deg);
         margin-top: 10px;
-    }
-    
-    .crono {
+}
+
+.crono {
         position: relative;
-    }
-    .timer {
+}
+.timer {
         position: absolute;
         transform: translate(-50%, -50%);
         font-family: 'Montserrat', sans-serif;
@@ -384,9 +384,9 @@
         font-size: 2.2rem;
         color: #00a3ff;
         z-index: 10;
-    }
+}
 
-    .timer-border {
+.timer-border {
         position: absolute;
         transform: translate(-50%, -50%);
         border: 1px solid #e5e7eb;
@@ -394,12 +394,23 @@
         width: 85px;
         height: 75px;
         background-color: white;
+} 
 
-    } 
+.timer-countdown {
+        color: white;
+        font-size: 2.2rem;
+
+}
+
+.timer-border-countdown {
+        border: 1px solid #ed0404;
+        background-color: #ed0404;
+
+}
     
     .slide-in-top {
-            -webkit-animation: slide-in-top 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
-                    animation: slide-in-top 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+         -webkit-animation: slide-in-top 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+        animation: slide-in-top 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
     }
     
     
@@ -449,7 +460,7 @@
         border: 1px solid #e5e7eb;
         border-radius: 10px;
         width: 100%;
-        min-width: 230px;
+        min-width: 210px;
     }
     .text-input:focus {
         outline: none;
@@ -1197,12 +1208,11 @@
                 color: #00a3ff;
                 z-index: 10;
         }
-
+        
         .timer-border {
-        width: 75px;
-        height: 65px;
-        background-color: white;
-
+                width: 75px;
+                height: 65px;
+                background-color: white;
         }
         
         #results-player-name {

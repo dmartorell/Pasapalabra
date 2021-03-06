@@ -129,6 +129,8 @@ const inputWrapper = document.getElementById('input-wrapper');
 const pasaButton = document.getElementById('pasa-btn');
 const inputAnswer = document.querySelector('.text-input');
 const cronoElement = document.querySelector('.timer');
+const cronoElementBorder = document.querySelector('.timer-border');
+
 const abortButton = document.getElementById('abort-icono')
 // * fin VARIABLES GLOBALES * //
 
@@ -352,9 +354,10 @@ function handleAnswer(){
     //ROSCO COMPLETADO : TODAS LAS RESPUESTAS SON CORRECTAS
 
     if(totalScore.right === newRandomSet.length){
-        pasaButton.style.display = 'none';
-        inputWrapper.style.display = 'none';        
-        abortButton.style.display = 'none';
+        
+        pasaButton.classList.add('invisible');
+        inputWrapper.classList.add('invisible');
+        abortButton.classList.add('invisible');
 
         hideQuestionCardElements();
         stopCountdown();
@@ -468,8 +471,12 @@ function startCountDown(){
 
         document.removeEventListener('keydown', handlePressedKey);
 
-        pasaButton.style.display = 'none';
-        inputWrapper.style.display = 'none';        
+        pasaButton.classList.add('invisible');
+        inputWrapper.classList.add('invisible');
+        
+        // pasaButton.style.display = 'none';
+        // inputWrapper.style.display = 'none';        
+        
         hideQuestionCardElements();
 
         setTimeout(()=> slideOutGameElements(), 1200);
@@ -480,9 +487,8 @@ function startCountDown(){
         
     } else if(cronoElement.textContent < 7){
         cronoElement.textContent = (Number(cronoElement.textContent) - 1);
-        cronoElement.style.borderColor = 'transparent';
-        cronoElement.style.color = 'white';
-        cronoElement.style.backgroundColor = '#ed0404';
+        cronoElement.classList.add('timer-countdown');
+        cronoElementBorder.classList.add('timer-border-countdown');
 
     } else {
     cronoElement.textContent = (Number(cronoElement.textContent) - 1);
@@ -649,15 +655,14 @@ function resetGameVariables(){
     gameScreen.querySelector('#player-container').style.backgroundColor = '#d8e5f9';
     document.addEventListener('keydown', handlePressedKey);    
     document.querySelector('.game-wrapper').classList.remove('slide-in-top-reverse');
-    abortButton.style.display = 'block';
 
     cronoElement.textContent = '120';
-    cronoElement.style.borderColor = '#e5e5e5';
-    cronoElement.style.color = '#00a3ff';
-    cronoElement.style.backgroundColor = 'white';
+    cronoElement.classList.remove('timer-countdown');
+    cronoElementBorder.classList.remove('timer-border-countdown');
 
-    pasaButton.style.display = 'block';
-    inputWrapper.style.display = 'block';        
+    pasaButton.classList.remove('invisible');
+    inputWrapper.classList.remove('invisible');
+    abortButton.classList.remove('invisible');
 
     inputAnswer.textContent = '';
     inputAnswer.disabled = false; 
