@@ -460,7 +460,7 @@ p.info {
         border: 1px solid #e5e7eb;
         border-radius: 10px;
         width: 100%;
-        min-width: 210px;
+        min-width: 310px;
     }
     .text-input:focus {
         outline: none;
@@ -1232,7 +1232,9 @@ p.info {
         .results #ok-icono, .results #wrong-icono {
                 width: 60%;
         }
+        .text-input {
+                min-width: 210px;
+        }
         
-
     }
   
