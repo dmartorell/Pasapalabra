@@ -1168,6 +1168,7 @@ p.info {
 
         .player-card {
                 width: 65%;
+                margin-bottom: -0.9px;
         }
 
         #abc2 { 
