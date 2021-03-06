@@ -403,8 +403,6 @@ function showResultsScreen(resultObject, bestUsers){
     hideGameScreen();
     resultsScreen.classList.remove('invisible');
 
-    document.body.style.alignItems = 'center'; 
-
     let { totalScore, playerName, playerSrcImage } = resultObject;
     updateRanking(totalScore.right, playerName, bestUsers);
     appendRankingSection(bestUsers); 
