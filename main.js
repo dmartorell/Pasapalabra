@@ -340,7 +340,15 @@ function isValidPlayerName(value){
 function throwParty(){
     confetti.speed = 2;
     confetti.frameInterval = 10;
-    confetti.start(7000,500);
+
+    const screenSize = document.documentElement.clientWidth;
+    let isSmallScreen = screenSize < 1300;
+    
+    if(isSmallScreen){
+        confetti.start(7000,200);
+    } else {
+        confetti.start(7000,500);
+    }
     const congratsMessage = document.createElement('h1');
     congratsMessage.textContent = '¡ ROSCO COMPLETADO !';
     questionContainer.append(congratsMessage);
