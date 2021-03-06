@@ -407,7 +407,6 @@ p.info {
         background-color: #ed0404;
 
 }
-    
     .slide-in-top {
          -webkit-animation: slide-in-top 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
         animation: slide-in-top 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
@@ -1184,9 +1183,7 @@ p.info {
                 gap: 8px;
                 margin: 2rem auto;
         }
-        /* .img-avatar {
-                width: 90%;
-        } */
+       
         .player-box {
                 width: 90%;
         }
@@ -1226,6 +1223,18 @@ p.info {
                 width: 75px;
                 height: 65px;
                 background-color: white;
+        }
+        
+        .timer-countdown {
+                color: white;
+                font-size: 2.2rem;
+        
+        }
+        
+        .timer-border-countdown {
+                border: 1px solid #ed0404;
+                background-color: #ed0404;
+        
         }
         
         #results-player-name {
