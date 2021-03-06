@@ -467,6 +467,8 @@ function handlePressedKey(e){
 function startCountDown(){
     if(cronoElement.textContent === '1'){
         cronoElement.textContent = '0'
+        cronoElement.classList.add('timer-countdown');
+        cronoElementBorder.classList.add('timer-border-countdown');
         stopCountdown();
 
         document.removeEventListener('keydown', handlePressedKey);
@@ -486,6 +488,10 @@ function startCountDown(){
         cronoElement.textContent = (Number(cronoElement.textContent) - 1);
         cronoElement.classList.add('timer-countdown');
         cronoElementBorder.classList.add('timer-border-countdown');
+        setTimeout(()=> {
+            cronoElementBorder.classList.remove('timer-border-countdown');
+            cronoElement.classList.remove('timer-countdown');
+        }, 500);
 
     } else {
     cronoElement.textContent = (Number(cronoElement.textContent) - 1);

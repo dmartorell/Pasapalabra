@@ -554,6 +554,11 @@ p.info {
             -webkit-animation: jello-horizontal 0.4s both;
                     animation: jello-horizontal 0.4s both;
     }
+
+    .ping {
+	-webkit-animation: ping 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both;
+	        animation: ping 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) infinite both;
+}
     
     /* -----------------------------RANKING SCREEN---------------------------- */
     .results-screen {
@@ -1110,6 +1115,7 @@ p.info {
                   transform: scale3d(1, 1, 1);
         }
     }
+    
     
     @media screen and (min-width: 1300px) {     
         .game-wrapper {
