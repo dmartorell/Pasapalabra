@@ -473,15 +473,12 @@ function startCountDown(){
 
         pasaButton.classList.add('invisible');
         inputWrapper.classList.add('invisible');
-        
-        // pasaButton.style.display = 'none';
-        // inputWrapper.style.display = 'none';        
-        
+             
         hideQuestionCardElements();
 
         setTimeout(()=> slideOutGameElements(), 1200);
         setTimeout(()=> {
-            document.body.style.alignItems = 'center'; 
+            // document.body.style.alignItems = 'center'; 
             showResultsScreen({ totalScore, playerName, playerSrcImage }, bestUsers);
         }, 2000);
         

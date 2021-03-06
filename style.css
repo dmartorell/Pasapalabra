@@ -569,7 +569,8 @@ p.info {
     }
     #results-player-box {
             position: relative;
-            align-self: flex-start;        
+            align-self: flex-start;    
+            min-width: 135px;    
     
     }
     
