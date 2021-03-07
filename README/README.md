@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ![logo](logo_pasapalabra5.svg)
+=======
+![logo](/README/pasapalabra_character.png)
+>>>>>>> 5955abdc787952ffa5323262f69dba13f6946c5d
 
 # PASAPALABRA WEB APP
 
