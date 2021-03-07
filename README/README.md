@@ -1,9 +1,7 @@
 
-<img src="pasapalabra_character.jpg" style="display: block; width: 13%; margin-bottom: 10px"/>
-
 
 ![logo](logo_pasapalabra5.svg)
-![logo](pasapalabra_character.jpg)
+
 
 ## DESCRIPCIÓN
 
