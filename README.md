@@ -31,7 +31,7 @@ Con la idea de añadir dinamismo y una experiencia de usuario más atractiva, el
 ## HERRAMIENTAS
 
 
-Para el desarrollo de las animaciones se ha usado la web [Animista](https://animista.net/). El primer esbozo visual se ha hecho con [Figma](https://figma.com) y las imágenes de los avatares y los iconos se han tomado, respectivamente y bajo licencia cc, de [Open Peeps](https://www.openpeeps.com/) y <em>Freepik</em> para [flaticon](www.flaticon.es). La nimación con cofetti cuando el jugador completa todas las preguntas está escrita por [MathuSum Mut](https://github.com/mathusummut/confetti.js). 
+Para el desarrollo de las animaciones se ha usado la web [Animista](https://animista.net/). El primer esbozo visual se ha hecho con [Figma](https://figma.com) y las imágenes de los avatares y los iconos se han tomado, respectivamente y bajo licencia cc, de [Open Peeps](https://www.openpeeps.com/) y <em>Freepik</em> para [flaticon](www.flaticon.es). La animación con cofetti cuando el jugador completa todas las preguntas está escrita por [MathuSum Mut](https://github.com/mathusummut/confetti.js). 
 
 <br>
 
