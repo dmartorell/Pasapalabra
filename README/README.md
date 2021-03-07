@@ -1,4 +1,5 @@
 ![logo](logo_pasapalabra5.svg)
+![logo](pasapalabra-character.jpg)
 
 # PASAPALABRA WEB APP
 
