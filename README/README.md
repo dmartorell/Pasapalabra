@@ -1,4 +1,12 @@
+
+<img src="pasapalabra_character.jpg" style="display: block; width: 13%; margin-bottom: 10px"/>
+
+
 ![logo](logo_pasapalabra5.svg)
+
+## DESCRIPCIÓN
+
+Proyecto final del pre-curso de SkylabCoders. Aquí encontraréis todos los enunciados, ejercicios y challenges que os servirán para aprender a dominar la estructura básica de Javascript, HTML y CSS. Comprendiendo y dominando con soltura estos fundamentos os resultará más fácil llegar al nivel de Javascript al que os llevaremos una vez empiece el curso.
 
 # PASAPALABRA WEB APP
 
