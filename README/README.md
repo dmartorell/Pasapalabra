@@ -4,7 +4,6 @@
 
 
 ## DESCRIPCIÓN
-***
 
 Proyecto final del pre-curso de SkylabCoders de la promoción abril 2021.
 La web app recrea el popular juego de televisión 'Pasapalabra', en donde un jugador responde consecutivamente a 27 definciones de palabras, una por cada letra del alfabeto. 
@@ -14,7 +13,6 @@ En la primera pantallael jugador elige un avatar de entre seis posibles opciones
 
 
 ## OBJETIVOS DEL PROYECTO
-***
 
 Se trata de un challenge de final de pre-curso en donde se le pide al estudiante un dominio básico de la estructura de <strong>Javascript, HTML y CSS</strong>, así como de manipulación del DOM.
 Con la idea de añadir dinamismo y una experiencia de usuario más atractiva, el proyecto incorpora métodos como:
@@ -31,7 +29,7 @@ Con la idea de añadir dinamismo y una experiencia de usuario más atractiva, el
 
 
 ## HERRAMIENTAS
-***
+
 
 Para el desarrollo de las animaciones se ha usado la web [Animista](https://animista.net/). El primer esbozo visual se ha hecho con [Figma](https://figma.com) y las imágenes de los avatares y los iconos se han tomado, respectivamente y bajo licencia cc, de [Open Peeps](https://www.openpeeps.com/) y <em>Freepik</em> para [flaticon](www.flaticon.es).
 
