@@ -1,4 +1,4 @@
-![logo](README/logo_pasapalabra5.svg)
+![logo](/logo_pasapalabra5.svg)
 
 # PASAPALABRA WEB APP
 
