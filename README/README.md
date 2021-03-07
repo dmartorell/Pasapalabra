@@ -3,6 +3,7 @@
 
 
 ![logo](logo_pasapalabra5.svg)
+![logo](pasapalabra_character.jpg)
 
 ## DESCRIPCIÓN
 
