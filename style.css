@@ -1,5 +1,3 @@
-
-
 *, *::before, *::after {
         box-sizing: border-box;
         font-family: 'Inter', sans-serif;
@@ -1145,6 +1143,10 @@ div.results {
         #input-button {
                 font-size: 0.72rem;
         } 
+
+        #logo-pasapalabra {
+                width: 32%;
+        }
                 
 }
 
