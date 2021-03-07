@@ -1,28 +1,40 @@
 
 
-![logo](logo_pasapalabra5.svg)
+![logo](/imagenes/logo_pasapalabra5.svg)
 
 
 ## DESCRIPCIÓN
+***
 
-Proyecto final del pre-curso de SkylabCoders. Aquí encontraréis todos los enunciados, ejercicios y challenges que os servirán para aprender a dominar la estructura básica de Javascript, HTML y CSS. Comprendiendo y dominando con soltura estos fundamentos os resultará más fácil llegar al nivel de Javascript al que os llevaremos una vez empiece el curso.
+Proyecto final del pre-curso de SkylabCoders de la promoción abril 2021.
+La web app recrea el popular juego de televisión 'Pasapalabra', en donde un jugador responde consecutivamente a 27 definciones de palabras, una por cada letra del alfabeto. 
+En la primera pantallael jugador elige un avatar de entre seis posibles opciones. Seguidamente le asigna un nombre y empieza la partida. El juego arranca con la letra 'A' y con un crono de 120 segundos. El objetivo del jugador es acertar todas las deficniciones lanzadas por la app dentro de esos 120 segundos de tiempo máximo. Después de cada pregunta, el jugador tiene la opción de pulsar el botón 'Pasapalabra' (o la barra espaciadora del teclado) y dejar esa pregunta sin contestar, para recuperarla más tarde. Al final de la partida se muestra en un ranking si el jugador ha entrado entre los mejores cinco registros. Desde ahí, el jugador tiene la ocpión de volver a jugar con su mismo personaje y nombre o empezar de nuevo en la pantalla principal de selección de avatar. 
 
-# PASAPALABRA WEB APP
+<br>
 
-## DESCRIPCIÓN
 
-Bienvenidos al pre-curso de SkylabCoders, aquí encontraréis todos los enunciados, ejercicios y challenges que os servirán para aprender a dominar la estructura básica de Javascript, HTML y CSS. Comprendiendo y dominando con soltura estos fundamentos os resultará más fácil llegar al nivel de Javascript al que os llevaremos una vez empiece el curso.
+## OBJETIVOS DEL PROYECTO
+***
 
-<strong>El miércoles de la semana anterior al inicio del bootcamp se realizará la presentación de los proyectos del pre-curso. Elegid el proyecto que más os haya gustado, o el que os haya presentado más dificultad por ejemplo.</strong>
+Se trata de un challenge de final de pre-curso en donde se le pide al estudiante un dominio básico de la estructura de <strong>Javascript, HTML y CSS</strong>, así como de manipulación del DOM.
+Con la idea de añadir dinamismo y una experiencia de usuario más atractiva, el proyecto incorpora métodos como:
 
-Para referencia teórica recomendamos utilizar las siguientes webs:
+<br>
 
-● Introducción a[ JavaScript](https://lenguajejs.com/p/javascript/)
+●  [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
 
-● Introducción a[ HTML5](https://lenguajehtml.com/p/html/)
+●  [setInterval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval)
 
-● Introducción a[ CSS](https://lenguajecss.com/p/css/)
+●  [animation](https://developer.mozilla.org/en-US/docs/Web/CSS/animation) con keyframes 
 
-Así, los objetivos del pre-curso son:
+<br>
 
-● Prepararos para poder empezar el curso con un buen nivel de Javascript.
+
+## HERRAMIENTAS
+***
+
+Para el desarrollo de las animaciones se ha usado la web [Animista](https://animista.net/). El primer esbozo visual se ha hecho con [Figma](https://figma.com) y las imágenes de los avatares y los iconos se han tomado, respectivamente y bajo licencia cc, de [Open Peeps](https://www.openpeeps.com/) y <em>Freepik</em> para [flaticon](www.flaticon.es).
+
+<br>
+
+
