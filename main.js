@@ -350,7 +350,7 @@ function throwParty(){
         confetti.start(7000,500);
     }
     const congratsMessage = document.createElement('h1');
-    congratsMessage.textContent = '¡ ROSCO COMPLETADO !';
+    congratsMessage.textContent = '¡ COMPLETADO !';
     questionContainer.append(congratsMessage);
     gameScreen.querySelector('#player-container').style.backgroundColor = '#87d60c';
 }
@@ -402,8 +402,6 @@ function showResultsScreen(resultObject, bestUsers){
 
     hideGameScreen();
     resultsScreen.classList.remove('invisible');
-
-    document.body.style.alignItems = 'center'; 
 
     let { totalScore, playerName, playerSrcImage } = resultObject;
     updateRanking(totalScore.right, playerName, bestUsers);
