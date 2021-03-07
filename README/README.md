@@ -1,4 +1,4 @@
-![logo](/README/pasapalabra_character.jpg)
+![logo](/README/pasapalabra_character.png)
 
 # PASAPALABRA WEB APP
 
