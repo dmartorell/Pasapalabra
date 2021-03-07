@@ -58,7 +58,7 @@ div.footer > a {
         grid-template-columns: minmax(90px, 19%) minmax(200px, 1fr) minmax(90px, 19%);
         grid-template-rows: auto;
         grid-template-areas: 
-                "player1 . player2"
+                "player1 logo player2"
                 "player3 select player4"
                 "player5 . player6";
         justify-content: center;
@@ -79,9 +79,9 @@ div.footer > a {
 
 #logo-pasapalabra {
         display: none;
-        grid-area: select;
-        align-self: center;
-        width: 25%;
+        grid-area: logo;
+        align-self: flex-start;
+        width: 35%;
         min-width: 90px;
 }
 
