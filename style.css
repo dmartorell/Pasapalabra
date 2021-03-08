@@ -29,12 +29,13 @@ body {
 }
 .footer p, a {
         font-family: 'Inter', sans-serif;    
-        color: rgb(158, 158, 158);
+        color: rgb(101, 101, 101);
         font-size: 0.8rem;
 }
 
 .footer #github-logo {
         width: 50px;
+        filter:brightness(70%);
 }
 
 div.footer > a {
@@ -43,7 +44,14 @@ div.footer > a {
 .footer #sky-logo {
         width: 130px;
         margin-left: 1.5rem;
+        filter:brightness(70%);
+}
+.footer p:last-child{
+        margin-left: 1rem;
+}
 
+.footer p:last-child     a:last-child{
+        text-decoration: none;
 }
 /* ---------------------------------SELECT PLAYER---------------------------------*/
 
