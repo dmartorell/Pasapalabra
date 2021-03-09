@@ -26,6 +26,7 @@ body {
         width: 100%;
         background-color: #132435;
         bottom: 0px;
+        padding: 0 1rem;
 }
 .footer p, a {
         font-family: 'Inter', sans-serif;    
