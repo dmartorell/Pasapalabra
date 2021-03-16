@@ -104,7 +104,6 @@ let bestUsers = [
 ];
 
 let newRandomSet = createRandomSetFrom(questionsDeck);
-//newRandomSet.length = 6;
 let remainingQuestions = newRandomSet.length;
 let currentCard = newRandomSet[cardIndex];
 let playerName = null;
@@ -424,12 +423,12 @@ function createRandomSetFrom(mainDeck){
     const numOfSets = Object.keys(mainDeck).length;
     const numOfQuestionsPerSet = Object.values(mainDeck)[0].length;
 
-    let mainDeckCopy = JSON.parse(JSON.stringify(mainDeck));
     let newRandomSet = [];
 
     for(let i = 0; i < numOfQuestionsPerSet; i++){
-      let randomNum = Math.floor((Math.random() * numOfSets) + 1); 
-      newRandomSet.push(mainDeckCopy[`set${randomNum}`][i]);
+      const randomNum = Math.floor((Math.random() * numOfSets) + 1); 
+      const questionObject = mainDeck[`set${randomNum}`][i];
+      newRandomSet.push({...questionObject}); //método para hacer deep copy de questionObject
     } 
    
     return newRandomSet;
@@ -680,7 +679,6 @@ function resetGameVariables(){
     cardIndex = 0;
     stillQuestions = true;
     newRandomSet = createRandomSetFrom(questionsDeck);
-    //newRandomSet.length = 6;  
     remainingQuestions = newRandomSet.length;
     currentCard = newRandomSet[cardIndex];
     inputAnswer.value = '';
